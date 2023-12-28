@@ -9,5 +9,7 @@ package bus.transport.management.system;
  * @author kumar
  */
 public class gittest {
-    
+    public static void main(String[] args) {
+        System.out.println("print");
+    }
 }
