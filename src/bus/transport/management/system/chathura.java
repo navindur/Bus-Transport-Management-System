@@ -8,11 +8,6 @@ package bus.transport.management.system;
  *
  * @author kumar
  */
-public class gittest {
-    public static void main(String[] args) {
-        System.out.println("print");
-        System.out.println("thia is the second line");
-        System.out.println("Dec 29 change");
-        System.out.println("test git");
-    }
+public class chathura {
+    
 }
