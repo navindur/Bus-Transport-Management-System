@@ -58,6 +58,7 @@ public class Income_Input extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(950, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(213, 247, 230));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setName(""); // NOI18N
@@ -228,7 +229,7 @@ public class Income_Input extends javax.swing.JFrame {
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 300, 50));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 310, 260));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 320, 260));
 
         jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Return_6.png"))); // NOI18N
@@ -244,12 +245,11 @@ public class Income_Input extends javax.swing.JFrame {
         jButton2.setText("Add");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 110, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 350, 530));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 360, 530));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\kumar\\OneDrive\\Desktop\\_dddd1b0d-b124-4eb7-bf7b-94bd9be31d6a.jpeg")); // NOI18N
-        jLabel7.setText("jLabel7");
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/ezgif.com-resize.jpg"))); // NOI18N
         jLabel7.setPreferredSize(new java.awt.Dimension(960, 600));
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 570));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 300, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
