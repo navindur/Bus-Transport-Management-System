@@ -4,6 +4,7 @@
  */
 package UI;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.UIManager;
 
 /**
@@ -66,7 +67,7 @@ public class IncomeInput extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Request Money.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/icon_incomeInput.png"))); // NOI18N
         jLabel1.setText("Income Input");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 288, -1));
 
@@ -156,7 +157,7 @@ public class IncomeInput extends javax.swing.JFrame {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 320, 260));
 
         jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Return_6.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/icon_returnButton.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -165,13 +166,13 @@ public class IncomeInput extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 50, 30));
 
         jButton2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Add_1.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/icon_addButton.png"))); // NOI18N
         jButton2.setText("Add");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 110, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 360, 530));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/ezgif.com-resize.jpg"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/image_incomeInput.jpg"))); // NOI18N
         jLabel7.setPreferredSize(new java.awt.Dimension(960, 600));
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 300, 300));
 
@@ -222,6 +223,13 @@ public class IncomeInput extends javax.swing.JFrame {
             // Handle any exceptions that may occur
             e.printStackTrace();
         }
+//        
+//        FlatLightLaf.setup();
+//        try {
+//            UIManager.setLookAndFeel(new FlatLightLaf());
+//        } catch (Exception ex) {
+//            System.err.println("Failed to initialize LaF");
+//        }
         //</editor-fold>
 
         /* Create and display the form */
