@@ -4,6 +4,8 @@
  */
 package UI;
 
+import UI.Income_Statement_MainUI;
+
 /**
  *
  * @author navin
@@ -67,11 +69,15 @@ public class Ownerdashboard extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Frame 37 (12).png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\navin\\Downloads\\Frame 37 (13).png")); // NOI18N
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Frame 37 (8).png"))); // NOI18N
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -142,6 +148,14 @@ public class Ownerdashboard extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        // TODO add your handling code here:
+        Income_Statement_MainUI IS1=new Income_Statement_MainUI();
+        IS1.setVisible(true);
+        
+        dispose();
+    }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
      * @param args the command line arguments
