@@ -112,7 +112,7 @@ public class Income_Statement_MainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         DailyIncomeView dailyIncomeView = new DailyIncomeView();
         dailyIncomeView.setVisible(true);
-        this.dispose();
+//        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
