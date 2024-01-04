@@ -44,7 +44,7 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(102, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -131,10 +131,10 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 104, -1, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackButton.png"))); // NOI18N
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 526, 108, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 108, 30));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/OK Button.png"))); // NOI18N
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(853, 526, 55, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 55, 30));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -142,8 +142,8 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
         jLabel4.setText("Monthly Income View");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 33, 254, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/finaBack.jpg"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 600));
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 910, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,7 +151,7 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
