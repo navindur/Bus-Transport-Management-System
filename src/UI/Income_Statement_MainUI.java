@@ -100,8 +100,6 @@ public class Income_Statement_MainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         MonthlyIncomeUI mi=new MonthlyIncomeUI();
         mi.show();
-        
-        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
