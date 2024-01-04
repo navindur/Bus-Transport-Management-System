@@ -61,6 +61,7 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
 
         jTextField2.setBackground(new java.awt.Color(0, 0, 0));
 
+        jToggleButton1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         jToggleButton1.setText("ALL");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Search Button.png"))); // NOI18N
@@ -138,7 +139,7 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 255, 102));
+        jLabel4.setForeground(new java.awt.Color(100, 204, 197));
         jLabel4.setText("Monthly Income View");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 400, -1));
 
