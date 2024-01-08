@@ -57,7 +57,7 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(100, 204, 197));
-        jLabel4.setText("Yeraly Income View");
+        jLabel4.setText("Yearly Income View");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 370, -1));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
