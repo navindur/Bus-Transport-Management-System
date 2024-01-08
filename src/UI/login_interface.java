@@ -36,6 +36,7 @@ public class login_interface extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(950, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 43)); // NOI18N
@@ -55,6 +56,7 @@ public class login_interface extends javax.swing.JFrame {
         jButton2.setText("EMPLOYEE");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 170, 70));
 
+        jButton4.setBackground(new java.awt.Color(102, 102, 102));
         jButton4.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
         jButton4.setText("EXIT");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 520, -1, -1));
@@ -77,7 +79,8 @@ public class login_interface extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Black Back.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1010, 602));
+        jLabel1.setPreferredSize(new java.awt.Dimension(950, 600));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
