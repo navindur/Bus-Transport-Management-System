@@ -51,7 +51,7 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(102, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/YearVector.jpg"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/YearlyIncome_Icon.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
