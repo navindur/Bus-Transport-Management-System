@@ -56,8 +56,9 @@ public class login_interface extends javax.swing.JFrame {
         jButton2.setText("EMPLOYEE");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 170, 70));
 
-        jButton4.setBackground(new java.awt.Color(102, 102, 102));
+        jButton4.setBackground(new java.awt.Color(51, 51, 51));
         jButton4.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(100, 204, 197));
         jButton4.setText("EXIT");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 520, -1, -1));
 
