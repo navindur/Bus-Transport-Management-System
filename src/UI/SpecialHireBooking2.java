@@ -69,12 +69,18 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
             },
             new String [] {
                 "Date", "Bus No", "Booking Reference", "Name", "Driver", "Conductor"
             }
         ));
+        jTable1.setShowGrid(true);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
