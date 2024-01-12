@@ -135,7 +135,7 @@ public class IncomeInput extends javax.swing.JFrame {
 
         jPanel8.add(jPanel12);
 
-        panelRound2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 570, 190));
+        panelRound2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 570, 190));
 
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
@@ -146,9 +146,9 @@ public class IncomeInput extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        panelRound2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 140, 50));
+        panelRound2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 140, 50));
 
-        jPanel14.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 710, 320));
+        jPanel14.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 650, 320));
 
         jPanel1.setOpaque(false);
 
@@ -162,13 +162,14 @@ public class IncomeInput extends javax.swing.JFrame {
 
         jPanel14.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 300, 60));
 
-        jButton4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png"))); // NOI18N
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setPreferredSize(new java.awt.Dimension(100, 35));
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton4MouseExited(evt);
             }
         });
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +177,7 @@ public class IncomeInput extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel14.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, -1, -1));
+        jPanel14.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 100, 35));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Black Back.jpg"))); // NOI18N
         jPanel14.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -191,21 +192,27 @@ public class IncomeInput extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        Empdashboard empDashboard = new Empdashboard();
-        empDashboard.setVisible(true);
-        this.dispose();
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+    private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4MouseClicked
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder2.png")));
+    }//GEN-LAST:event_jButton4MouseEntered
+
+    private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
+        // TODO add your handling code here:
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png")));
+    }//GEN-LAST:event_jButton4MouseExited
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        Empdashboard empDashboard = new Empdashboard();
+        empDashboard.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
