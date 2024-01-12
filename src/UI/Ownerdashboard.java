@@ -29,74 +29,303 @@ public class Ownerdashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(36, 36, 36));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(14, 15, 15));
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.setPreferredSize(new java.awt.Dimension(900, 550));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(100, 204, 197));
+        jLabel38.setText("OWNER DASHBOARD");
+        jPanel1.add(jLabel38);
+        jLabel38.setBounds(270, 50, 370, 48);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Frame 37 (14).png"))); // NOI18N
+        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/technical-support (1).png"))); // NOI18N
+        jPanel1.add(jLabel37);
+        jLabel37.setBounds(290, 360, 32, 32);
+
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/bus (2).png"))); // NOI18N
+        jPanel1.add(jLabel36);
+        jLabel36.setBounds(80, 150, 32, 32);
+
+        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/driver-license (1).png"))); // NOI18N
+        jPanel1.add(jLabel35);
+        jLabel35.setBounds(290, 140, 40, 50);
+
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/shift (4).png"))); // NOI18N
+        jPanel1.add(jLabel34);
+        jLabel34.setBounds(500, 360, 32, 32);
+
+        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/seat (1).png"))); // NOI18N
+        jPanel1.add(jLabel33);
+        jLabel33.setBounds(710, 150, 32, 32);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/saving (3).png"))); // NOI18N
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(500, 150, 32, 32);
+
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/hiring (1).png"))); // NOI18N
+        jPanel1.add(jLabel32);
+        jLabel32.setBounds(80, 360, 32, 32);
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/logout (1).png"))); // NOI18N
+        jPanel1.add(jLabel31);
+        jLabel31.setBounds(710, 360, 32, 32);
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel29.setText("Log Out");
+        jPanel1.add(jLabel29);
+        jLabel29.setBounds(710, 460, 68, 25);
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel28.setText("View Daily Shift");
+        jPanel1.add(jLabel28);
+        jLabel28.setBounds(500, 460, 134, 25);
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel27.setText("Service Details");
+        jPanel1.add(jLabel27);
+        jLabel27.setBounds(290, 460, 124, 25);
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel26.setText("Booking");
+        jPanel1.add(jLabel26);
+        jLabel26.setBounds(80, 480, 71, 25);
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel25.setText("Special Hire");
+        jPanel1.add(jLabel25);
+        jLabel25.setBounds(80, 460, 101, 25);
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel24.setText("Seat Booking");
+        jPanel1.add(jLabel24);
+        jLabel24.setBounds(710, 250, 113, 25);
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel23.setText("Financial Status");
+        jPanel1.add(jLabel23);
+        jLabel23.setBounds(500, 250, 133, 25);
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel22.setText("Details");
+        jPanel1.add(jLabel22);
+        jLabel22.setBounds(290, 270, 58, 25);
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel21.setText("Driver/Conductor");
+        jPanel1.add(jLabel21);
+        jLabel21.setBounds(290, 250, 149, 25);
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Vector (2).png"))); // NOI18N
+        jPanel1.add(jLabel15);
+        jLabel15.setBounds(700, 140, 58, 58);
+
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png"))); // NOI18N
+        jLabel30.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel30MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel30MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel30MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel30);
+        jLabel30.setBounds(690, 130, 186, 179);
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel20.setText("Bus Details");
+        jPanel1.add(jLabel20);
+        jLabel20.setBounds(80, 250, 94, 25);
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Vector (2).png"))); // NOI18N
+        jPanel1.add(jLabel19);
+        jLabel19.setBounds(700, 350, 58, 58);
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Vector (2).png"))); // NOI18N
+        jPanel1.add(jLabel18);
+        jLabel18.setBounds(490, 350, 58, 58);
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Vector (2).png"))); // NOI18N
+        jPanel1.add(jLabel14);
+        jLabel14.setBounds(490, 140, 58, 58);
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Vector (2).png"))); // NOI18N
+        jPanel1.add(jLabel13);
+        jLabel13.setBounds(280, 140, 58, 58);
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Vector (2).png"))); // NOI18N
+        jPanel1.add(jLabel16);
+        jLabel16.setBounds(70, 350, 58, 58);
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Vector (2).png"))); // NOI18N
+        jPanel1.add(jLabel17);
+        jLabel17.setBounds(280, 350, 58, 58);
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Vector (2).png"))); // NOI18N
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(70, 140, 58, 58);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(60, 130, 186, 179);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Frame 37 (7).png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png"))); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(270, 130, 186, 179);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Frame 37 (9).png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 188, -1));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(480, 130, 188, 179);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Frame 37 (10).png"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 192, 189));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Frame 37 (11).png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel6MouseExited(evt);
+            }
         });
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(60, 340, 186, 179);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Frame 37 (12).png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, -1, -1));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel5MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(690, 340, 186, 179);
 
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, -1, -1));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Frame 37 (8).png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png"))); // NOI18N
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel8MouseExited(evt);
+            }
         });
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, -1, -1));
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 580));
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(480, 340, 186, 179);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 930, 580));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png"))); // NOI18N
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel10MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(270, 340, 186, 179);
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Black Back.jpg"))); // NOI18N
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(10, 10, 930, 580);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png"))); // NOI18N
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(270, 340, 186, 179);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 600));
 
@@ -118,6 +347,74 @@ public class Ownerdashboard extends javax.swing.JFrame {
         serviceDetails.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel30MouseClicked
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (1).png")));
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (1).png")));
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+       jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (1).png")));
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel30MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseEntered
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (1).png")));
+    }//GEN-LAST:event_jLabel30MouseEntered
+
+    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (1).png")));
+    }//GEN-LAST:event_jLabel6MouseEntered
+
+    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (1).png")));
+    }//GEN-LAST:event_jLabel10MouseEntered
+
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (1).png")));
+    }//GEN-LAST:event_jLabel8MouseEntered
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (1).png")));
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png")));
+    }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png")));
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png")));
+    }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel30MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseExited
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png")));
+    }//GEN-LAST:event_jLabel30MouseExited
+
+    private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png")));
+    }//GEN-LAST:event_jLabel6MouseExited
+
+    private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png")));
+    }//GEN-LAST:event_jLabel10MouseExited
+
+    private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png")));
+    }//GEN-LAST:event_jLabel8MouseExited
+
+    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
+       jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png")));
+    }//GEN-LAST:event_jLabel5MouseExited
 
     /**
      * @param args the command line arguments
@@ -156,15 +453,42 @@ public class Ownerdashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
