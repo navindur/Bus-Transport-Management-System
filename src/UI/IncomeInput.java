@@ -39,20 +39,15 @@ public class IncomeInput extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        jPanel11 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jFormattedTextField4 = new javax.swing.JFormattedTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        panelRound1 = new UI.Images.PanelRound();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,12 +64,13 @@ public class IncomeInput extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setPreferredSize(new java.awt.Dimension(217, 150));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setPreferredSize(new java.awt.Dimension(450, 50));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("Bus Number:");
         jLabel9.setPreferredSize(new java.awt.Dimension(67, 16));
@@ -88,21 +84,23 @@ public class IncomeInput extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel9.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 9, 120, 30));
+        jPanel9.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
 
-        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 50));
+        jPanel8.add(jPanel9);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setPreferredSize(new java.awt.Dimension(300, 50));
+        jPanel10.setPreferredSize(new java.awt.Dimension(450, 50));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("YYYY-MM-DD");
         jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel10.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 40, 120, 20));
+        jPanel10.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 120, 20));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Date:");
         jPanel10.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 110, 35));
@@ -110,67 +108,64 @@ public class IncomeInput extends javax.swing.JFrame {
         jFormattedTextField3.setBackground(new java.awt.Color(51, 51, 51));
         jFormattedTextField3.setForeground(new java.awt.Color(255, 255, 255));
         jFormattedTextField3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        jPanel10.add(jFormattedTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 10, 120, 30));
+        jPanel10.add(jFormattedTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
 
-        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 60));
-
-        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setPreferredSize(new java.awt.Dimension(300, 50));
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jComboBox2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
-        jComboBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
-        jPanel11.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 11, 60, 30));
-
-        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel12.setText("Turn:");
-        jPanel11.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 9, 110, 35));
-
-        jPanel8.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel8.add(jPanel10);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setPreferredSize(new java.awt.Dimension(450, 50));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jFormattedTextField4.setBackground(new java.awt.Color(51, 51, 51));
         jFormattedTextField4.setForeground(new java.awt.Color(255, 255, 255));
         jFormattedTextField4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        jPanel12.add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 8, 120, 30));
+        jPanel12.add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setText("Income:");
         jPanel12.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, 72, 35));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Rs.");
-        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 6, 30, 35));
+        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 30, 35));
 
-        jPanel8.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 300, 50));
+        jPanel8.add(jPanel12);
 
-        panelRound2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 330, 260));
+        panelRound2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 570, 190));
 
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
-        jButton3.setText("Add");
+        jButton3.setText("Submit");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        panelRound2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 275, 120, 50));
+        panelRound2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 140, 50));
+
+        jPanel14.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 710, 320));
+
+        jPanel1.setOpaque(false);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Input Income_title.png"))); // NOI18N
+        jPanel1.add(jLabel1);
+
+        jLabel15.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(100, 204, 197));
+        jLabel15.setText("Income Input");
+        jPanel1.add(jLabel15);
+
+        jPanel14.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 300, 60));
 
         jButton4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorBack.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png"))); // NOI18N
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setPreferredSize(new java.awt.Dimension(100, 35));
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
@@ -181,25 +176,7 @@ public class IncomeInput extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        panelRound2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 50, 50));
-
-        jPanel14.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 360, 390));
-
-        jLabel15.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(100, 204, 197));
-        jLabel15.setText("Income Input");
-        jPanel14.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 35, 230, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Input Income_title.png"))); // NOI18N
-        jPanel14.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
-
-        panelRound1.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(jLabel7);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/image_incomeInput.jpg"))); // NOI18N
-        panelRound1.add(jLabel2);
-
-        jPanel14.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 320, 320));
+        jPanel14.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Black Back.jpg"))); // NOI18N
         jPanel14.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -213,10 +190,6 @@ public class IncomeInput extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -286,28 +259,23 @@ public class IncomeInput extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField jTextField2;
-    private UI.Images.PanelRound panelRound1;
     private UI.Images.PanelRound panelRound2;
     // End of variables declaration//GEN-END:variables
 }
