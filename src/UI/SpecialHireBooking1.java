@@ -31,6 +31,7 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
         panelRound1 = new UI.Images.PanelRound();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -60,7 +61,7 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Bus Number :");
-        panelRound1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 45, -1, 24));
+        panelRound1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, 24));
 
         jTextField1.setBackground(new java.awt.Color(51, 51, 51));
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -70,29 +71,35 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        panelRound1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 120, -1));
+        panelRound1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 35, 120, -1));
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("YYYY-MM-DD");
+        jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelRound1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 120, 20));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Date :");
-        panelRound1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 45, -1, -1));
+        panelRound1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 40, -1, -1));
 
         jTextField2.setBackground(new java.awt.Color(51, 51, 51));
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 120, -1));
+        panelRound1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 35, 120, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Booking Reference :");
-        panelRound1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 45, -1, -1));
+        panelRound1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, -1, -1));
 
         jTextField3.setBackground(new java.awt.Color(51, 51, 51));
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, 120, -1));
+        panelRound1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 35, 120, -1));
 
-        jButton1.setBackground(new java.awt.Color(242, 242, 242));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
@@ -257,6 +264,7 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -42,6 +42,7 @@ public class SHBpopup extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -141,6 +142,13 @@ public class SHBpopup extends javax.swing.JFrame {
             }
         });
         panelRound1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("YYYY-MM-DD");
+        jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelRound1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 120, 20));
 
         jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 520, 410));
 
@@ -243,6 +251,7 @@ public class SHBpopup extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
