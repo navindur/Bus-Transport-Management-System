@@ -88,6 +88,7 @@ public class employee_interface extends javax.swing.JFrame {
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 240, 30));
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 240, 30));
 
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Black Back.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
         jLabel5.setMaximumSize(new java.awt.Dimension(950, 600));
