@@ -68,6 +68,11 @@ public class Ownerdashboard extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Frame 37 (10).png"))); // NOI18N
         jLabel4.setText("jLabel4");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 192, 189));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Frame 37 (11).png"))); // NOI18N
@@ -118,6 +123,14 @@ public class Ownerdashboard extends javax.swing.JFrame {
         serviceDetails.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        SpecialHireBooking1 specialBooking = new SpecialHireBooking1();
+        specialBooking.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
