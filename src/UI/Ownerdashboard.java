@@ -250,6 +250,9 @@ public class Ownerdashboard extends javax.swing.JFrame {
         jLabel3.setText("jLabel3");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel3MouseEntered(evt);
             }
@@ -335,16 +338,16 @@ public class Ownerdashboard extends javax.swing.JFrame {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
-        Income_Statement_MainUI IS1=new Income_Statement_MainUI();
-        IS1.setVisible(true);
+        dailyshiftview dailyshift=new dailyshiftview();
+        dailyshift.setVisible(true);
         
         dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
-        Service_Details serviceDetails = new Service_Details();
-        serviceDetails.setVisible(true);
+        SpecialHireBooking1 specialhireBooking = new SpecialHireBooking1();
+        specialhireBooking.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
@@ -415,6 +418,12 @@ public class Ownerdashboard extends javax.swing.JFrame {
     private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Rectangle 1 (6).png")));
     }//GEN-LAST:event_jLabel5MouseExited
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        Income_Statement_MainUI incomestatementmainui = new Income_Statement_MainUI();
+        incomestatementmainui.setVisible(true);
+        this.dispose(); 
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments

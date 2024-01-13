@@ -45,7 +45,6 @@ public class IncomeInput extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -151,9 +150,6 @@ public class IncomeInput extends javax.swing.JFrame {
         jPanel14.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 650, 320));
 
         jPanel1.setOpaque(false);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Input Income_title.png"))); // NOI18N
-        jPanel1.add(jLabel1);
 
         jLabel15.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(100, 204, 197));
@@ -268,7 +264,6 @@ public class IncomeInput extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JFormattedTextField jFormattedTextField4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
