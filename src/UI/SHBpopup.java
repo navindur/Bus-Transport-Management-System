@@ -48,8 +48,6 @@ public class SHBpopup extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(0, 0));
-        setPreferredSize(new java.awt.Dimension(560, 550));
         setResizable(false);
         setSize(new java.awt.Dimension(600, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -57,7 +55,7 @@ public class SHBpopup extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setMinimumSize(new java.awt.Dimension(560, 550));
         jPanel1.setPreferredSize(new java.awt.Dimension(560, 550));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,6 +134,7 @@ public class SHBpopup extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
         jButton2.setText("Submit");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -150,12 +149,14 @@ public class SHBpopup extends javax.swing.JFrame {
         jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         panelRound1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 120, 20));
 
-        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 520, 410));
+        jPanel1.add(panelRound1);
+        panelRound1.setBounds(20, 70, 520, 410);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(100, 204, 197));
         jLabel1.setText("Special Hire Booking");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(110, 10, 349, 48);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png"))); // NOI18N
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -172,12 +173,14 @@ public class SHBpopup extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 100, 35));
+        jPanel1.add(jButton4);
+        jButton4.setBounds(30, 500, 100, 35);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/3d-black-chart-finance-black-background_768719-330.jpg"))); // NOI18N
         jLabel9.setText("jLabel9");
         jLabel9.setPreferredSize(new java.awt.Dimension(560, 550));
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(0, 0, 560, 550);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
