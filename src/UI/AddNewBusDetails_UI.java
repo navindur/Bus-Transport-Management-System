@@ -29,7 +29,6 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         panelRound1 = new UI.Images.PanelRound();
-        jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -50,65 +49,59 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(920, 560));
 
         jPanel1.setBackground(new java.awt.Color(36, 36, 36));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(100, 204, 197));
-        jLabel2.setText("Bus Details");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 260, -1));
+        jLabel2.setText("Add Bus Details");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setBackground(new java.awt.Color(51, 255, 153));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Add Details :");
-        panelRound1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
-
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Bus Registration No.");
-        panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Bus Chassis No.");
-        panelRound1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        panelRound1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Current Mileage");
-        panelRound1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        panelRound1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Next Service Mileage");
-        panelRound1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
+        panelRound1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
 
         jTextField6.setBackground(new java.awt.Color(51, 51, 51));
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 75, 160, -1));
+        panelRound1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 160, -1));
 
         jTextField9.setBackground(new java.awt.Color(51, 51, 51));
         jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 135, 160, -1));
+        panelRound1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 160, -1));
 
         jTextField10.setBackground(new java.awt.Color(51, 51, 51));
         jTextField10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField10.setForeground(new java.awt.Color(255, 255, 255));
         jTextField10.setText("Mileage");
-        panelRound1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 195, 160, -1));
+        panelRound1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 160, -1));
 
         jTextField11.setBackground(new java.awt.Color(51, 51, 51));
         jTextField11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -119,22 +112,22 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
                 jTextField11ActionPerformed(evt);
             }
         });
-        panelRound1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 255, 160, -1));
+        panelRound1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 160, -1));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Registraion Date");
-        panelRound1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, -1, -1));
+        panelRound1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
 
         jTextField12.setBackground(new java.awt.Color(51, 51, 51));
         jTextField12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField12.setForeground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 75, 160, -1));
+        panelRound1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 160, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Bus Model");
-        panelRound1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
+        panelRound1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
 
         jComboBox2.setBackground(new java.awt.Color(51, 51, 51));
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -150,33 +143,33 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
-        panelRound1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(615, 135, -1, -1));
+        panelRound1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Last Service Date");
-        panelRound1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
+        panelRound1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
 
         jTextField13.setBackground(new java.awt.Color(51, 51, 51));
         jTextField13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField13.setForeground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 195, 160, -1));
+        panelRound1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 160, -1));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("Current Status");
-        panelRound1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, -1, -1));
+        panelRound1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
 
         jTextField14.setBackground(new java.awt.Color(51, 51, 51));
         jTextField14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField14.setForeground(new java.awt.Color(255, 255, 255));
         jTextField14.setText("Add text...");
-        panelRound1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 255, 160, -1));
+        panelRound1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 160, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Reset All");
-        panelRound1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
+        panelRound1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(242, 242, 242));
         jButton5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -188,40 +181,23 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        panelRound1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, -1, -1));
+        panelRound1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(51, 51, 51));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("YYYY-MM-DD");
         jLabel23.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panelRound1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, 120, 20));
+        panelRound1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 185, 120, 20));
 
         jLabel24.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(51, 51, 51));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("YYYY-MM-DD");
         jLabel24.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panelRound1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, 120, 20));
+        panelRound1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 65, 120, 20));
 
-        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 810, 400));
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png"))); // NOI18N
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton4MouseExited(evt);
-            }
-        });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 100, 35));
+        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 810, 360));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name icon.png"))); // NOI18N
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
@@ -231,14 +207,14 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(153, 0, 0));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Black Back.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/3d-black-chart-finance-black-background_768719-330.jpg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,20 +224,6 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
-        // TODO add your handling code here:
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder2.png")));
-    }//GEN-LAST:event_jButton4MouseEntered
-
-    private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
-        // TODO add your handling code here:
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png")));
-    }//GEN-LAST:event_jButton4MouseExited
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
         // TODO add your handling code here:
@@ -316,7 +278,6 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -331,7 +292,6 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
