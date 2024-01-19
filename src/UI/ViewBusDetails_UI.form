@@ -128,15 +128,12 @@
                 <Component class="javax.swing.JTable" name="jTable1">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="8" rowCount="15">
-                        <Column editable="true" title="Reg. No." type="java.lang.Object"/>
-                        <Column editable="true" title="Reg. Date" type="java.lang.Object"/>
-                        <Column editable="true" title="Bus  Chassis No." type="java.lang.Object"/>
-                        <Column editable="true" title="Bus Model" type="java.lang.Object"/>
-                        <Column editable="true" title="Current Mileage" type="java.lang.Object"/>
-                        <Column editable="true" title="Last Service Date" type="java.lang.Object"/>
-                        <Column editable="true" title="Next Service Date" type="java.lang.Object"/>
-                        <Column editable="true" title="Current Status" type="java.lang.Object"/>
+                      <Table columnCount="5" rowCount="15">
+                        <Column editable="false" title="Reg. No." type="java.lang.Object"/>
+                        <Column editable="false" title="Reg. Date" type="java.lang.Object"/>
+                        <Column editable="false" title="Bus  Chassis No." type="java.lang.Object"/>
+                        <Column editable="false" title="Bus Model" type="java.lang.Object"/>
+                        <Column editable="false" title="Adding Mileage" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -219,13 +216,16 @@
                   <Image iconType="3" name="/UI/Images/search (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Search"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="530" y="30" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="500" y="30" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -244,6 +244,9 @@
                   <Image iconType="3" name="/UI/Images/VectorPlus.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Add New"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>

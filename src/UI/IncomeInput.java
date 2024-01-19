@@ -33,15 +33,15 @@ public class IncomeInput extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        jTextField4 = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -58,7 +58,6 @@ public class IncomeInput extends javax.swing.JFrame {
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelRound2.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setPreferredSize(new java.awt.Dimension(217, 150));
@@ -74,15 +73,15 @@ public class IncomeInput extends javax.swing.JFrame {
         jLabel9.setPreferredSize(new java.awt.Dimension(67, 16));
         jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 9, 110, 35));
 
-        jTextField2.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextField3.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextField3ActionPerformed(evt);
             }
         });
-        jPanel9.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
+        jPanel9.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
 
         jPanel8.add(jPanel9);
 
@@ -103,21 +102,21 @@ public class IncomeInput extends javax.swing.JFrame {
         jLabel11.setText("Date:");
         jPanel10.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 110, 35));
 
-        jFormattedTextField3.setBackground(new java.awt.Color(51, 51, 51));
-        jFormattedTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        jPanel10.add(jFormattedTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
+        jTextField4.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
+        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
 
         jPanel8.add(jPanel10);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setPreferredSize(new java.awt.Dimension(450, 50));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jFormattedTextField4.setBackground(new java.awt.Color(51, 51, 51));
-        jFormattedTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        jPanel12.add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
@@ -131,9 +130,17 @@ public class IncomeInput extends javax.swing.JFrame {
         jLabel14.setText("Rs.");
         jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 30, 35));
 
-        jPanel8.add(jPanel12);
+        jTextField2.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jPanel12.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
 
-        panelRound2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 570, 190));
+        jPanel8.add(jPanel12);
 
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
@@ -144,7 +151,26 @@ public class IncomeInput extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        panelRound2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 140, 50));
+
+        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
+        panelRound2.setLayout(panelRound2Layout);
+        panelRound2Layout.setHorizontalGroup(
+            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound2Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelRound2Layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelRound2Layout.setVerticalGroup(
+            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jPanel14.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 650, 320));
 
@@ -209,6 +235,14 @@ public class IncomeInput extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -254,8 +288,6 @@ public class IncomeInput extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -270,6 +302,8 @@ public class IncomeInput extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private UI.Images.PanelRound panelRound2;
     // End of variables declaration//GEN-END:variables
 }
