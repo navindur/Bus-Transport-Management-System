@@ -4,7 +4,6 @@
  */
 package UI;
 
-//import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.UIManager;
 
 /**
@@ -242,13 +241,6 @@ public class IncomeInput extends javax.swing.JFrame {
             // Handle any exceptions that may occur
             e.printStackTrace();
         }
-//        
-//        FlatLightLaf.setup();
-//        try {
-//            UIManager.setLookAndFeel(new FlatLightLaf());
-//        } catch (Exception ex) {
-//            System.err.println("Failed to initialize LaF");
-//        }
         //</editor-fold>
 
         /* Create and display the form */
