@@ -81,7 +81,7 @@ public class IncomeInput extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
-        jPanel9.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
+        jPanel9.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, -1));
 
         jPanel8.add(jPanel9);
 
@@ -110,7 +110,7 @@ public class IncomeInput extends javax.swing.JFrame {
                 jTextField4ActionPerformed(evt);
             }
         });
-        jPanel10.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
+        jPanel10.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, -1));
 
         jPanel8.add(jPanel10);
 
@@ -138,7 +138,7 @@ public class IncomeInput extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel12.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, 30));
+        jPanel12.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, -1));
 
         jPanel8.add(jPanel12);
 
@@ -176,7 +176,7 @@ public class IncomeInput extends javax.swing.JFrame {
 
         jPanel1.setOpaque(false);
 
-        jLabel15.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("SansSerif", 1, 40)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(100, 204, 197));
         jLabel15.setText("Income Input");
         jPanel1.add(jLabel15);

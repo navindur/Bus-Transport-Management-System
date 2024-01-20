@@ -54,6 +54,7 @@ public class DailyIncomeView extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound1.setPreferredSize(new java.awt.Dimension(400, 350));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
@@ -185,7 +186,7 @@ public class DailyIncomeView extends javax.swing.JFrame {
                             .addComponent(jLabel4)))))
         );
 
-        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 400, 330));
+        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/3d-black-chart-finance-black-background_768719-330.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");

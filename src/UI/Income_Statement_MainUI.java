@@ -40,7 +40,7 @@ public class Income_Statement_MainUI extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(36, 36, 36));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(100, 204, 197));
         jLabel3.setText("Financial Status");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, -1, -1));

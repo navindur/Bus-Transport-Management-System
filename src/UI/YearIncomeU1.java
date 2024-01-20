@@ -60,6 +60,7 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 30, 340, -1));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound1.setPreferredSize(new java.awt.Dimension(400, 350));
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -124,7 +125,7 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         jLabel8.setText("Toggle for");
         panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 60, 20));
 
-        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 400, 330));
+        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/3d-black-chart-finance-black-background_768719-330.jpg"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 550));

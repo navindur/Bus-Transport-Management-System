@@ -34,10 +34,10 @@ public class dailyshiftview extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         textField1 = new java.awt.TextField();
-        jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         textField2 = new java.awt.TextField();
         jLabel26 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,10 +49,10 @@ public class dailyshiftview extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name words.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(100, 204, 197));
         jLabel3.setText("Daily Shift View");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name icon.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
@@ -74,7 +74,7 @@ public class dailyshiftview extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 100, 35));
 
-        panelRound1.setBackground(new java.awt.Color(223, 223, 223));
+        panelRound1.setBackground(new java.awt.Color(255, 255, 255));
 
         jTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -106,6 +106,7 @@ public class dailyshiftview extends javax.swing.JFrame {
             }
         });
         jTable2.setGridColor(new java.awt.Color(0, 0, 0));
+        jTable2.setShowGrid(true);
         jScrollPane2.setViewportView(jTable2);
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -113,7 +114,7 @@ public class dailyshiftview extends javax.swing.JFrame {
         jLabel4.setText("Bus Number :");
 
         textField1.setBackground(new java.awt.Color(51, 51, 51));
-        textField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        textField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textField1.setForeground(new java.awt.Color(255, 255, 255));
         textField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,18 +122,12 @@ public class dailyshiftview extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(223, 223, 223));
-        jButton2.setForeground(new java.awt.Color(51, 51, 51));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
-        jButton2.setText("Search");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Date :");
 
         textField2.setBackground(new java.awt.Color(51, 51, 51));
-        textField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        textField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textField2.setForeground(new java.awt.Color(255, 255, 255));
         textField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +140,17 @@ public class dailyshiftview extends javax.swing.JFrame {
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("YYYY-MM-DD");
         jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
+        jButton1.setText("Search");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
@@ -165,8 +171,8 @@ public class dailyshiftview extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addGap(19, 19, 19)
                         .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton2))
+                        .addGap(37, 37, 37)
+                        .addComponent(jButton1))
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -175,13 +181,14 @@ public class dailyshiftview extends javax.swing.JFrame {
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6)
-                    .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel6)
+                        .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(1, 1, 1)
                 .addComponent(jLabel26)
                 .addGap(18, 18, 18)
@@ -235,6 +242,10 @@ public class dailyshiftview extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -276,7 +287,7 @@ public class dailyshiftview extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

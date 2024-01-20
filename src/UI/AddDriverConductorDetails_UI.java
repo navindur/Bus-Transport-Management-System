@@ -52,56 +52,65 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(920, 560));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(36, 36, 36));
         jPanel3.setMinimumSize(new java.awt.Dimension(950, 600));
         jPanel3.setPreferredSize(new java.awt.Dimension(920, 560));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(100, 204, 197));
         jLabel2.setText("Add Driver/ Conductor Details");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Full Name");
+        panelRound1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Contact No. (Mobile)");
+        panelRound1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("NIC No.");
+        panelRound1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Contact No. (Fixed)");
+        panelRound1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Registration no.");
+        panelRound1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Date of Birth");
+        panelRound1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 23, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Work as a");
+        panelRound1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
 
         jTextField1.setBackground(new java.awt.Color(51, 51, 51));
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 160, -1));
 
         jTextField2.setBackground(new java.awt.Color(51, 51, 51));
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 160, -1));
 
         jTextField3.setBackground(new java.awt.Color(51, 51, 51));
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -111,27 +120,33 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
+        panelRound1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 160, -1));
 
         jTextField4.setBackground(new java.awt.Color(51, 51, 51));
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 160, -1));
 
         jTextField5.setBackground(new java.awt.Color(51, 51, 51));
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 160, -1));
 
         jTextField7.setBackground(new java.awt.Color(51, 51, 51));
         jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 160, -1));
 
         Driver.setBackground(new java.awt.Color(51, 51, 51));
         Driver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Driver.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Driver", "Conductor" }));
         Driver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelRound1.add(Driver, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, -1, -1));
 
         jTextField6.setBackground(new java.awt.Color(51, 51, 51));
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 160, -1));
 
         jButton3.setBackground(new java.awt.Color(242, 242, 242));
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -144,112 +159,25 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        panelRound1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Reset All");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelRound1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(51, 51, 51));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("YYYY-MM-DD");
         jLabel17.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelRound1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 58, 120, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("License no.");
-
-        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
-        panelRound1.setLayout(panelRound1Layout);
-        panelRound1Layout.setHorizontalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(71, 71, 71)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel13)
-                        .addGap(100, 100, 100)
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelRound1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(88, 88, 88)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel6)
-                        .addGap(36, 36, 36)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addGap(64, 64, 64)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel10)
-                        .addGap(50, 50, 50)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(25, 25, 25)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel14)
-                        .addGap(121, 121, 121)
-                        .addComponent(Driver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(195, 195, 195)
-                        .addComponent(jButton3))))
-        );
-        panelRound1Layout.setVerticalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel5))
-                    .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel13))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addComponent(jLabel17)
-                .addGap(10, 10, 10)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel7))
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel16))
-                    .addComponent(jLabel10)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14)
-                    .addComponent(Driver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton1))
-                    .addComponent(jButton3)))
-        );
+        panelRound1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 143, -1, -1));
 
         jPanel3.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 830, 350));
 
@@ -261,8 +189,7 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         jLabel1.setPreferredSize(new java.awt.Dimension(920, 560));
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, -1));
 
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 920, 560);
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);

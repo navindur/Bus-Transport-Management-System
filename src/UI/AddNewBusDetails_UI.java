@@ -59,10 +59,10 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(36, 36, 36));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(100, 204, 197));
         jLabel2.setText("Add Bus Details");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -299,7 +299,7 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
                 .addGap(12, 12, 12))
         );
 
-        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 810, 360));
+        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 810, 380));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name icon.png"))); // NOI18N
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));

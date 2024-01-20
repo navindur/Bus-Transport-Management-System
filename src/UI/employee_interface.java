@@ -39,9 +39,7 @@ public class employee_interface extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(950, 600));
         setMinimumSize(new java.awt.Dimension(950, 600));
-        setPreferredSize(new java.awt.Dimension(950, 600));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -71,7 +69,7 @@ public class employee_interface extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(50, 490, 106, 42);
+        jButton4.setBounds(60, 510, 106, 42);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 43)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(100, 204, 197));
@@ -80,19 +78,19 @@ public class employee_interface extends javax.swing.JFrame {
         jLabel3.setBounds(50, 20, 847, 143);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("EMPLOYEE");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(380, 180, 133, 32);
+        jLabel4.setBounds(380, 180, 180, 48);
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("USER NAME");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(260, 260, 241, 37);
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("PASSWORD");
         jPanel1.add(jLabel1);
@@ -102,8 +100,13 @@ public class employee_interface extends javax.swing.JFrame {
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("Remember me");
         jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCheckBox1);
-        jCheckBox1.setBounds(480, 360, 90, 19);
+        jCheckBox1.setBounds(480, 370, 90, 19);
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -112,10 +115,14 @@ public class employee_interface extends javax.swing.JFrame {
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton1);
         jButton1.setBounds(390, 430, 150, 40);
+
+        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel1.add(jPasswordField1);
-        jPasswordField1.setBounds(480, 320, 240, 30);
+        jPasswordField1.setBounds(480, 320, 240, 40);
+
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(480, 260, 240, 30);
+        jTextField1.setBounds(480, 260, 240, 40);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Black Back.jpg"))); // NOI18N
@@ -143,10 +150,14 @@ public class employee_interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-       login_interface loginter = new login_interface();
+         login_interface loginter = new login_interface();
         loginter.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments

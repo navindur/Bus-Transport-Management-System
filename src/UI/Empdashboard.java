@@ -66,10 +66,10 @@ public class Empdashboard extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/seat (1).png"))); // NOI18N
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, -1, -1));
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(100, 204, 197));
         jLabel23.setText("EMPLOYEE DASHBOARD");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 420, -1));
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 470, -1));
 
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/logout (1).png"))); // NOI18N
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, -1, -1));

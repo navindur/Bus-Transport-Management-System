@@ -74,11 +74,11 @@ public class Ownerdashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(36, 36, 36));
         jPanel1.setLayout(null);
 
-        jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(100, 204, 197));
         jLabel38.setText("OWNER DASHBOARD");
         jPanel1.add(jLabel38);
-        jLabel38.setBounds(270, 50, 370, 48);
+        jLabel38.setBounds(240, 50, 420, 54);
 
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/technical-support (1).png"))); // NOI18N
         jPanel1.add(jLabel37);
@@ -116,55 +116,55 @@ public class Ownerdashboard extends javax.swing.JFrame {
         jLabel29.setForeground(new java.awt.Color(51, 51, 51));
         jLabel29.setText("Log Out");
         jPanel1.add(jLabel29);
-        jLabel29.setBounds(710, 460, 69, 25);
+        jLabel29.setBounds(710, 460, 68, 25);
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(51, 51, 51));
         jLabel28.setText("View Daily Shift");
         jPanel1.add(jLabel28);
-        jLabel28.setBounds(500, 460, 137, 25);
+        jLabel28.setBounds(500, 460, 134, 25);
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(51, 51, 51));
         jLabel27.setText("Service Details");
         jPanel1.add(jLabel27);
-        jLabel27.setBounds(290, 460, 125, 25);
+        jLabel27.setBounds(290, 460, 124, 25);
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(51, 51, 51));
         jLabel26.setText("Booking");
         jPanel1.add(jLabel26);
-        jLabel26.setBounds(80, 480, 73, 25);
+        jLabel26.setBounds(80, 480, 71, 25);
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(51, 51, 51));
         jLabel25.setText("Special Hire");
         jPanel1.add(jLabel25);
-        jLabel25.setBounds(80, 460, 102, 25);
+        jLabel25.setBounds(80, 460, 101, 25);
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(51, 51, 51));
         jLabel24.setText("Seat Booking");
         jPanel1.add(jLabel24);
-        jLabel24.setBounds(710, 250, 114, 25);
+        jLabel24.setBounds(710, 250, 113, 25);
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(51, 51, 51));
         jLabel23.setText("Financial Status");
         jPanel1.add(jLabel23);
-        jLabel23.setBounds(500, 250, 135, 25);
+        jLabel23.setBounds(500, 250, 133, 25);
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(51, 51, 51));
         jLabel22.setText("Details");
         jPanel1.add(jLabel22);
-        jLabel22.setBounds(290, 270, 59, 25);
+        jLabel22.setBounds(290, 270, 58, 25);
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(51, 51, 51));
         jLabel21.setText("Driver/Conductor");
         jPanel1.add(jLabel21);
-        jLabel21.setBounds(290, 250, 151, 25);
+        jLabel21.setBounds(290, 250, 149, 25);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Vector (2).png"))); // NOI18N
         jPanel1.add(jLabel15);
@@ -190,7 +190,7 @@ public class Ownerdashboard extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(51, 51, 51));
         jLabel20.setText("Bus Details");
         jPanel1.add(jLabel20);
-        jLabel20.setBounds(80, 250, 95, 25);
+        jLabel20.setBounds(80, 250, 94, 25);
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Vector (2).png"))); // NOI18N
         jPanel1.add(jLabel19);

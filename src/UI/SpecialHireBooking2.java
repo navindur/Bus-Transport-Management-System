@@ -49,7 +49,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(950, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(100, 204, 197));
         jLabel1.setText("Special Hire Booking View");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));

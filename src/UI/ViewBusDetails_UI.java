@@ -46,11 +46,11 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(36, 36, 36));
         jPanel3.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(100, 204, 197));
         jLabel2.setText("View Bus Details");
         jPanel3.add(jLabel2);
-        jLabel2.setBounds(310, 20, 372, 64);
+        jLabel2.setBounds(310, 20, 312, 54);
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

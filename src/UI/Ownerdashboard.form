@@ -45,7 +45,7 @@
         <Component class="javax.swing.JLabel" name="jLabel38">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="36" style="1"/>
+              <Font name="Segoe UI" size="40" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c5" green="cc" red="64" type="rgb"/>
@@ -54,7 +54,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="270" y="50" width="370" height="-1"/>
+              <AbsoluteConstraints x="240" y="50" width="420" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
