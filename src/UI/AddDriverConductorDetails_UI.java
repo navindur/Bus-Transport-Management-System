@@ -39,7 +39,6 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         Driver = new javax.swing.JComboBox<>();
@@ -48,6 +47,12 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -68,37 +73,30 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Full Name");
         panelRound1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Contact No. (Mobile)");
         panelRound1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("NIC No.");
         panelRound1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Contact No. (Fixed)");
         panelRound1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Registration no.");
-        panelRound1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        jLabel11.setText("Password");
+        panelRound1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Date of Birth");
         panelRound1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 23, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Work as a");
         panelRound1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
 
@@ -121,11 +119,6 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
             }
         });
         panelRound1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 160, -1));
-
-        jTextField4.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 160, -1));
 
         jTextField5.setBackground(new java.awt.Color(51, 51, 51));
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -159,13 +152,12 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        panelRound1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, -1, -1));
+        panelRound1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Reset All");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelRound1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+        panelRound1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(51, 51, 51));
@@ -175,11 +167,36 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         panelRound1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 58, 120, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("License no.");
         panelRound1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 143, -1, -1));
 
-        jPanel3.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 830, 350));
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel12.setText("Registration no.");
+        panelRound1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel18.setText("Username");
+        panelRound1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
+
+        jTextField8.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField8.setForeground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 160, -1));
+
+        jTextField9.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField9.setForeground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 160, -1));
+
+        jPasswordField1.setBackground(new java.awt.Color(51, 51, 51));
+        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 160, -1));
+
+        jCheckBox1.setText("Show");
+        panelRound1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 300, -1, -1));
+
+        jPanel3.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 830, 380));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name icon.png"))); // NOI18N
         jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
@@ -242,26 +259,31 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Driver;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private UI.Images.PanelRound panelRound1;
     // End of variables declaration//GEN-END:variables
 }
