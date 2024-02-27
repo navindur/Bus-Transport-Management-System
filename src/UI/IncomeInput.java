@@ -4,6 +4,13 @@
  */
 package UI;
 
+import com.mysql.cj.jdbc.Driver;
+import java.sql.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -35,9 +42,8 @@ public class IncomeInput extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         jPanel12 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -67,7 +73,6 @@ public class IncomeInput extends javax.swing.JFrame {
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("Bus Number:");
         jLabel9.setPreferredSize(new java.awt.Dimension(67, 16));
@@ -89,28 +94,14 @@ public class IncomeInput extends javax.swing.JFrame {
         jPanel10.setPreferredSize(new java.awt.Dimension(450, 50));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("YYYY-MM-DD");
-        jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel10.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 120, 20));
-
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Date:");
         jPanel10.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 110, 35));
 
-        jTextField4.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField4.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        jPanel10.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 200, -1));
+        datePicker1.setBackground(new java.awt.Color(255, 255, 255));
+        datePicker1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jPanel10.add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 15, 190, -1));
 
         jPanel8.add(jPanel10);
 
@@ -119,13 +110,11 @@ public class IncomeInput extends javax.swing.JFrame {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setText("Income:");
         jPanel12.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 6, 72, 35));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Rs.");
         jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 30, 35));
@@ -214,7 +203,50 @@ public class IncomeInput extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Load the MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Define the SQL query for inserting income data
+            String incomeInput = "Insert into FinancialStatus (Bus_No, Date, `Income(Rs.)`) values (?,?,?)";
+            
+            // Establish a database connection
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "MYsql2023#");
+//            JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+            
+            // Prepare the statement for executing the query
+            PreparedStatement pstmt = con.prepareStatement(incomeInput);
+            
+            // Set the parameters for the query
+//            LocalDate selectedDate = datePicker1.getDate();
+//            DateTimeFormatter formattedDate = DateTimeFormatter.ISO_LOCAL_DATE;
+            pstmt.setString(1, jTextField3.getText());
+            pstmt.setString(2, datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
+            pstmt.setInt(3, Integer.parseInt(jTextField2.getText()));
+
+            // Execute the update
+            pstmt.executeUpdate();
+            // Show a success message
+            JOptionPane.showMessageDialog(this, "Record added successfully.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+            
+            jTextField3.setText(""); // Clear Bus_No field
+            jTextField2.setText(""); // Clear Income field
+            datePicker1.setDate(null); // Clear the selected date
+
+
+        } catch (ClassNotFoundException cx) {
+            Logger.getLogger(IncomeInput.class.getName()).log(Level.SEVERE, null, cx);
+//            System.out.println("Error occured");
+            // Show an error message for class not found
+            JOptionPane.showMessageDialog(this, cx, "Exception Occured", JOptionPane.ERROR_MESSAGE);
+//            ex.printStackTrace();
+        } catch (NumberFormatException ne) {
+            // Show an error message for invalid income input
+            JOptionPane.showMessageDialog(this, "Income must be a valid number.");
+        } catch (SQLException e) {
+            // Show an error message for database-related exceptions
+            JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
@@ -238,10 +270,6 @@ public class IncomeInput extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,9 +314,9 @@ public class IncomeInput extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -303,7 +331,6 @@ public class IncomeInput extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private UI.Images.PanelRound panelRound2;
     // End of variables declaration//GEN-END:variables
 }
