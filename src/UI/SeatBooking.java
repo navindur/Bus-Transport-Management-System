@@ -68,6 +68,8 @@ public class SeatBooking extends javax.swing.JFrame {
         cancellPane = new UI.Images.PanelRound();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -359,7 +361,19 @@ public class SeatBooking extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
+
+        jButton4.setText("cancel");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout cancellPaneLayout = new javax.swing.GroupLayout(cancellPane);
         cancellPane.setLayout(cancellPaneLayout);
@@ -369,13 +383,23 @@ public class SeatBooking extends javax.swing.JFrame {
                 .addGap(150, 150, 150)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(208, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cancellPaneLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(jButton4)
+                .addGap(303, 303, 303))
         );
         cancellPaneLayout.setVerticalGroup(
             cancellPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cancellPaneLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84)
+                .addGroup(cancellPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         MainPanel.add(cancellPane, "card5");
@@ -392,16 +416,15 @@ public class SeatBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-          try {
+        try {
             Class.forName("com.mysql.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/busreservation";
             Connection con = DriverManager.getConnection(database, "root", "root123");
 
-              LocalDate selectedDate = journeyDate.getDate();
+            LocalDate selectedDate = journeyDate.getDate();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String jdate = selectedDate.format(formatter);
-            
-            
+
             String sql = "SELECT * FROM schedule WHERE Depature=? AND Arrival=? AND schedule_date=?";
             PreparedStatement st = con.prepareStatement(sql);
 
@@ -423,7 +446,7 @@ public class SeatBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
         try {
             //Class.forName("com.mysql.jdbc.Driver"); 
             String database = "jdbc:mysql://localhost:3306/busreservation";
@@ -437,8 +460,6 @@ public class SeatBooking extends javax.swing.JFrame {
 
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
             NewClass.fillTheTable(model, r);
-            
-            
 
             choosePane.setVisible(true);
             searchPane.setVisible(false);
@@ -454,7 +475,7 @@ public class SeatBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-         int index = jTable1.getSelectedRow();
+        int index = jTable1.getSelectedRow();
         TableModel model = jTable1.getModel();
         String scheduleId = model.getValueAt(index, 0).toString();  //email is the 1th column in the table
 
@@ -464,7 +485,7 @@ public class SeatBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-       int index = jTable2.getSelectedRow();
+        int index = jTable2.getSelectedRow();
         TableModel model = jTable2.getModel();
         String SeatNo = model.getValueAt(index, 1).toString();  //email is the 1th column in the table
 
@@ -474,7 +495,7 @@ public class SeatBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-         String seatno = NewClass.returnColumnValue("SeatNo", jTable2);
+        String seatno = NewClass.returnColumnValue("SeatNo", jTable2);
         String Bus_no = NewClass.returnColumnValue("Bus_No", jTable2);
 
         int choice = JOptionPane.showConfirmDialog(null, "Is this your final decision?", "Confirmation", JOptionPane.YES_NO_OPTION);
@@ -513,18 +534,88 @@ public class SeatBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void panelRound2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound2MouseClicked
-         MainPanel.removeAll();
+        MainPanel.removeAll();
         MainPanel.add(searchPane);
         MainPanel.repaint();
         MainPanel.revalidate();
     }//GEN-LAST:event_panelRound2MouseClicked
 
     private void panelRound3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound3MouseClicked
-          MainPanel.removeAll();
+        MainPanel.removeAll();
         MainPanel.add(cancellPane);
         MainPanel.repaint();
         MainPanel.revalidate();
+
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+            String database = "jdbc:mysql://localhost:3306/busreservation";
+            Connection con = DriverManager.getConnection(database, "root", "root123");
+
+            String sql = "SELECT * FROM seat where status='booked'";
+
+            PreparedStatement st = con.prepareStatement(sql);
+
+            ResultSet r2 = st.executeQuery();
+
+            DefaultTableModel model2 = (DefaultTableModel) jTable3.getModel();
+            NewClass.fillTheTable(model2, r2);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+
+        }
+
     }//GEN-LAST:event_panelRound3MouseClicked
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        int index = jTable3.getSelectedRow();
+        TableModel model = jTable3.getModel();
+        String bookingId = model.getValueAt(index, 1).toString();  //email is the 1th column in the table
+
+        int primaryKeyValue = Integer.parseInt(model.getValueAt(index, 1).toString());
+
+        jTextField3.setText(bookingId);
+    }//GEN-LAST:event_jTable3MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String seatno = NewClass.returnColumnValue("SeatNo", jTable3);
+        String Bus_no = NewClass.returnColumnValue("Bus_No", jTable3);
+
+        int choice = JOptionPane.showConfirmDialog(null, "Is this your final decision?", "Confirmation", JOptionPane.YES_NO_OPTION);
+
+        if (choice == JOptionPane.YES_OPTION) {
+
+            try {
+
+                Class.forName("com.mysql.jdbc.Driver");
+                String database = "jdbc:mysql://localhost:3306/busreservation";
+                Connection con = DriverManager.getConnection(database, "root", "root123");
+
+                String sql = "UPDATE Seat SET Status = 'unbooked' where seatNo='" + seatno + "' AND Bus_No='" + Bus_no + "'";
+
+                PreparedStatement st = con.prepareStatement(sql);
+                st.executeUpdate();
+
+                String sql2 = "SELECT * FROM seat where status='booked'";
+                PreparedStatement st2 = con.prepareStatement(sql2);
+
+                ResultSet r2 = st2.executeQuery();
+
+                DefaultTableModel model2 = (DefaultTableModel) jTable3.getModel();
+                NewClass.fillTheTable(model2, r2);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+                e.printStackTrace();
+
+            }
+
+        } else {
+            System.out.println("You selected No.");
+            // Add your logic for the No option here
+
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -571,6 +662,7 @@ public class SeatBooking extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -588,6 +680,7 @@ public class SeatBooking extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private com.github.lgooddatepicker.components.DatePicker journeyDate;
     private UI.Images.PanelRound panelRound1;
     private UI.Images.PanelRound panelRound2;
