@@ -7,11 +7,9 @@ package UI;
 import com.mysql.cj.jdbc.Driver;
 import java.sql.*;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 /**
  *
@@ -335,29 +333,7 @@ public class SHBpopup extends javax.swing.JFrame {
                 new SHBpopup().setVisible(true);
             }
         });
-    } 
-    
-        // Variables declaration - do not modify                     
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private UI.Images.PanelRound panelRound1;
-    // End of variables declaration 
+     
     
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -383,3 +359,5 @@ public class SHBpopup extends javax.swing.JFrame {
     private UI.Images.PanelRound panelRound1;
     // End of variables declaration//GEN-END:variables
 
+
+}
