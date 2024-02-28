@@ -258,7 +258,7 @@ public class SHBpopup extends javax.swing.JFrame {
             
             // Establish a database connection
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*");
-//            JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
             
             // Prepare the statement for executing the query
             PreparedStatement pstmt = con.prepareStatement(specialHireBooking);
@@ -268,7 +268,7 @@ public class SHBpopup extends javax.swing.JFrame {
 //            DateTimeFormatter formattedDate = DateTimeFormatter.ISO_LOCAL_DATE;
             pstmt.setInt(1, Integer.parseInt(jTextField1.getText()));           
             pstmt.setString(2, jTextField2.getText());
-            pstmt.setString(3, jTextField3.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
+            pstmt.setString(3, jTextField3.getText());
             pstmt.setInt(4, Integer.parseInt(jTextField4.getText()));
             pstmt.setString(5, jTextField5.getText());
             pstmt.setString(6, jTextField6.getText());
@@ -280,7 +280,7 @@ public class SHBpopup extends javax.swing.JFrame {
             
             jTextField1.setText(""); // Clear Ref.Number field
             jTextField2.setText(""); // Clear Name field
-            jTextField3.setDate(null); // Clear the selected date
+            jTextField3.setText(""); // Clear date field
             jTextField4.setText(""); // Clear Bus Number field
             jTextField5.setText(""); // Clear Driver field
             jTextField6.setText(""); // Clear Conductor field
@@ -297,10 +297,8 @@ public class SHBpopup extends javax.swing.JFrame {
             // Show an error message for database-related exceptions
             JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
         }
-    }         
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    /**
+    } 
+        /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -337,7 +335,31 @@ public class SHBpopup extends javax.swing.JFrame {
                 new SHBpopup().setVisible(true);
             }
         });
-    }
+    } 
+    
+        // Variables declaration - do not modify                     
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private UI.Images.PanelRound panelRound1;
+    // End of variables declaration 
+    
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -360,4 +382,4 @@ public class SHBpopup extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private UI.Images.PanelRound panelRound1;
     // End of variables declaration//GEN-END:variables
-}
+
