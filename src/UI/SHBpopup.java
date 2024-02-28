@@ -4,11 +4,21 @@
  */
 package UI;
 
+import com.mysql.cj.jdbc.Driver;
+import java.sql.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
 /**
  *
  * @author pcc
  */
 public class SHBpopup extends javax.swing.JFrame {
+
 
     /**
      * Creates new form SHBpopup
@@ -239,7 +249,55 @@ public class SHBpopup extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+            try {
+            // Load the MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Define the SQL query for inserting booking data
+            String specialHireBooking = "INSERT INTO SpecialHire (Reference_No, `Name`, `Date`, Bus_No, Driver, Conductor)";
+            
+            // Establish a database connection
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*");
+//            JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+            
+            // Prepare the statement for executing the query
+            PreparedStatement pstmt = con.prepareStatement(specialHireBooking);
+            
+            // Set the parameters for the query
+//            LocalDate selectedDate = datePicker1.getDate();
+//            DateTimeFormatter formattedDate = DateTimeFormatter.ISO_LOCAL_DATE;
+            pstmt.setInt(1, Integer.parseInt(jTextField1.getText()));           
+            pstmt.setString(2, jTextField2.getText());
+            pstmt.setString(3, jTextField3.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
+            pstmt.setInt(4, Integer.parseInt(jTextField4.getText()));
+            pstmt.setString(5, jTextField5.getText());
+            pstmt.setString(6, jTextField6.getText());
+
+            // Execute the update
+            pstmt.executeUpdate();
+            // Show a success message
+            JOptionPane.showMessageDialog(this, "Record added successfully.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+            
+            jTextField1.setText(""); // Clear Ref.Number field
+            jTextField2.setText(""); // Clear Name field
+            jTextField3.setDate(null); // Clear the selected date
+            jTextField4.setText(""); // Clear Bus Number field
+            jTextField5.setText(""); // Clear Driver field
+            jTextField6.setText(""); // Clear Conductor field
+            
+
+
+        } catch (ClassNotFoundException cx) {
+            Logger.getLogger(IncomeInput.class.getName()).log(Level.SEVERE, null, cx);
+//            System.out.println("Error occured");
+            // Show an error message for class not found
+            JOptionPane.showMessageDialog(this, cx, "Exception Occured", JOptionPane.ERROR_MESSAGE);
+//            ex.printStackTrace();
+        } catch (SQLException e) {
+            // Show an error message for database-related exceptions
+            JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
+        }
+    }         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
