@@ -76,14 +76,14 @@ public class employee_interface extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(100, 204, 197));
         jLabel3.setText("BUS TRANSPORT MANAGEMENT SYSTEM");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(50, 20, 847, 143);
+        jLabel3.setBounds(50, 20, 860, 143);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("EMPLOYEE");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(380, 180, 180, 48);
+        jLabel4.setBounds(380, 180, 190, 48);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,6 +114,11 @@ public class employee_interface extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("LOGIN");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(390, 430, 150, 40);
 
@@ -147,7 +152,8 @@ public class employee_interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseExited
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+        login_interface login = new login_interface ();
+        login.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
@@ -159,6 +165,11 @@ public class employee_interface extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Empdashboard empd = new Empdashboard ();
+        empd.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

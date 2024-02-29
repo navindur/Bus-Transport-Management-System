@@ -49,14 +49,14 @@ public class login_interface extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(100, 204, 197));
         jLabel3.setText("BUS TRANSPORT MANAGEMENT SYSTEM");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(50, 20, 847, 143);
+        jLabel3.setBounds(50, 20, 860, 143);
 
         jLabel4.setBackground(new java.awt.Color(51, 51, 51));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("LOGIN");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(420, 220, 110, 48);
+        jLabel4.setBounds(420, 220, 120, 48);
 
         jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -66,6 +66,11 @@ public class login_interface extends javax.swing.JFrame {
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton2);
@@ -97,6 +102,11 @@ public class login_interface extends javax.swing.JFrame {
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton3);
@@ -136,8 +146,19 @@ public class login_interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        customer_interface cu = new customer_interface ();
+        cu.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        owner_interface ow = new owner_interface ();
+        ow.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        employee_interface em = new employee_interface ();
+        em.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

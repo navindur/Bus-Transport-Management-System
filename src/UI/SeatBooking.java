@@ -355,35 +355,35 @@ public class SeatBooking extends javax.swing.JFrame {
 
         confirmationPane.setBackground(new java.awt.Color(204, 204, 204));
 
+        jLabel9.setText("Arrival                       :");
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel9.setText("Depature                   :");
 
+        jLabel10.setText("Depature Date          :");
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setText("Depature                   :");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setText("Depature                   :");
 
+        jLabel12.setText("Depature Time          :");
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel12.setText("Depature                   :");
 
+        jLabel13.setText("Passenger's Mobile   :");
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel13.setText("Depature                   :");
 
+        jLabel14.setText("Passenger's Name     :");
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel14.setText("Depature                   :");
 
+        jLabel15.setText("Seat Number             :");
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel15.setText("Depature                   :");
 
+        jLabel16.setText("Fare                           :");
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel16.setText("Depature                   :");
 
+        jLabel17.setText("Bus Number              :");
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel17.setText("Depature                   :");
 
-        confirmationSeatNo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         confirmationSeatNo.setText("Seat Number");
+        confirmationSeatNo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         confirmationFare.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         confirmationFare.setText("Fare");
