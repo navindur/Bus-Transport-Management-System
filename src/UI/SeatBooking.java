@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -66,6 +67,26 @@ public class SeatBooking extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         confirmationPane = new UI.Images.PanelRound();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        confirmationSeatNo = new javax.swing.JLabel();
+        confirmationFare = new javax.swing.JLabel();
+        confirmationBusNo = new javax.swing.JLabel();
+        confirmationArrival = new javax.swing.JLabel();
+        confirmationDepatureDate = new javax.swing.JLabel();
+        confirmationDepature = new javax.swing.JLabel();
+        confirmationDepatureTime = new javax.swing.JLabel();
+        confirmationPassengerMobile = new javax.swing.JLabel();
+        confirmationPassengerName = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         cancellPane = new UI.Images.PanelRound();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -145,19 +166,19 @@ public class SeatBooking extends javax.swing.JFrame {
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addGap(128, 128, 128)
                 .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
+                .addGap(29, 29, 29)
                 .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
 
-        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 79, -1, 590));
+        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 79, 160, 590));
 
         MainPanel.setBackground(new java.awt.Color(255, 255, 255));
         MainPanel.setLayout(new java.awt.CardLayout());
@@ -332,17 +353,158 @@ public class SeatBooking extends javax.swing.JFrame {
 
         MainPanel.add(choosePane, "card3");
 
-        confirmationPane.setBackground(new java.awt.Color(153, 153, 153));
+        confirmationPane.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel9.setText("Depature                   :");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel10.setText("Depature                   :");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel11.setText("Depature                   :");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel12.setText("Depature                   :");
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel13.setText("Depature                   :");
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel14.setText("Depature                   :");
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel15.setText("Depature                   :");
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel16.setText("Depature                   :");
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel17.setText("Depature                   :");
+
+        confirmationSeatNo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        confirmationSeatNo.setText("Seat Number");
+
+        confirmationFare.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        confirmationFare.setText("Fare");
+
+        confirmationBusNo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        confirmationBusNo.setText("Bus Number");
+
+        confirmationArrival.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        confirmationArrival.setText("Arrival");
+
+        confirmationDepatureDate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        confirmationDepatureDate.setText("Depature Date");
+
+        confirmationDepature.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        confirmationDepature.setText("Depature                   :");
+
+        confirmationDepatureTime.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        confirmationDepatureTime.setText("Depature Time");
+
+        confirmationPassengerMobile.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        confirmationPassengerMobile.setText("Passenger's Mobile");
+
+        confirmationPassengerName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        confirmationPassengerName.setText("Passenger's Name");
+
+        jButton6.setText("confirm");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("change");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout confirmationPaneLayout = new javax.swing.GroupLayout(confirmationPane);
         confirmationPane.setLayout(confirmationPaneLayout);
         confirmationPaneLayout.setHorizontalGroup(
             confirmationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
+            .addGroup(confirmationPaneLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addGroup(confirmationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(confirmationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(confirmationFare, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmationDepatureDate, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmationArrival, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmationDepature, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmationDepatureTime, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmationPassengerName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmationPassengerMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmationBusNo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmationSeatNo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
+                .addComponent(jButton6)
+                .addGap(38, 38, 38)
+                .addComponent(jButton7)
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         confirmationPaneLayout.setVerticalGroup(
             confirmationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGroup(confirmationPaneLayout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addGroup(confirmationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(confirmationPaneLayout.createSequentialGroup()
+                        .addComponent(confirmationDepature, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(confirmationArrival, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(confirmationDepatureDate, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(confirmationDepatureTime, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(confirmationPassengerName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(confirmationPassengerMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(confirmationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(confirmationPaneLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(confirmationBusNo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(confirmationSeatNo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, confirmationPaneLayout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addGroup(confirmationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(confirmationFare, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(confirmationPaneLayout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         MainPanel.add(confirmationPane, "card4");
@@ -405,7 +567,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
         jPanel1.add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 79, 870, 590));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 650));
 
         pack();
         setLocationRelativeTo(null);
@@ -498,9 +660,9 @@ public class SeatBooking extends javax.swing.JFrame {
         String seatno = NewClass.returnColumnValue("SeatNo", jTable2);
         String Bus_no = NewClass.returnColumnValue("Bus_No", jTable2);
 
-        int choice = JOptionPane.showConfirmDialog(null, "Is this your final decision?", "Confirmation", JOptionPane.YES_NO_OPTION);
+       // int choice = JOptionPane.showConfirmDialog(null, "Is this your final decision?", "Confirmation", JOptionPane.YES_NO_OPTION);
 
-        if (choice == JOptionPane.YES_OPTION) {
+       // if (choice == JOptionPane.YES_OPTION) {
 
             try {
 
@@ -508,11 +670,10 @@ public class SeatBooking extends javax.swing.JFrame {
                 String database = "jdbc:mysql://localhost:3306/busreservation";
                 Connection con = DriverManager.getConnection(database, "root", "root123");
 
-                String sql = "UPDATE Seat SET Status = 'booked' where seatNo='" + seatno + "' AND Bus_No='" + Bus_no + "'";
-
-                PreparedStatement st = con.prepareStatement(sql);
-                st.executeUpdate();
-
+//                String sql = "UPDATE Seat SET Status = 'booked' where seatNo='" + seatno + "' AND Bus_No='" + Bus_no + "'";
+//
+//                PreparedStatement st = con.prepareStatement(sql);
+//                st.executeUpdate();
                 String sql2 = "SELECT * FROM seat";
                 PreparedStatement st2 = con.prepareStatement(sql2);
 
@@ -520,7 +681,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
                 DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
                 NewClass.fillTheTable(model2, r2);
-                
+
                 con.close();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -528,11 +689,60 @@ public class SeatBooking extends javax.swing.JFrame {
 
             }
 
-        } else {
-            System.out.println("You selected No.");
-            // Add your logic for the No option here
+//        } else {
+//            System.out.println("You selected No.");
+//            // Add your logic for the No option here
+//
+//        }
 
+        confirmationPane.setVisible(true);
+        choosePane.setVisible(false);
+        //confirmationPassengerName.setText(User);
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String database = "jdbc:mysql://localhost:3306/busreservation";
+            Connection con = DriverManager.getConnection(database, "root", "root123");
+            // Assuming conn is your database connection
+            String sql = "SELECT * FROM schedule WHERE scheduleId=?";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, Integer.parseInt(jTextField1.getText()));
+            ResultSet r = st.executeQuery();
+
+            while (r.next()) {
+
+                confirmationBusNo.setText(r.getString("Bus"));
+                confirmationDepatureDate.setText(r.getString("schedule_date"));
+                confirmationDepature.setText(r.getString("Depature"));
+                confirmationArrival.setText(r.getString("Arrival"));
+                confirmationDepatureTime.setText(r.getString("depature_Time"));
+                confirmationFare.setText("Rs. " + r.getString("Fare"));
+
+            }
+            con.close();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
         }
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String database = "jdbc:mysql://localhost:3306/busreservation";
+            Connection con = DriverManager.getConnection(database, "root", "root123");
+            String sql2 = "SELECT * FROM seat WHERE SeatNo=?";
+            PreparedStatement st2 = con.prepareStatement(sql2);
+            st2.setString(1, jTextField2.getText());
+            ResultSet r2 = st2.executeQuery();
+
+            while (r2.next()) {
+
+                confirmationSeatNo.setText(r2.getString("SeatNo"));
+
+            }
+            con.close();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void panelRound2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound2MouseClicked
@@ -562,7 +772,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
             DefaultTableModel model2 = (DefaultTableModel) jTable3.getModel();
             NewClass.fillTheTable(model2, r2);
-            
+
             con.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -586,9 +796,9 @@ public class SeatBooking extends javax.swing.JFrame {
         String seatno = NewClass.returnColumnValue("SeatNo", jTable3);
         String Bus_no = NewClass.returnColumnValue("Bus_No", jTable3);
 
-        int choice = JOptionPane.showConfirmDialog(null, "Is this your final decision?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        //int choice = JOptionPane.showConfirmDialog(null, "Is this your final decision?", "Confirmation", JOptionPane.YES_NO_OPTION);
 
-        if (choice == JOptionPane.YES_OPTION) {
+       // if (choice == JOptionPane.YES_OPTION) {
 
             try {
 
@@ -608,19 +818,19 @@ public class SeatBooking extends javax.swing.JFrame {
 
                 DefaultTableModel model2 = (DefaultTableModel) jTable3.getModel();
                 NewClass.fillTheTable(model2, r2);
-                
+
                 con.close();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
                 e.printStackTrace();
 
             }
-
-        } else {
-            System.out.println("You selected No.");
-            // Add your logic for the No option here
-
-        }
+//
+//        } else {
+//            System.out.println("You selected No.");
+//            // Add your logic for the No option here
+//
+//        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseEntered
@@ -637,8 +847,8 @@ public class SeatBooking extends javax.swing.JFrame {
         Customerdashboard cd = new Customerdashboard();
         cd.setVisible(true);
         this.dispose();
-        
-      
+
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
@@ -648,6 +858,50 @@ public class SeatBooking extends javax.swing.JFrame {
     private void depatureLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depatureLocationActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_depatureLocationActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        try {
+            int UId = 0;
+
+            Class.forName("com.mysql.jdbc.Driver");
+            String database = "jdbc:mysql://localhost:3306/busreservation";
+            Connection con = DriverManager.getConnection(database, "newuser", "password");
+            Date Date = new Date();
+//            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+//            String bdate = dFormat.format(Date);
+//
+//            String sql = "INSERT INTO `booking`(`bookingDate`,`ScheduleId`,`seatNo`,`userId`)VALUES(\'" + bdate + "\'," + SId + "," + Integer.parseInt(confirmationSeatNo.getText()) + "," + UId + ");";
+//            PreparedStatement st = con.prepareStatement(sql);
+//
+//            st.executeUpdate(sql);
+//            
+            // Assuming conn is your database connection
+            String sql2 = "UPDATE Seat SET Status = 'booked' WHERE seatNo=? AND Bus_No=?";
+            PreparedStatement pstmt = con.prepareStatement(sql2);
+            pstmt.setInt(1, Integer.parseInt(confirmationSeatNo.getText()));
+            pstmt.setString(2, confirmationBusNo.getText());
+            pstmt.executeUpdate();
+
+            con.close();
+
+            JOptionPane.showMessageDialog(null, "Booking is confirmed", "Confirmation", JOptionPane.PLAIN_MESSAGE);
+
+            //Passing informations to generate QR code
+            //new GenerateQRCode(confirmationDepature.getText(),confirmationArrival.getText(),confirmationDepatureDate.getText(),confirmationDepatureTime.getText(),confirmationPassengerName.getText(),confirmationPassengerMobile.getText(),confirmationBusNo.getText(),confirmationSeatNo.getText(),confirmationFare.getText()).setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        searchPane.setVisible(true);
+        choosePane.setVisible(false);
+        confirmationPane.setVisible(false);
+
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+       searchPane.setVisible(false);
+        choosePane.setVisible(true);
+        confirmationPane.setVisible(false);
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -689,14 +943,33 @@ public class SeatBooking extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> arrivalLocation;
     private UI.Images.PanelRound cancellPane;
     private UI.Images.PanelRound choosePane;
+    private javax.swing.JLabel confirmationArrival;
+    private javax.swing.JLabel confirmationBusNo;
+    private javax.swing.JLabel confirmationDepature;
+    private javax.swing.JLabel confirmationDepatureDate;
+    private javax.swing.JLabel confirmationDepatureTime;
+    private javax.swing.JLabel confirmationFare;
     private UI.Images.PanelRound confirmationPane;
+    private javax.swing.JLabel confirmationPassengerMobile;
+    private javax.swing.JLabel confirmationPassengerName;
+    private javax.swing.JLabel confirmationSeatNo;
     private javax.swing.JComboBox<String> depatureLocation;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -704,6 +977,7 @@ public class SeatBooking extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

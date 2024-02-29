@@ -37,10 +37,10 @@ public class BookingCancellation extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         panelRound1 = new UI.Images.PanelRound();
         panelRound2 = new UI.Images.PanelRound();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +63,13 @@ public class BookingCancellation extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -79,14 +86,12 @@ public class BookingCancellation extends javax.swing.JFrame {
                 jTable1MouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton1.setText("Cancel");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jTable1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jTable1ComponentShown(evt);
             }
         });
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
         panelRound2.setLayout(panelRound2Layout);
@@ -95,25 +100,25 @@ public class BookingCancellation extends javax.swing.JFrame {
             .addGroup(panelRound2Layout.createSequentialGroup()
                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRound2Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRound2Layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
+                        .addGap(259, 259, 259)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(170, 170, 170)
-                        .addComponent(jButton1)))
-                .addContainerGap(183, Short.MAX_VALUE))
+                        .addGap(97, 97, 97)
+                        .addComponent(jButton1))
+                    .addGroup(panelRound2Layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         panelRound2Layout.setVerticalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(214, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(116, 116, 116))
         );
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
@@ -121,16 +126,16 @@ public class BookingCancellation extends javax.swing.JFrame {
         panelRound1Layout.setHorizontalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(64, 64, 64)
                 .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound1Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
+                .addGap(169, 169, 169))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -214,27 +219,7 @@ public class BookingCancellation extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1ComponentShown
 
     private void panelRound1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_panelRound1ComponentShown
-        try {
-
-            Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/busreservation";
-            Connection con = DriverManager.getConnection(database, "root", "root123");
-
-            String sql = "SELECT * FROM seat where status='booked'";
-
-            PreparedStatement st = con.prepareStatement(sql);
-
-            ResultSet r2 = st.executeQuery();
-
-            DefaultTableModel model2 = (DefaultTableModel) jTable1.getModel();
-            NewClass.fillTheTable(model2, r2);
-            
-            con.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            e.printStackTrace();
-
-        }
+       
         
     }//GEN-LAST:event_panelRound1ComponentShown
 
@@ -261,6 +246,10 @@ public class BookingCancellation extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_panelRound2ComponentShown
+
+    private void jTable1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTable1ComponentShown
+        
+    }//GEN-LAST:event_jTable1ComponentShown
 
     /**
      * @param args the command line arguments

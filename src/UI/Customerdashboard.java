@@ -1,5 +1,12 @@
 package UI;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 
 
 /*
@@ -7,7 +14,7 @@ package UI;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 /**
- *
+ *- 
  * @author navin
  */
 public class Customerdashboard extends javax.swing.JFrame {
@@ -229,6 +236,7 @@ public class Customerdashboard extends javax.swing.JFrame {
         bookingcacellation_ui.setVisible(true);
         this.dispose();
         
+       
         
         
     }//GEN-LAST:event_jLabel6MouseClicked
