@@ -4,6 +4,12 @@
  */
 package UI;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author navin
@@ -106,6 +112,11 @@ public class customer_interface extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("LOGIN");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, 150, 40));
 
         jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -178,6 +189,52 @@ public class customer_interface extends javax.swing.JFrame {
         customersignup signup = new customersignup();
         signup.setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+   
+            // Establish a database connection
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Dulmi#12345");
+            
+            
+            String username = jTextField1.getText();
+            String password = jPasswordField1.getText();
+            
+               Statement stm = con.createStatement();
+               
+               String sql = "select * from Customer where  Username='"+username+"' and Password='"+password+"'";
+               ResultSet rs = stm.executeQuery(sql);
+               
+               if(rs.next()) {
+                   //if username and password is true than go to login page
+                   
+                   dispose (); //close the employee interface page
+                   Customerdashboard cdash = new Customerdashboard ();
+                   cdash.setVisible(true);
+               }
+               else{
+                   //if username and password is wrong show message
+                   JOptionPane.showMessageDialog(this,"Username or Password wrong..");
+                   jTextField1.setText("");
+                   jPasswordField1.setText("");
+                   
+                   
+               }
+               
+              con.close();
+               
+             
+        }
+        
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            
+        
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

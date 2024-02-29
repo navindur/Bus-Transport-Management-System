@@ -4,6 +4,12 @@
  */
 package UI;
 
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dulmi
@@ -167,8 +173,52 @@ public class employee_interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Empdashboard empd = new Empdashboard ();
-        empd.setVisible(true);
+        //Empdashboard empd = new Empdashboard ();
+        //empd.setVisible(true);
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+   
+            // Establish a database connection
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Dulmi#12345");
+            
+            
+            String username = jTextField1.getText();
+            String password = jPasswordField1.getText();
+            
+               Statement stm = con.createStatement();
+               
+               String sql = "select * from Employee where  Username='"+username+"' and Password='"+password+"'";
+               ResultSet rs = stm.executeQuery(sql);
+               
+               if(rs.next()) {
+                   //if username and password is true than go to login page
+                   
+                   dispose (); //close the employee interface page
+                   Empdashboard edash = new Empdashboard ();
+                   edash.setVisible(true);
+               }
+               
+               else{
+                   //if username and password is wrong show message
+                   JOptionPane.showMessageDialog(this,"Username or Password wrong..");
+                   jTextField1.setText("");
+                   jPasswordField1.setText("");
+                   
+                   
+               }
+               
+              con.close();
+               
+             
+        }
+        
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            
+        
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -199,6 +249,10 @@ public class employee_interface extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
+        //employee_interface empint = new employee_interface ();
+        //empint.show();
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new employee_interface().setVisible(true);
