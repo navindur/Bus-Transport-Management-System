@@ -4,19 +4,87 @@
  */
 package UI;
 
+import java.sql.*;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import Codes.DatabaseConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author kumar
  */
 public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
-
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root";
+    
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
     /**
      * Creates new form ViewDriverConductorDetails_UI
      */
     public ViewDriverConductorDetails_UI() {
         initComponents();
+        displayData();
     }
 
+    private void displayData() {
+
+        
+        try {
+            // Connect to the database
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+
+            // Query to retrieve data from the table
+            String query = "SELECT * FROM Employee";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            
+            // Populate the table with data
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear existing data
+
+            while (resultSet.next()) {
+                Object[] row = {
+                    //resultSet.getDate("Date"),
+                    resultSet.getString("FullName"),
+                    resultSet.getString("NIC"),
+                    resultSet.getString("Registration_No"),
+                    resultSet.getString("License_No"),
+                    resultSet.getDate("DOB"),
+                    resultSet.getString("Mobile_No"),
+                    resultSet.getString("Landline_No"),
+                    resultSet.getString("Work as a"),
+                    resultSet.getString("Username"),
+                    resultSet.getString("Password"),
+                };
+                model.addRow(row);
+                }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error: Unable to fetch data from the database");
+        } finally {
+            // Close resources in the reverse order of their creation
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            }  catch (Exception e) {
+
+                e.printStackTrace();
+            }
+            /*try {
+            if (connection != null) connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
+        }
+            }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,7 +162,7 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(51, 51, 51));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Driver", "Conductor" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Driver", "Conductor", " " }));
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelRound1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 25, -1, -1));
 
@@ -197,7 +265,60 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String searchText1 = jTextField1.getText();
+        String searchText2 = jTextField2.getText();
+        
+        
+        try {
+
+           
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+            String query = "SELECT * FROM Employee WHERE FullName LIKE ? OR Registration_No LIKE  ? OR `Work as a` = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, "%" +searchText1+"%"); 
+            preparedStatement.setString(2, searchText2);
+            preparedStatement.setString(3, (String) jComboBox1.getSelectedItem());
+            
+            //preparedStatement.setString(3, "%" + searchText + "%");
+            resultSet = preparedStatement.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear existing data
+            while (resultSet.next()) {
+                Object[] row = {
+                    resultSet.getString("FullName"),
+                    resultSet.getString("NIC"),
+                    resultSet.getString("Registration_No"),
+                    resultSet.getString("License_No"),
+                    resultSet.getDate("DOB"),
+                    resultSet.getString("Mobile_No"),
+                    resultSet.getString("Landline_No"),
+                    resultSet.getString("Work as a"),
+                    resultSet.getString("Username"),
+                    resultSet.getString("Password"),
+                };
+                model.addRow(row);
+            }
+            } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error: Unable to perform the search");
+        } finally {
+            // Close resources in the reverse order of their creation
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+                } catch (Exception e) {
+                e.printStackTrace();
+            }
+            /*try {
+        if (connection != null) connection.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }*/
+        }
+    
+          
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
