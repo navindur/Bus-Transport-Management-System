@@ -4,19 +4,79 @@
  */
 package UI;
 
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author pcc
  */
 public class SpecialHireBooking1 extends javax.swing.JFrame {
 
+ // JDBC URL, username, and password of MySQL server
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "Ama2001ama*";
+
+    // JDBC variables for opening, closing and managing connection
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet; 
+    private JTextField searchTextField;
+    
     /**
      * Creates new form SpecialHireBooking1
      */
     public SpecialHireBooking1() {
         initComponents();
+        displayData(); // Call this method to display data in UI
     }
 
+    private void displayData() {
+        try {
+            // Connect to the database
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*");
+
+            // Query to retrieve data from the table
+            String query = "SELECT * FROM SpecialHire";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            // Populate the table with data
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear existing data
+
+            while (resultSet.next()) {
+                Object[] row = {
+                    resultSet.getInt("Reference_No"),
+                    resultSet.getString("Name"),
+                    resultSet.getString("Date"),
+                    resultSet.getString("Bus_No"),
+                    resultSet.getString("Driver"),
+                    resultSet.getString("Conductor"),
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error: Unable to fetch data from the database");
+        } finally {
+            // Close resources in the reverse order of their creation
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -258,7 +318,45 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String searchText = (String) searchTextField.getText();
+
+        try {
+            //connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*);
+
+            String query = "SELECT * FROM SpecialHire WHERE Bus_No LIKE ? OR Date LIKE ? OR Reference_No LIKE ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, "%" + searchText + "%"); 
+            preparedStatement.setString(2, "%" + searchText + "%");
+            preparedStatement.setString(3, "%" + searchText + "%");
+            resultSet = preparedStatement.executeQuery();
+
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear existing data
+
+            while (resultSet.next()) {
+                Object[] row = {
+                    resultSet.getInt("Reference_No"),
+                    resultSet.getString("Name"),
+                    resultSet.getString("Date"),
+                    resultSet.getString("Bus_No"),
+                    resultSet.getString("Driver"),
+                    resultSet.getString("Conductor"),
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error: Unable to perform the search");
+        } finally {
+            // Close resources in the reverse order of their creation
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -342,4 +440,35 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private UI.Images.PanelRound panelRound1;
     // End of variables declaration//GEN-END:variables
+
+        // Event listener for the search button
+    private void initJButton1() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+    }
+
+    // Initialize components...
+    /*private void initComponents() {
+        // Auto-generated code...
+        jButton1 = new javax.swing.JButton();
+        searchTextField = new javax.swing.JTextField();
+        
+        // Set up layout...
+        
+        // Initialize event listeners...
+        initJButton1();
+    }*/
+    
+    private static class searchTextField {
+
+        private static Object getText() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public searchTextField() {
+        }
+    }
 }
