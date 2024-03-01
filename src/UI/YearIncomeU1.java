@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
+import java.sql.*;
 
 /**
  *
@@ -28,16 +29,16 @@ public class YearIncomeU1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        panelRound1 = new UI.Images.PanelRound();
+        panelRound1 = new org.netbeans.modules.form.InvalidComponent();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        bsy = new javax.swing.JTextField();
+        bsy1 = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        bmy = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -55,8 +56,6 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         jLabel4.setText("Yearly Income View");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 340, -1));
 
-        panelRound1.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound1.setPreferredSize(new java.awt.Dimension(400, 350));
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -69,21 +68,21 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         jLabel2.setText("Year :");
         panelRound1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 120, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        panelRound1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 45, 120, -1));
+        bsy.setBackground(new java.awt.Color(51, 51, 51));
+        bsy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bsy.setForeground(new java.awt.Color(255, 255, 255));
+        bsy.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        panelRound1.add(bsy, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 45, 120, -1));
 
-        jTextField2.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        bsy1.setBackground(new java.awt.Color(51, 51, 51));
+        bsy1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bsy1.setForeground(new java.awt.Color(255, 255, 255));
+        bsy1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                bsy1ActionPerformed(evt);
             }
         });
-        panelRound1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 115, 120, -1));
+        panelRound1.add(bsy1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 115, 120, -1));
 
         jToggleButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jToggleButton1.setForeground(new java.awt.Color(0, 0, 0));
@@ -111,10 +110,10 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         jLabel7.setText("Rs.");
         panelRound1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 255, -1, -1));
 
-        jTextField3.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 145, 40));
+        bmy.setBackground(new java.awt.Color(51, 51, 51));
+        bmy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bmy.setForeground(new java.awt.Color(255, 255, 255));
+        panelRound1.add(bmy, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 145, 40));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -147,11 +146,26 @@ public class YearIncomeU1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        try (Connection conn2 = DBMC.vcon();
+            Statement sr1 = conn2.createStatement()) {
+            ResultSet rs2 = sr1.executeQuery(
+                "SELECT SUM(Income(Rs.)) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsy.getText() + "' AND Year(Date) ='" + bsy1.getText() + "'");
+
+            if (rs2.next()) {
+                bmy.setText(String.valueOf(rs2.getInt("TotalIncome")));
+                // Alternatively, if you want to display the income as a string:
+                // bsid.setText(rs1.getString("Income(Rs.)"));
+            } else {
+                bmy.setText("No data found");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // or log the exception
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void bsy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsy1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_bsy1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +204,9 @@ public class YearIncomeU1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField bmy;
+    private javax.swing.JTextField bsy;
+    private javax.swing.JTextField bsy1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -199,10 +216,7 @@ public class YearIncomeU1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JToggleButton jToggleButton1;
-    private UI.Images.PanelRound panelRound1;
+    private org.netbeans.modules.form.InvalidComponent panelRound1;
     // End of variables declaration//GEN-END:variables
 }
