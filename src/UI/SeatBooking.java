@@ -99,6 +99,8 @@ public class SeatBooking extends javax.swing.JFrame {
         jTable3 = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(950, 600));
@@ -597,30 +599,44 @@ public class SeatBooking extends javax.swing.JFrame {
         }
     });
 
+    jLabel20.setText("Select seat number that you need to cancel:");
+
+    jLabel21.setText("Selected seat number :");
+
     javax.swing.GroupLayout cancellPaneLayout = new javax.swing.GroupLayout(cancellPane);
     cancellPane.setLayout(cancellPaneLayout);
     cancellPaneLayout.setHorizontalGroup(
         cancellPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(cancellPaneLayout.createSequentialGroup()
-            .addGap(150, 150, 150)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(268, Short.MAX_VALUE))
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cancellPaneLayout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addContainerGap(187, Short.MAX_VALUE)
+            .addComponent(jLabel21)
+            .addGap(63, 63, 63)
             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(54, 54, 54)
             .addComponent(jButton4)
             .addGap(303, 303, 303))
+        .addGroup(cancellPaneLayout.createSequentialGroup()
+            .addGroup(cancellPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(cancellPaneLayout.createSequentialGroup()
+                    .addGap(150, 150, 150)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(cancellPaneLayout.createSequentialGroup()
+                    .addGap(139, 139, 139)
+                    .addComponent(jLabel20)))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     cancellPaneLayout.setVerticalGroup(
         cancellPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(cancellPaneLayout.createSequentialGroup()
-            .addGap(67, 67, 67)
+            .addGap(22, 22, 22)
+            .addComponent(jLabel20)
+            .addGap(29, 29, 29)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(84, 84, 84)
             .addGroup(cancellPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jButton4)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel21))
             .addContainerGap(162, Short.MAX_VALUE))
     );
 
@@ -1088,6 +1104,8 @@ public class SeatBooking extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
