@@ -180,7 +180,7 @@ public class employee_interface extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
    
             // Establish a database connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "MYsql2023#");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Dulmi#12345");
             
             
             String username = jTextField1.getText();
