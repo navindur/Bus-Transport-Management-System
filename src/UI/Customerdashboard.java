@@ -1,11 +1,5 @@
 package UI;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 
 
@@ -235,9 +229,7 @@ public class Customerdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-         BookingCancellation bookingcacellation_ui= new BookingCancellation();
-        bookingcacellation_ui.setVisible(true);
-        this.dispose();
+        
         
        
         
