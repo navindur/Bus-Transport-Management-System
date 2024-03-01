@@ -172,9 +172,11 @@ public class owner_interface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"You have logged successfully");
             Ownerdashboard ow = new Ownerdashboard ();
             ow.setVisible(true);}
-        else
+        else{
             JOptionPane.showMessageDialog(null,"Incorrect username or password");
-       
+            jPasswordField1.setText("");
+            jTextField1.setText("");
+        }
    
     }//GEN-LAST:event_jButton1ActionPerformed
 
