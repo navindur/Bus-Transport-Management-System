@@ -38,7 +38,7 @@ private void displayData() {
         
         try {
             // Connect to the database
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "MYsql2023#");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
 
             // Query to retrieve data from the table
             String query = "SELECT * FROM Shift";
@@ -68,7 +68,7 @@ private void displayData() {
             try {
                 if (resultSet != null) resultSet.close();
                 if (preparedStatement != null) preparedStatement.close();
-//                if (connection != null) connection.close();
+                if (connection != null) connection.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -313,6 +313,7 @@ private void displayData() {
         
         
         try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
             String query = "SELECT * FROM Shift WHERE Bus_No LIKE ? OR DATE_FORMAT(Date, '%Y-%m-%d') LIKE ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, searchText1); 
@@ -342,7 +343,7 @@ private void displayData() {
             try {
                 if (resultSet != null) resultSet.close();
                 if (preparedStatement != null) preparedStatement.close();
-//                if (connection != null) connection.close();
+                if (connection != null) connection.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
