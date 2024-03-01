@@ -4,6 +4,10 @@
  */
 package UI;
 
+import Codes.DatabaseConnection;
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author kumar
@@ -65,60 +69,76 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Bus Registration No.");
+        panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Bus Chassis No.");
+        panelRound1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 97, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Adding Mileage");
+        panelRound1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Next Service Mileage");
+        panelRound1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 223, -1, -1));
 
         jTextField6.setBackground(new java.awt.Color(51, 51, 51));
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField6.setText("SG-0011");
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+        panelRound1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 34, 160, -1));
 
         jTextField9.setBackground(new java.awt.Color(51, 51, 51));
         jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField9.setText("3210987655");
+        panelRound1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 97, 160, -1));
 
         jTextField10.setBackground(new java.awt.Color(51, 51, 51));
         jTextField10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField10.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField10.setText("30000");
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField10ActionPerformed(evt);
             }
         });
+        panelRound1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 155, 160, -1));
 
         jTextField11.setBackground(new java.awt.Color(51, 51, 51));
         jTextField11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField11.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField11.setText("50000");
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField11ActionPerformed(evt);
             }
         });
+        panelRound1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 220, 160, -1));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Registraion Date");
+        panelRound1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 40, -1, -1));
 
         jTextField12.setBackground(new java.awt.Color(51, 51, 51));
         jTextField12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField12.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField12.setText("2021-11-23");
+        panelRound1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 34, 160, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Bus Model");
+        panelRound1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 100, -1, -1));
 
         jComboBox2.setBackground(new java.awt.Color(51, 51, 51));
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -134,28 +154,38 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
+        panelRound1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 97, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Last Service Date");
+        panelRound1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 160, -1, -1));
 
         jTextField13.setBackground(new java.awt.Color(51, 51, 51));
         jTextField13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField13.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField13.setText("2024-02-29");
+        panelRound1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 155, 160, -1));
 
         jTextField14.setBackground(new java.awt.Color(51, 51, 51));
         jTextField14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField14.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField14.setText("2024-05-29");
         jTextField14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField14ActionPerformed(evt);
             }
         });
+        panelRound1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 160, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Reset All");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        panelRound1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(242, 242, 242));
         jButton5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -168,136 +198,32 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+        panelRound1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 283, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(51, 51, 51));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("YYYY-MM-DD");
         jLabel23.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelRound1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 187, 120, 20));
 
         jLabel24.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(51, 51, 51));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("YYYY-MM-DD");
         jLabel24.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelRound1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 65, 120, 20));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setText("Next Service Date");
+        panelRound1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 223, -1, -1));
 
         jLabel26.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(51, 51, 51));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("YYYY-MM-DD");
         jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
-        panelRound1.setLayout(panelRound1Layout);
-        panelRound1Layout.setHorizontalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelRound1Layout.createSequentialGroup()
-                            .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(panelRound1Layout.createSequentialGroup()
-                                    .addComponent(jLabel18)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(40, 40, 40)
-                            .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel25)
-                                .addComponent(jLabel21)))
-                        .addGroup(panelRound1Layout.createSequentialGroup()
-                            .addComponent(jLabel9)
-                            .addGap(66, 66, 66)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
-                            .addComponent(jLabel20))
-                        .addGroup(panelRound1Layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addGap(29, 29, 29)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
-                            .addComponent(jLabel19))
-                        .addGroup(panelRound1Layout.createSequentialGroup()
-                            .addComponent(jButton2)
-                            .addGap(184, 184, 184)
-                            .addComponent(jButton5)))
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addGap(404, 404, 404)))
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
-                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))))
-        );
-        panelRound1Layout.setVerticalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel19)))
-                    .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel20)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(22, 22, 22)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel21)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17)))
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(13, 13, 13)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton2))
-                .addGap(12, 12, 12))
-        );
+        panelRound1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 252, 120, 20));
 
         jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 810, 380));
 
@@ -340,7 +266,57 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        String busRegistrationNo = jTextField6.getText();
+        String registrationDate = jTextField12.getText();
+        String busChassisNo = jTextField9.getText();
+        String busModel = (String) jComboBox2.getSelectedItem();
+        String addingMileage = jTextField10.getText();
+        String lastServiceDate = jTextField13.getText();
+        String nextServiceMileage = jTextField11.getText();
+        String nextServiceDate = jTextField14.getText();
+
+        // Validate input
+        if (busRegistrationNo.isEmpty() || registrationDate.isEmpty() || busChassisNo.isEmpty() || busModel.isEmpty() || addingMileage.isEmpty() || lastServiceDate.isEmpty() || nextServiceMileage.isEmpty() || nextServiceDate.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+            return;
+        }
+
+        // Connect to database and insert data
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            String sql = "INSERT INTO Bus (Bus_No, RegistrationDate, Chassis_No, Model, AddingMileage, LastServiceDate, NextServiceMileage, NextServiceDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, busRegistrationNo);
+            statement.setDate(2, java.sql.Date.valueOf(registrationDate));
+            statement.setString(3, busChassisNo);
+//            statement.setLong(3, Long.parseLong(busChassisNo));
+            statement.setString(4, busModel);
+            statement.setInt(5, Integer.parseInt(addingMileage));
+            statement.setDate(6, java.sql.Date.valueOf(lastServiceDate));
+            statement.setInt(7, Integer.parseInt(nextServiceMileage));
+            statement.setString(8, nextServiceDate);
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(this, "Bus details added successfully!");
+                // Clear text fields
+//                jButton2ActionPerformed(evt);
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to add bus details.");
+            }
+            
+//            DatabaseConnection.closeConnection();
+//            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error connecting to database: " + e.getMessage());
+        } catch (NumberFormatException e) { // Handle potential number format exceptions for integer fields
+            JOptionPane.showMessageDialog(this, "Invalid number format in mileage fields.");
+        } catch (IllegalArgumentException ie) {
+            JOptionPane.showMessageDialog(this, "Date should be in valid format.");
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
@@ -350,6 +326,22 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // Clear TextFields
+        jTextField6.setText("");
+        jTextField12.setText("");
+        jTextField9.setText("");
+        jComboBox2.setSelectedIndex(0); // Assuming first item is empty
+        jTextField10.setText("");
+        jTextField13.setText("");
+        jTextField11.setText("");
+        jTextField14.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
 
     /**
      * @param args the command line arguments

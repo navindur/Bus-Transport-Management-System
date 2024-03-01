@@ -25,26 +25,27 @@ public class DatabaseConnection {
     }
 
     // Method to get a database connection
-    public static Connection getConnection() {
+    public static Connection getConnection() throws SQLException {
         if (connection == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver"); // Load the MySQL JDBC driver
                 connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                throw new SQLException("Error loading JDBC driver:" + e.getMessage());
             }
         }
         return connection;
     }
 
     // Close the connection when done
-//    public static void closeConnection() {
-//        if (connection != null) {
-//            try {
-//                connection.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+    public static void closeConnection() throws SQLException {
+        if (connection != null) {
+            try {
+                connection.close();
+                System.out.println("Connection closed.");
+            } finally {
+                connection = null; // Reset connection reference
+            }
+        }
+    }
 }
