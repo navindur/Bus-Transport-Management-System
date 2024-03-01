@@ -27,7 +27,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
     private Connection connection;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet; 
-    private JTextField searchTextField;
+    //private JTextField searchTextField;
     /**
      * Creates new form SpecialHireBooking2
      */
@@ -40,7 +40,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
     private void displayData() {
         try {
             // Connect to the database
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*");
+            connection = DriverManager.getConnection(JDBC_URL,USERNAME,PASSWORD);
 
             // Query to retrieve data from the table
             String query = "SELECT * FROM SpecialHire";
@@ -70,7 +70,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
             try {
                 if (resultSet != null) resultSet.close();
                 if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
+               // if (connection != null) connection.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -269,15 +269,15 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         String searchText = (String) searchTextField.getText();
+         //String searchText = (String) searchTextField.getText();
 
         try {
             //connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*);
 
-            String query = "SELECT * FROM SpecialHire WHERE Bus_No LIKE ? OR Date LIKE ?";
+            String query = "SELECT * FROM SpecialHire WHERE Bus_No LIKE ? AND Date LIKE ?";
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, "%" + searchText + "%"); 
-            preparedStatement.setString(2, "%" + searchText + "%");
+            preparedStatement.setString(1,jTextField1.getText()); 
+            preparedStatement.setString(2,jTextField2.getText());
 
             resultSet = preparedStatement.executeQuery();
 
@@ -303,7 +303,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
             try {
                 if (resultSet != null) resultSet.close();
                 if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
+               // if (connection != null) connection.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -326,6 +326,18 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
         empDashboard.setVisible(true);
 
         this.dispose();
+        
+        // Code to be executed when the back button is clicked
+        try {
+            // Close resources in the reverse order of their creation
+            if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error: Unable to close database resources");
+        }
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
