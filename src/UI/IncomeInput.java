@@ -203,10 +203,10 @@ public class IncomeInput extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Get a database connection
-        Connection conn = DatabaseConnection.getConnection();
         int rowsAffected = 0;
-
+        Connection conn = null;
         try {
+            conn = DatabaseConnection.getConnection();
             // Prepare the SQL query
             String insertQuery = "INSERT INTO FinancialStatus (Bus_No, `Date`, `Income(Rs.)`) VALUES (?, ?, ?)";
             PreparedStatement preparedStatement = conn.prepareStatement(insertQuery);
