@@ -29,7 +29,7 @@ public class YearIncomeU1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        panelRound1 = new org.netbeans.modules.form.InvalidComponent();
+        panelRound2 = new UI.Images.PanelRound();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         bsy = new javax.swing.JTextField();
@@ -56,23 +56,22 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         jLabel4.setText("Yearly Income View");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 340, -1));
 
-        panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelRound2.setPreferredSize(new java.awt.Dimension(400, 350));
+        panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Bus Number :");
-        panelRound1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+        panelRound2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Year :");
-        panelRound1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 120, -1, -1));
+        panelRound2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
 
         bsy.setBackground(new java.awt.Color(51, 51, 51));
         bsy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         bsy.setForeground(new java.awt.Color(255, 255, 255));
         bsy.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        panelRound1.add(bsy, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 45, 120, -1));
+        panelRound2.add(bsy, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 120, -1));
 
         bsy1.setBackground(new java.awt.Color(51, 51, 51));
         bsy1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -82,15 +81,13 @@ public class YearIncomeU1 extends javax.swing.JFrame {
                 bsy1ActionPerformed(evt);
             }
         });
-        panelRound1.add(bsy1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 115, 120, -1));
+        panelRound2.add(bsy1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 120, -1));
 
         jToggleButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jToggleButton1.setForeground(new java.awt.Color(0, 0, 0));
         jToggleButton1.setText("All");
-        panelRound1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 50, -1, 30));
+        panelRound2.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, 30));
 
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -98,29 +95,26 @@ public class YearIncomeU1 extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        panelRound1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 120, 40));
+        panelRound2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 120, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Income :");
-        panelRound1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 255, -1, -1));
+        panelRound2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Rs.");
-        panelRound1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 255, -1, -1));
+        panelRound2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
 
         bmy.setBackground(new java.awt.Color(51, 51, 51));
         bmy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         bmy.setForeground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(bmy, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 145, 40));
+        panelRound2.add(bmy, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 145, 40));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Toggle for");
-        panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 60, 20));
+        panelRound2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 60, 20));
 
-        jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+        jPanel1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/3d-black-chart-finance-black-background_768719-330.jpg"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 550));
@@ -217,6 +211,6 @@ public class YearIncomeU1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
-    private org.netbeans.modules.form.InvalidComponent panelRound1;
+    private UI.Images.PanelRound panelRound2;
     // End of variables declaration//GEN-END:variables
 }
