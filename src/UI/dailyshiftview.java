@@ -4,17 +4,81 @@
  */
 package UI;
 
+import java.sql.*;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import Codes.DatabaseConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class dailyshiftview extends javax.swing.JFrame {
 
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root";
+    
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet; 
+    private JTextField searchTextField;
     /**
      * Creates new form dailyshiftview
      */
     public dailyshiftview() {
         initComponents();
+        displayData();
+        //searchTextField = new javax.swing.JTextField();
     }
 
+private void displayData() {
+
+        
+        try {
+            // Connect to the database
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+
+            // Query to retrieve data from the table
+            String query = "SELECT * FROM Shift";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            // Populate the table with data
+            DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            model.setRowCount(0); // Clear existing data
+
+            while (resultSet.next()) {
+                Object[] row = {
+                    resultSet.getDate("Date"),
+                    resultSet.getString("Bus_No"),
+                    resultSet.getString("DriverReg_No"),
+                    resultSet.getString("DriverName"),
+                    resultSet.getString("ConductorReg_NO"),
+                    resultSet.getString("ConductorName"),
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error: Unable to fetch data from the database");
+        } finally {
+            // Close resources in the reverse order of their creation
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                //if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            /*try {
+            if (connection != null) connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -243,7 +307,51 @@ public class dailyshiftview extends javax.swing.JFrame {
     }//GEN-LAST:event_textField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        //String searchText = (String) searchTextField.getText();
+        String searchText1 = textField1.getText();
+        String searchText2 = textField2.getText();
+        
+        
+        try {
+            String query = "SELECT * FROM Shift WHERE Bus_No LIKE ? OR DATE_FORMAT(Date, '%Y-%m-%d') LIKE ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, "%" + searchText1 + "%"); 
+            preparedStatement.setString(2, "%" + searchText2 + "%");
+            //preparedStatement.setString(3, "%" + searchText + "%");
+            resultSet = preparedStatement.executeQuery();
+            
+            DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            model.setRowCount(0); // Clear existing data
+
+            while (resultSet.next()) {
+                Object[] row = {
+                    resultSet.getDate("Date"),
+                    resultSet.getString("Bus_No"),
+                    resultSet.getString("DriverReg_No"),
+                    resultSet.getString("DriverName"),
+                    resultSet.getString("ConductorReg_No"),
+                    resultSet.getString("ConductorName"),
+                };
+                model.addRow(row);
+            }
+            } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error: Unable to perform the search");
+        } finally {
+            // Close resources in the reverse order of their creation
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            /*try {
+        if (connection != null) connection.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }*/
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
