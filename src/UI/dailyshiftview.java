@@ -23,7 +23,7 @@ public class dailyshiftview extends javax.swing.JFrame {
     private Connection connection;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet; 
-    private JTextField searchTextField;
+//    private JTextField searchTextField;
     /**
      * Creates new form dailyshiftview
      */
@@ -38,7 +38,7 @@ private void displayData() {
         
         try {
             // Connect to the database
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "MYsql2023#");
 
             // Query to retrieve data from the table
             String query = "SELECT * FROM Shift";
@@ -68,8 +68,8 @@ private void displayData() {
             try {
                 if (resultSet != null) resultSet.close();
                 if (preparedStatement != null) preparedStatement.close();
-                //if (connection != null) connection.close();
-            } catch (SQLException e) {
+//                if (connection != null) connection.close();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             /*try {
@@ -315,8 +315,8 @@ private void displayData() {
         try {
             String query = "SELECT * FROM Shift WHERE Bus_No LIKE ? OR DATE_FORMAT(Date, '%Y-%m-%d') LIKE ?";
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, "%" + searchText1 + "%"); 
-            preparedStatement.setString(2, "%" + searchText2 + "%");
+            preparedStatement.setString(1, searchText1); 
+            preparedStatement.setString(2, searchText2);
             //preparedStatement.setString(3, "%" + searchText + "%");
             resultSet = preparedStatement.executeQuery();
             
@@ -342,7 +342,7 @@ private void displayData() {
             try {
                 if (resultSet != null) resultSet.close();
                 if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
+//                if (connection != null) connection.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
