@@ -4,14 +4,13 @@
  */
 package UI;
 
-import com.mysql.cj.jdbc.Driver;
 import java.sql.*;
-import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import Codes.DatabaseConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -203,52 +202,55 @@ public class IncomeInput extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Get a database connection
+        Connection conn = DatabaseConnection.getConnection();
+        int rowsAffected = 0;
+
         try {
-            // Load the MySQL JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Define the SQL query for inserting income data
-            String incomeInput = "Insert into FinancialStatus (Bus_No, Date, `Income(Rs.)`) values (?,?,?)";
-            
-            // Establish a database connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "MYsql2023#");
-//            JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
-            
-            // Prepare the statement for executing the query
-            PreparedStatement pstmt = con.prepareStatement(incomeInput);
-            
-            // Set the parameters for the query
-//            LocalDate selectedDate = datePicker1.getDate();
-//            DateTimeFormatter formattedDate = DateTimeFormatter.ISO_LOCAL_DATE;
-            pstmt.setString(1, jTextField3.getText());
-            pstmt.setString(2, datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
-            pstmt.setInt(3, Integer.parseInt(jTextField2.getText()));
+            // Prepare the SQL query
+            String insertQuery = "INSERT INTO FinancialStatus (Bus_No, `Date`, `Income(Rs.)`) VALUES (?, ?, ?)";
+            PreparedStatement preparedStatement = conn.prepareStatement(insertQuery);
 
-            // Execute the update
-            pstmt.executeUpdate();
-            // Show a success message
-            JOptionPane.showMessageDialog(this, "Record added successfully.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+            // Set values for placeholders
+            preparedStatement.setString(1, jTextField3.getText());
+            preparedStatement.setString(2, datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
+            preparedStatement.setInt(3, Integer.parseInt(jTextField2.getText()));
+
+            // Execute the query
+            rowsAffected = preparedStatement.executeUpdate();
+
+            JOptionPane.showMessageDialog(rootPane, "Data inserted successfully!");
             
-            jTextField3.setText(""); // Clear Bus_No field
-            jTextField2.setText(""); // Clear Income field
-            datePicker1.setDate(null); // Clear the selected date
+            // Clear fields after successful insertion
+            if (rowsAffected > 0) {
+                jTextField3.setText("");
+                datePicker1.clear();
+                jTextField2.setText("");
+            }
 
+        } catch (NullPointerException pe) {
+            // Show an error message for empty fields
+            JOptionPane.showMessageDialog(this,"Fields cannot be empty.", "Failed to insert data.", JOptionPane.ERROR_MESSAGE);
 
-        } catch (ClassNotFoundException cx) {
-            Logger.getLogger(IncomeInput.class.getName()).log(Level.SEVERE, null, cx);
-//            System.out.println("Error occured");
-            // Show an error message for class not found
-            JOptionPane.showMessageDialog(this, cx, "Exception Occured", JOptionPane.ERROR_MESSAGE);
-//            ex.printStackTrace();
         } catch (NumberFormatException ne) {
             // Show an error message for invalid income input
-            JOptionPane.showMessageDialog(this, "Income must be a valid number.");
+            JOptionPane.showMessageDialog(this, ne.getMessage() + ". Income must be a valid number.", "Failed to insert data.", JOptionPane.ERROR_MESSAGE);
+
         } catch (SQLException e) {
             // Show an error message for database-related exceptions
-            JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Failed to insert data.", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            // Close the connection only if data was inserted successfully
+            if (rowsAffected > 0 && conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(IncomeInput.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
         // TODO add your handling code here:
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder2.png")));

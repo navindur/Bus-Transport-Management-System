@@ -361,8 +361,8 @@ public class SeatBooking extends javax.swing.JFrame {
         jLabel10.setText("Depature Date          :");
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setText("Depature                   :");
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jLabel12.setText("Depature Time          :");
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -385,29 +385,29 @@ public class SeatBooking extends javax.swing.JFrame {
         confirmationSeatNo.setText("Seat Number");
         confirmationSeatNo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        confirmationFare.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         confirmationFare.setText("Fare");
+        confirmationFare.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        confirmationBusNo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         confirmationBusNo.setText("Bus Number");
+        confirmationBusNo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        confirmationArrival.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         confirmationArrival.setText("Arrival");
+        confirmationArrival.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        confirmationDepatureDate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         confirmationDepatureDate.setText("Depature Date");
+        confirmationDepatureDate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        confirmationDepature.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         confirmationDepature.setText("Depature                   :");
+        confirmationDepature.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        confirmationDepatureTime.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         confirmationDepatureTime.setText("Depature Time");
+        confirmationDepatureTime.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        confirmationPassengerMobile.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         confirmationPassengerMobile.setText("Passenger's Mobile");
+        confirmationPassengerMobile.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        confirmationPassengerName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         confirmationPassengerName.setText("Passenger's Name");
+        confirmationPassengerName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jButton6.setText("confirm");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
