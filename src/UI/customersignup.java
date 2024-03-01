@@ -4,6 +4,14 @@
  */
 package UI;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author navin
@@ -211,7 +219,56 @@ public class customersignup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+   
+            // Establish a database connection
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Dulmi#12345");
+            
+            String Fname = jTextField2.getText();
+            String Lname = jTextField3.getText();
+            String Mono = jTextField1.getText();
+            String email = jTextField5.getText();
+            String username = jTextField6.getText();
+            char[] password = jPasswordField1.getPassword();
+            char[] password2 =jPasswordField2.getPassword() ;
+            
+               Statement stm = con.createStatement();
+               
+               String sql = "INSERT INTO Customer (fName, lName, MobileNumber, EMail, Username, Password) "
+                       + " VALUES ('"+Fname+"','"+Lname+"', '"+Mono+"','"+email+"', '"+username+"', '"+password+"')";
+               
+               
+            if ((new String(jPasswordField1.getPassword()).equals(new String(jPasswordField2.getPassword()))) &&
+                                                                                       !jTextField2.getText().isEmpty() && 
+                                                                                       !jTextField3.getText().isEmpty() && 
+                                                                                       !jTextField1.getText().isEmpty() &&
+                                                                                       !jTextField5.getText().isEmpty() &&
+                                                                                       !jTextField6.getText().isEmpty() &&
+                                                                                       !jPasswordField1.getText().isEmpty() &&
+                                                                                       !jPasswordField2.getText().isEmpty()){
+                stm.executeUpdate(sql);
+                Customerdashboard cd = new Customerdashboard ();
+                cd.setVisible(true);
+               }
+            else {
+                JOptionPane.showMessageDialog(this, "error..! datas are not enterd or password does not match!");
+            }
+            
+            
+            
+          con.close();
+          this.dispose();
+             
+        }
+        
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            
+        
+            
+        }
+                    
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

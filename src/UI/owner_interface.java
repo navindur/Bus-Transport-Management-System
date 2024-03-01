@@ -167,9 +167,7 @@ public class owner_interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        login_interface loginter = new login_interface();
-        loginter.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -184,7 +182,9 @@ public class owner_interface extends javax.swing.JFrame {
             jPasswordField1.setText("");
             jTextField1.setText("");
         }
-   
+    Ownerdashboard od = new Ownerdashboard ();
+    od.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
