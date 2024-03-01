@@ -4,6 +4,14 @@
  */
 package UI;
 
+import java.sql.*;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import Codes.DatabaseConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author kumar
@@ -37,11 +45,10 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        Driver = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jTextField6 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -53,6 +60,7 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jCheckBox1 = new javax.swing.JCheckBox();
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -105,11 +113,6 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         panelRound1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 160, -1));
 
-        jTextField2.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        panelRound1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 160, -1));
-
         jTextField3.setBackground(new java.awt.Color(51, 51, 51));
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,11 +133,11 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
         panelRound1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 160, -1));
 
-        Driver.setBackground(new java.awt.Color(51, 51, 51));
-        Driver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Driver.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Driver", "Conductor" }));
-        Driver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelRound1.add(Driver, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, -1, -1));
+        jComboBox1.setBackground(new java.awt.Color(51, 51, 51));
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Driver", "Conductor" }));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelRound1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, -1, -1));
 
         jTextField6.setBackground(new java.awt.Color(51, 51, 51));
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -157,6 +160,11 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setText("Reset All");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         panelRound1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
@@ -194,7 +202,16 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         panelRound1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 160, -1));
 
         jCheckBox1.setText("Show");
+        jCheckBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox1ItemStateChanged(evt);
+            }
+        });
         panelRound1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 300, -1, -1));
+
+        datePicker1.setBackground(new java.awt.Color(255, 255, 255));
+        datePicker1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        panelRound1.add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 190, 30));
 
         jPanel3.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 830, 380));
 
@@ -217,8 +234,82 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+        // Get the password as a char array
+        char[] passwordChars = jPasswordField1.getPassword();
+        // Get the selected item from the JComboBox
+        String selectedValue = jComboBox1.getSelectedItem().toString();
+
+        // Convert the char array to a String
+        String password = new String(passwordChars);
+        try {
+            // Load the MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Define the SQL query for inserting income data
+            String incomeInput = "Insert into Employee (FullName, NIC, License_No, Registration_No, DOB, Mobile_No, Landline_No, `Work as a`, Username, Password) values (?,?,?,?,?,?,?,?,?,?)";
+            
+            // Establish a database connection
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+//            JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+            PreparedStatement pstmt = con.prepareStatement(incomeInput);
+            
+            pstmt.setString(1, jTextField1.getText());
+            pstmt.setString(2, jTextField3.getText());
+            pstmt.setString(3, jTextField5.getText());
+            pstmt.setString(4, jTextField8.getText());
+            pstmt.setString(5, datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
+            pstmt.setString(6, jTextField6.getText());
+            pstmt.setString(7, jTextField7.getText());
+            pstmt.setString(8, selectedValue);
+            pstmt.setString(9, jTextField9.getText());
+            pstmt.setString(10, password);
+            pstmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Record added successfully.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+            
+                jTextField1.setText("");
+                jTextField3.setText("");
+                jTextField5.setText("");
+                jTextField8.setText("");
+                datePicker1.setDate(null);
+                jTextField6.setText("");
+                jTextField7.setText("");
+                jTextField9.setText("");
+                jPasswordField1.setText("");
+            
+            } catch (ClassNotFoundException cx) {
+            Logger.getLogger(Dailyshiftupdate.class.getName()).log(Level.SEVERE, null, cx);
+//            System.out.println("Error occured");
+            // Show an error message for class not found
+            JOptionPane.showMessageDialog(this, cx, "Exception Occured", JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException e) {
+            // Show an error message for database-related exceptions
+            JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jCheckBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox1ItemStateChanged
+        if (jCheckBox1.isSelected()) {
+        // Show the password
+        jPasswordField1.setEchoChar((char) 0); // Set echo char to 0 to show characters
+    } else {
+        // Hide the password
+        jPasswordField1.setEchoChar('*'); // Set echo char to * to hide characters
+    }
+    }//GEN-LAST:event_jCheckBox1ItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                jTextField1.setText("");
+                jTextField3.setText("");
+                jTextField5.setText("");
+                jTextField8.setText("");
+                datePicker1.setDate(null);
+                jTextField6.setText("");
+                jTextField7.setText("");
+                jTextField9.setText("");
+                jPasswordField1.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,10 +347,11 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Driver;
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -277,7 +369,6 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;

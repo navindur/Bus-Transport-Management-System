@@ -248,6 +248,7 @@ public class customersignup extends javax.swing.JFrame {
                                                                                        !jPasswordField1.getText().isEmpty() &&
                                                                                        !jPasswordField2.getText().isEmpty()){
                 stm.executeUpdate(sql);
+                this.dispose();
                 Customerdashboard cd = new Customerdashboard ();
                 cd.setVisible(true);
                }
@@ -258,7 +259,7 @@ public class customersignup extends javax.swing.JFrame {
             
             
           con.close();
-          this.dispose();
+          
              
         }
         

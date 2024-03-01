@@ -164,6 +164,7 @@ public class owner_interface extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         login_interface log = new login_interface ();
         log.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
@@ -171,20 +172,24 @@ public class owner_interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          String username = new String(jTextField1.getText());
+        String username = new String(jTextField1.getText());
         String password = new String(jPasswordField1.getPassword());
+        
         if (username.equals("dulmi") && password.equals("password") ){
-            JOptionPane.showMessageDialog(null,"You have logged successfully");
+            this.dispose();
             Ownerdashboard ow = new Ownerdashboard ();
             ow.setVisible(true);}
         else{
-            JOptionPane.showMessageDialog(null,"Incorrect username or password");
+            JOptionPane.showMessageDialog(this,"Incorrect username or password");
             jPasswordField1.setText("");
             jTextField1.setText("");
+            
+         
         }
-    Ownerdashboard od = new Ownerdashboard ();
-    od.setVisible(true);
-    this.dispose();
+    
+     
+     
+   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

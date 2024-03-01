@@ -23,7 +23,11 @@ public class dailyshiftview extends javax.swing.JFrame {
     private Connection connection;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet; 
+
+    //private JTextField searchTextField;
+
 //    private JTextField searchTextField;
+
     /**
      * Creates new form dailyshiftview
      */
@@ -69,7 +73,8 @@ private void displayData() {
                 if (resultSet != null) resultSet.close();
                 if (preparedStatement != null) preparedStatement.close();
                 if (connection != null) connection.close();
-            } catch (Exception e) {
+            }  catch (Exception e) {
+
                 e.printStackTrace();
             }
             /*try {
@@ -313,11 +318,14 @@ private void displayData() {
         
         
         try {
+
+           
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
             String query = "SELECT * FROM Shift WHERE Bus_No LIKE ? OR DATE_FORMAT(Date, '%Y-%m-%d') LIKE ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, searchText1); 
             preparedStatement.setString(2, searchText2);
+
             //preparedStatement.setString(3, "%" + searchText + "%");
             resultSet = preparedStatement.executeQuery();
             
