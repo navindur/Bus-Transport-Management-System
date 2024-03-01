@@ -23,11 +23,11 @@ public class dailyshiftview extends javax.swing.JFrame {
     private Connection connection;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet; 
-<<<<<<< HEAD
-    private JTextField searchTextField;
-=======
+
+    //private JTextField searchTextField;
+
 //    private JTextField searchTextField;
->>>>>>> origin/master
+
     /**
      * Creates new form dailyshiftview
      */
@@ -72,13 +72,9 @@ private void displayData() {
             try {
                 if (resultSet != null) resultSet.close();
                 if (preparedStatement != null) preparedStatement.close();
-<<<<<<< HEAD
-                //if (connection != null) connection.close();
-            } catch (SQLException e) {
-=======
                 if (connection != null) connection.close();
-            } catch (Exception e) {
->>>>>>> origin/master
+            }  catch (Exception e) {
+
                 e.printStackTrace();
             }
             /*try {
@@ -322,18 +318,14 @@ private void displayData() {
         
         
         try {
-<<<<<<< HEAD
-            String query = "SELECT * FROM Shift WHERE Bus_No LIKE ? OR DATE_FORMAT(Date, '%Y-%m-%d') LIKE ?";
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, "%" + searchText1 + "%"); 
-            preparedStatement.setString(2, "%" + searchText2 + "%");
-=======
+
+           
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
             String query = "SELECT * FROM Shift WHERE Bus_No LIKE ? OR DATE_FORMAT(Date, '%Y-%m-%d') LIKE ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, searchText1); 
             preparedStatement.setString(2, searchText2);
->>>>>>> origin/master
+
             //preparedStatement.setString(3, "%" + searchText + "%");
             resultSet = preparedStatement.executeQuery();
             
