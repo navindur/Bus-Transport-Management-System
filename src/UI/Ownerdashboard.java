@@ -370,6 +370,9 @@ public class Ownerdashboard extends javax.swing.JFrame {
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
         // TODO add your handling code here:
+        SeatBookingView sbv = new SeatBookingView();
+        sbv.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel30MouseClicked
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
