@@ -5,13 +5,7 @@
 package UI;
 
 import java.sql.*;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import Codes.DatabaseConnection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -82,15 +76,48 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
                     connection.close();
                 }
             } catch (Exception e) {
-
                 e.printStackTrace();
             }
-            /*try {
-            if (connection != null) connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
         }
+    }
+
+    /**
+     * Builds the SQL query based on the provided search criteria.
+     *
+     * @param searchText1 Name search text
+     * @param searchText2 Registration No search text
+     * @param selectedPosition Selected position from the dropdown
+     * @return The constructed SQL query string
+     */
+    private String buildQuery(String searchText1, String searchText2, String selectedPosition) {
+        StringBuilder query = new StringBuilder("SELECT * FROM Employee");
+        boolean hasWhereClause = false;
+
+        if (!searchText1.isEmpty()) {
+            query.append(" WHERE FullName LIKE ?"); // Use LIKE operator for partial name matching
+            hasWhereClause = true;
+        }
+
+        if (!searchText2.isEmpty()) {
+            if (hasWhereClause) {
+                query.append(" AND ");
+            } else {
+                query.append(" WHERE ");
+                hasWhereClause = true;
+            }
+            query.append("Registration_No LIKE ?"); // Use LIKE operator for partial registration number matching
+        }
+
+        if (!selectedPosition.equals("None")) {
+            if (hasWhereClause) {
+                query.append(" AND ");
+            } else {
+                query.append(" WHERE ");
+                hasWhereClause = true;
+            }
+            query.append("`Work as a` = ?"); // Use exact comparison for position
+        }
+        return query.toString();
     }
 
     /**
@@ -133,7 +160,6 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Name :");
         panelRound1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
@@ -148,7 +174,6 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         panelRound1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 25, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Reg. No. :");
         panelRound1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
 
@@ -163,19 +188,17 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         panelRound1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 25, 160, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Field :");
         panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
 
         jComboBox1.setBackground(new java.awt.Color(51, 51, 51));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Driver", "Conductor", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Driver", "Conductor" }));
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelRound1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 25, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
         jButton1.setText("Search");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -277,66 +300,25 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         String searchText2 = jTextField2.getText(); // Registration No
         String selectedPosition = (String) jComboBox1.getSelectedItem(); // Selected position
 
-        try {
-            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
-
-            // Build the query based on search criteria
-            StringBuilder query = new StringBuilder("SELECT * FROM Employee");
-            boolean hasWhereClause = false;
-
-            if (!searchText1.isEmpty()) {
-                query.append(" WHERE FullName LIKE ?");
-                hasWhereClause = true;
-            }
-
-            if (!searchText2.isEmpty()) {
-                if (hasWhereClause) {
-                    query.append(" AND ");
-                } else {
-                    query.append(" WHERE ");
-                    hasWhereClause = true;
-                }
-                query.append("Registration_No LIKE ?");
-            }
-
-            if (!selectedPosition.equals("None")) { // Check if "None" is selected
-                if (hasWhereClause) {
-                    query.append(" AND ");
-                } else {
-                    query.append(" WHERE ");
-                    hasWhereClause = true;
-                }
-                query.append("`Work as a` = ?");
-            }
-
-            preparedStatement = connection.prepareStatement(query.toString());
+        try (
+                Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2, selectedPosition))) {
 
             int parameterIndex = 1;
             if (!searchText1.isEmpty()) {
-                preparedStatement.setString(parameterIndex++, "%" + searchText1 + "%");
+                preparedStatement.setString(parameterIndex++, "%" + searchText1 + "%"); // Add wildcards for LIKE operator
             }
             if (!searchText2.isEmpty()) {
-                preparedStatement.setString(parameterIndex++, searchText2);
+                preparedStatement.setString(parameterIndex++, "%" + searchText2 + "%"); // Add wildcards for LIKE operator
             }
-            if (!selectedPosition.equals("None")) { // Bind parameter only if not "None"
+            if (!selectedPosition.equals("None")) {
                 preparedStatement.setString(parameterIndex++, selectedPosition);
             }
-//        String searchText1 = jTextField1.getText();
-//        String searchText2 = jTextField2.getText();
-//
-//        try {
-//            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
-//            String query = "SELECT * FROM Employee WHERE FullName LIKE ? OR Registration_No LIKE  ? OR `Work as a` = ?";
-//            preparedStatement = connection.prepareStatement(query);
-//            preparedStatement.setString(1, "%" + searchText1 + "%");
-//            preparedStatement.setString(2, searchText2);
-//            preparedStatement.setString(3, (String) jComboBox1.getSelectedItem());
-//
-//            //preparedStatement.setString(3, "%" + searchText + "%");
-            resultSet = preparedStatement.executeQuery();
+
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.setRowCount(0); // Clear existing data
+            model.setRowCount(0); // Clear existing data before populating
+
             while (resultSet.next()) {
                 Object[] row = {
                     resultSet.getString("FullName"),
@@ -348,32 +330,14 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
                     resultSet.getString("Landline_No"),
                     resultSet.getString("Work as a"),
                     resultSet.getString("Username"),
-                    resultSet.getString("Password"),};
+                    resultSet.getString("Password")
+                };
                 model.addRow(row);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error: Unable to perform the search");
-        } finally {
-            // Close resources in the reverse order of their creation
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (preparedStatement != null) {
-                    preparedStatement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            /*try {
-        if (connection != null) connection.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }*/
+
+        } catch (SQLException e) { // Catch and handle SQL exceptions
+            System.err.println("Error during search: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "An error occurred while performing the search. Please try again later.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
