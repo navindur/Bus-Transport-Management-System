@@ -6,6 +6,7 @@ package UI;
 
 import Codes.DatabaseConnection;
 import java.sql.*;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,18 +43,15 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         jTextField10 = new javax.swing.JTextField();
         jTextField11 = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        resetButton = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
+        datePicker3 = new com.github.lgooddatepicker.components.DatePicker();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -130,12 +128,6 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         jLabel19.setText("Registraion Date");
         panelRound1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 40, -1, -1));
 
-        jTextField12.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField12.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField12.setText("2021-11-23");
-        panelRound1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 34, 160, -1));
-
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel20.setText("Bus Model");
         panelRound1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 100, -1, -1));
@@ -154,76 +146,50 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
-        panelRound1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 97, -1, -1));
+        panelRound1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 97, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel21.setText("Last Service Date");
         panelRound1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 160, -1, -1));
 
-        jTextField13.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField13.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField13.setText("2024-02-29");
-        panelRound1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 155, 160, -1));
-
-        jTextField14.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField14.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField14.setText("2024-05-29");
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+        resetButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        resetButton.setText("Reset All");
+        resetButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
+                resetButtonActionPerformed(evt);
             }
         });
-        panelRound1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 160, -1));
+        panelRound1.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setText("Reset All");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        submitButton.setBackground(new java.awt.Color(242, 242, 242));
+        submitButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        submitButton.setForeground(new java.awt.Color(51, 51, 51));
+        submitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
+        submitButton.setText("Submit");
+        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                submitButtonActionPerformed(evt);
             }
         });
-        panelRound1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
-
-        jButton5.setBackground(new java.awt.Color(242, 242, 242));
-        jButton5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(51, 51, 51));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
-        jButton5.setText("Submit");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        panelRound1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 283, -1, -1));
-
-        jLabel23.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("YYYY-MM-DD");
-        jLabel23.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panelRound1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 187, 120, 20));
-
-        jLabel24.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("YYYY-MM-DD");
-        jLabel24.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panelRound1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 65, 120, 20));
+        panelRound1.add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 283, -1, -1));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel25.setText("Next Service Date");
         panelRound1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 223, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("YYYY-MM-DD");
-        jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        panelRound1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(645, 252, 120, 20));
+        datePicker1.setBackground(new java.awt.Color(255, 255, 255));
+        datePicker1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        panelRound1.add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, -1));
+
+        datePicker2.setBackground(new java.awt.Color(255, 255, 255));
+        datePicker2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        panelRound1.add(datePicker2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, -1, -1));
+
+        datePicker3.setBackground(new java.awt.Color(255, 255, 255));
+        datePicker3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        panelRound1.add(datePicker3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 225, -1, -1));
 
         jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 810, 380));
 
@@ -265,15 +231,18 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         String busRegistrationNo = jTextField6.getText();
-        String registrationDate = jTextField12.getText();
+//        String registrationDate = jTextField12.getText();
+        String registrationDate = datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
         String busChassisNo = jTextField9.getText();
         String busModel = (String) jComboBox2.getSelectedItem();
         String addingMileage = jTextField10.getText();
-        String lastServiceDate = jTextField13.getText();
+//        String lastServiceDate = jTextField13.getText();
+        String lastServiceDate = datePicker2.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
         String nextServiceMileage = jTextField11.getText();
-        String nextServiceDate = jTextField14.getText();
+//        String nextServiceDate = jTextField14.getText();
+        String nextServiceDate = datePicker3.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
 
         // Validate input
         if (busRegistrationNo.isEmpty() || registrationDate.isEmpty() || busChassisNo.isEmpty() || busModel.isEmpty() || addingMileage.isEmpty() || lastServiceDate.isEmpty() || nextServiceMileage.isEmpty() || nextServiceDate.isEmpty()) {
@@ -287,12 +256,14 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
             String sql = "INSERT INTO Bus (Bus_No, RegistrationDate, Chassis_No, Model, AddingMileage, LastServiceDate, NextServiceMileage, NextServiceDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, busRegistrationNo);
-            statement.setDate(2, java.sql.Date.valueOf(registrationDate));
+//            statement.setDate(2, java.sql.Date.valueOf(registrationDate)); -- this is used if there are textFields
+            statement.setString(2, registrationDate);
             statement.setString(3, busChassisNo);
 //            statement.setLong(3, Long.parseLong(busChassisNo));
             statement.setString(4, busModel);
             statement.setInt(5, Integer.parseInt(addingMileage));
-            statement.setDate(6, java.sql.Date.valueOf(lastServiceDate));
+//            statement.setDate(6, java.sql.Date.valueOf(lastServiceDate)); -- this is used if there are textFields
+            statement.setString(6, lastServiceDate);
             statement.setInt(7, Integer.parseInt(nextServiceMileage));
             statement.setString(8, nextServiceDate);
             int rowsAffected = statement.executeUpdate();
@@ -300,7 +271,7 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
             if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(this, "Bus details added successfully!");
                 // Clear text fields
-//                jButton2ActionPerformed(evt);
+//                resetButtonActionPerformed(evt);
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to add bus details.");
             }
@@ -317,27 +288,23 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         } catch (Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
+    }//GEN-LAST:event_submitButtonActionPerformed
 
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // Clear TextFields
         jTextField6.setText("");
-        jTextField12.setText("");
         jTextField9.setText("");
-        jComboBox2.setSelectedIndex(0); // Assuming first item is empty
+        jComboBox2.setSelectedIndex(0);
         jTextField10.setText("");
-        jTextField13.setText("");
         jTextField11.setText("");
-        jTextField14.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
+        datePicker1.clear();
+        datePicker2.clear();
+        datePicker3.clear();
+    }//GEN-LAST:event_resetButtonActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
@@ -379,8 +346,9 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
+    private com.github.lgooddatepicker.components.DatePicker datePicker2;
+    private com.github.lgooddatepicker.components.DatePicker datePicker3;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
@@ -391,20 +359,16 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField9;
     private UI.Images.PanelRound panelRound1;
+    private javax.swing.JButton resetButton;
+    private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 }

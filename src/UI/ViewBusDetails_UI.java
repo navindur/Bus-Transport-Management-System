@@ -4,6 +4,11 @@
  */
 package UI;
 
+import Codes.DatabaseConnection;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author kumar
@@ -15,6 +20,40 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
      */
     public ViewBusDetails_UI() {
         initComponents();
+        loadData();
+    }
+
+    private void loadData() {
+        try {
+            // Get connection to database
+            Connection connection = DatabaseConnection.getConnection();
+            // Prepare SQL query to fetch bus data
+            String sql = "SELECT Bus_No, RegistrationDate, Chassis_No, Model, AddingMileage FROM Bus";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            // Execute query and get results
+            ResultSet resultSet = statement.executeQuery();
+
+            // Get table model for data display
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear existing data in the model
+
+            // Iterate through results and add rows to model
+            while (resultSet.next()) {
+                String busNo = resultSet.getString("Bus_No");
+                Date registrationDate = resultSet.getDate("RegistrationDate");
+                String chassisNo = resultSet.getString("Chassis_No");
+                String busModel = resultSet.getString("Model");
+                int addingMileage = resultSet.getInt("AddingMileage");
+                model.addRow(new Object[]{busNo, registrationDate, chassisNo, busModel, addingMileage});
+            }
+
+            // Close resources
+            resultSet.close();
+            statement.close();
+//            connection.close();
+        } catch (SQLException e) { // Handle database errors
+            JOptionPane.showMessageDialog(this, "Error fetching bus data: " + e.getMessage());
+        }
     }
 
     /**
@@ -34,9 +73,10 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -50,13 +90,12 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(100, 204, 197));
         jLabel2.setText("View Bus Details");
         jPanel3.add(jLabel2);
-        jLabel2.setBounds(310, 20, 312, 54);
+        jLabel2.setBounds(310, 20, 309, 54);
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Bus Number");
         panelRound1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
 
@@ -107,54 +146,64 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Hint:-  NB 4210");
+        jLabel5.setText("Hint:-  NB-4210");
         panelRound1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 65, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
-        jButton1.setText("Search");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
+        searchButton.setText("Search");
+        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchButtonActionPerformed(evt);
             }
         });
-        panelRound1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
+        panelRound1.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(242, 242, 242));
-        jButton3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
-        jButton3.setText("Add New");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        deleteButton.setBackground(new java.awt.Color(242, 242, 242));
+        deleteButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorMinus.png"))); // NOI18N
+        deleteButton.setText("Delete");
+        deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                deleteButtonActionPerformed(evt);
             }
         });
-        panelRound1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, -1, -1));
+        panelRound1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+
+        addButton.setBackground(new java.awt.Color(242, 242, 242));
+        addButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
+        addButton.setText("Add New");
+        addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+        panelRound1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, -1, -1));
 
         jPanel3.add(panelRound1);
         panelRound1.setBounds(60, 110, 830, 400);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png"))); // NOI18N
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png"))); // NOI18N
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton4MouseEntered(evt);
+                backButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton4MouseExited(evt);
+                backButtonMouseExited(evt);
             }
         });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton4);
-        jButton4.setBounds(70, 530, 100, 35);
+        jPanel3.add(backButton);
+        backButton.setBounds(70, 530, 100, 35);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name icon.png"))); // NOI18N
         jPanel3.add(jLabel15);
@@ -185,34 +234,123 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         Ownerdashboard ownerDashboard = new Ownerdashboard();
         ownerDashboard.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
-    private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
+    private void backButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseExited
         // TODO add your handling code here:
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png")));
-    }//GEN-LAST:event_jButton4MouseExited
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png")));
+    }//GEN-LAST:event_backButtonMouseExited
 
-    private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
+    private void backButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseEntered
         // TODO add your handling code here:
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder2.png")));
-    }//GEN-LAST:event_jButton4MouseEntered
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder2.png")));
+    }//GEN-LAST:event_backButtonMouseEntered
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        AddNewBusDetails_UI addBus = new AddNewBusDetails_UI();
-        addBus.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow >= 0) {
+            // Get bus number from selected row
+            String busNo = jTable1.getValueAt(selectedRow, 0).toString();
+            // Confirm deletion with user
+            int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete bus: " + busNo, "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                try {
+                    // Get database connection
+                    Connection connection = DatabaseConnection.getConnection();
+                    // Prepare SQL query to delete bus
+                    String sql = "DELETE FROM Bus WHERE Bus_No = ?";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    // Set bus number in query
+                    statement.setString(1, busNo);
+                    // Execute query and check affected rows
+                    int rowsAffected = statement.executeUpdate();
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+                    if (rowsAffected > 0) {
+                        loadData(); // Refresh table data
+                        JOptionPane.showMessageDialog(this, "Bus deleted successfully.");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Failed to delete bus.");
+                    }
+
+                    // Close resources
+                    statement.close();
+//                    connection.close();
+                } catch (SQLException e) { // Handle database errors
+                    JOptionPane.showMessageDialog(this, "Error deleting bus data: " + e.getMessage());
+                }
+            }
+        } else { // Inform user if no bus is selected
+            JOptionPane.showMessageDialog(this, "Please select a bus to delete.");
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // Get bus number from text field
+        String busNoTextField = jTextField1.getText();
+        try {
+            // Get database connection
+            Connection connection = DatabaseConnection.getConnection();
+            // Prepare statement based on bus number availability
+            PreparedStatement statement;
+            String sql;
+            if (busNoTextField.isEmpty()) {
+                // Get all buses when the field is empty
+                sql = "SELECT Bus_No, RegistrationDate, Chassis_No, Model, AddingMileage FROM Bus";
+                statement = connection.prepareStatement(sql);
+            } else {
+                // Search for specific bus
+                sql = "SELECT Bus_No, RegistrationDate, Chassis_No, Model, AddingMileage FROM Bus WHERE Bus_No = ?";
+                statement = connection.prepareStatement(sql);
+                statement.setString(1, busNoTextField); // Set the bus number in the query parameter
+            }
+
+            // Execute the prepared statement and retrieve the results
+            ResultSet resultSet = statement.executeQuery();
+
+            // Get table model for data display
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear existing data
+
+            if (resultSet.next()) { // Check if any results were found
+                // At least one result found (either for specific bus or all buses)
+                do {
+                    // Extract values from the result set for each row
+                    String busNo = resultSet.getString("Bus_No");
+                    String registrationDate = resultSet.getString("RegistrationDate");
+                    String chassisNo = resultSet.getString("Chassis_No");
+                    String busModel = resultSet.getString("Model");
+                    int addingMileage = resultSet.getInt("AddingMileage");
+                    
+                    // Add a new row to the table model with the extracted values
+                    model.addRow(new Object[]{busNo, registrationDate, chassisNo, busModel, addingMileage});
+                } while (resultSet.next()); // Add all rows if more than one result is found
+            } else {
+                // No results found
+                JOptionPane.showMessageDialog(this, "No buses found.");
+            }
+
+            // Close resources
+            resultSet.close();
+            statement.close();
+//            connection.close();
+        } catch (SQLException e) { // Handle potential database errors
+            JOptionPane.showMessageDialog(this, "Error searching bus data: " + e.getMessage());
+        }
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        AddNewBusDetails_UI addNewBus = new AddNewBusDetails_UI();
+        addNewBus.setVisible(true);
+//        this.dispose();
+    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,9 +388,9 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -264,5 +402,6 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private UI.Images.PanelRound panelRound1;
+    private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
 }
