@@ -19,8 +19,18 @@ public class customer_interface extends javax.swing.JFrame {
     /**
      * Creates new form customer_interface
      */
+    private String userName;
+
     public customer_interface() {
         initComponents();
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    private void setUserName(String userName) {
+        this.userName = userName;
     }
 
     /**
@@ -120,6 +130,11 @@ public class customer_interface extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, 150, 40));
 
         jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 240, 40));
         jPasswordField1.getAccessibleContext().setAccessibleName("");
 
@@ -154,13 +169,10 @@ public class customer_interface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-         if(jCheckBox1.isSelected()) 
-            {
-               jPasswordField1.setEchoChar((char)0);
-            }
-        else
-        {
-            jPasswordField1.setEchoChar ('*' );
+        if (jCheckBox1.isSelected()) {
+            jPasswordField1.setEchoChar((char) 0);
+        } else {
+            jPasswordField1.setEchoChar('*');
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
@@ -202,47 +214,40 @@ public class customer_interface extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-   
+
             // Establish a database connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Dulmi#12345");
-            
-            
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "MYsql2023#");
+
             String username = jTextField1.getText();
             String password = jPasswordField1.getText();
-            
-               Statement stm = con.createStatement();
-               
-               String sql = "select * from Customer where  Username='"+username+"' and Password='"+password+"'";
-               ResultSet rs = stm.executeQuery(sql);
-               
-               if(rs.next()) {
-                   //if username and password is true than go to login page
-                   
-                   dispose (); //close the employee interface page
-                   Customerdashboard cdash = new Customerdashboard ();
-                   cdash.setVisible(true);
-               }
-               else{
-                   //if username and password is wrong show message
-                   JOptionPane.showMessageDialog(this,"Username or Password wrong..");
-                   jTextField1.setText("");
-                   jPasswordField1.setText("");
-                   
-                   
-               }
-               
-              con.close();
-               
-             
-        }
-        
-        catch (Exception e){
+
+            Statement stm = con.createStatement();
+
+            String sql = "select * from Customer where  Username='" + username + "' and Password='" + password + "'";
+            ResultSet rs = stm.executeQuery(sql);
+
+            if (rs.next()) {
+                //if username and password is true than go to login page
+                dispose(); //close the employee interface page
+                setUserName(rs.getString(6));
+
+                Customerdashboard customerDashboard = new Customerdashboard(username); // Pass username to CustomerDashboard
+                customerDashboard.setVisible(true);
+            } else {
+                //if username and password is wrong show message
+                JOptionPane.showMessageDialog(this, "Username or Password wrong..");
+                jTextField1.setText("");
+                jPasswordField1.setText("");
+            }
+//              con.close();
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-            
-        
-            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments

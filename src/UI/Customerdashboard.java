@@ -16,8 +16,16 @@ public class Customerdashboard extends javax.swing.JFrame {
     /**
      * Creates new form Customerdashboard
      */
+    
+    private String username;
+    
     public Customerdashboard() {
         initComponents();
+    }
+    
+    public Customerdashboard(String username) {
+        initComponents();
+        this.username = username;
     }
 
     /**
@@ -217,22 +225,18 @@ public class Customerdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseExited
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        Customerprofile custprofile = new Customerprofile();
-        custprofile.setVisible(true);
+        Customerprofile customerProfile = new Customerprofile(username); // Pass username again
+        customerProfile.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        SeatBooking seatbooking_ui = new SeatBooking();
+        SeatBooking seatbooking_ui = new SeatBooking(username);
         seatbooking_ui.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        
-        
-       
-        
         
     }//GEN-LAST:event_jLabel6MouseClicked
 

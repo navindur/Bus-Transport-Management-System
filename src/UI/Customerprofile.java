@@ -4,6 +4,10 @@
  */
 package UI;
 
+import Codes.DatabaseConnection;
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author navin
@@ -13,10 +17,53 @@ public class Customerprofile extends javax.swing.JFrame {
     /**
      * Creates new form Customerprofile
      */
+    private String username; // Stores the username of the logged-in user
+
     public Customerprofile() {
         initComponents();
     }
 
+    public Customerprofile(String username) {
+        this.username = username;
+        initComponents();
+
+        // Fetch and display customer data upon window opening
+        fetchData();
+    }
+
+    private void fetchData() {
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            String sql = "SELECT fName, lName, MobileNumber, EMail FROM Customer WHERE Username = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, username);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String firstName = resultSet.getString("fName");
+                String lastName = resultSet.getString("lName");
+                String mobileNumber = resultSet.getString("MobileNumber");
+                String email = resultSet.getString("EMail");
+
+                // Set retrieved data in text fields
+                jTextField8.setText(firstName);
+                jTextField4.setText(lastName);
+                jTextField5.setText(mobileNumber);
+                jTextField7.setText(email);
+                jLabel3.setText(username); // Username should be displayed, not editable
+            } else {
+                JOptionPane.showMessageDialog(this, "No data found for the user.");
+            }
+
+//            connection.close();
+            statement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            JOptionPane.showMessageDialog(this, "An error occurred while fetching data.");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,12 +83,13 @@ public class Customerprofile extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        changePasswordUIButton = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -73,26 +121,27 @@ public class Customerprofile extends javax.swing.JFrame {
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 100, 35));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Last Name");
+        panelRound1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 50, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel22.setText("Mobile Number");
+        jLabel22.setText("+94");
+        panelRound1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 165, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("First Name");
+        panelRound1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 50, -1, -1));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setText("Password");
+        panelRound1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 210, -1, -1));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setText("Email");
+        panelRound1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 130, -1, -1));
 
         jTextField4.setBackground(new java.awt.Color(51, 51, 51));
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -102,6 +151,7 @@ public class Customerprofile extends javax.swing.JFrame {
                 jTextField4ActionPerformed(evt);
             }
         });
+        panelRound1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 81, 188, -1));
 
         jTextField5.setBackground(new java.awt.Color(51, 51, 51));
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -111,24 +161,18 @@ public class Customerprofile extends javax.swing.JFrame {
                 jTextField5ActionPerformed(evt);
             }
         });
-
-        jTextField6.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
+        panelRound1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 161, 160, -1));
 
         jTextField7.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField7.setToolTipText("");
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
             }
         });
+        panelRound1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 160, 240, 31));
 
         jTextField8.setBackground(new java.awt.Color(51, 51, 51));
         jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -138,95 +182,47 @@ public class Customerprofile extends javax.swing.JFrame {
                 jTextField8ActionPerformed(evt);
             }
         });
+        panelRound1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 81, 188, -1));
 
-        jButton3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
-        jButton3.setText("Update");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        updateButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        updateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
+        updateButton.setText("Update");
+        updateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
+        panelRound1.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 305, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Change Password");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        changePasswordUIButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        changePasswordUIButton.setText("Change Password");
+        changePasswordUIButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        changePasswordUIButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                changePasswordUIButtonMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        changePasswordUIButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                changePasswordUIButtonActionPerformed(evt);
             }
         });
+        panelRound1.add(changePasswordUIButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 241, -1, -1));
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("User Name");
+        panelRound1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 210, -1, -1));
 
-        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
-        panelRound1.setLayout(panelRound1Layout);
-        panelRound1Layout.setHorizontalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addGroup(panelRound1Layout.createSequentialGroup()
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel22)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel26)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(78, 78, 78)
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel24)
-                            .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel25)
-                                .addComponent(jLabel21)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(73, Short.MAX_VALUE))
-        );
-        panelRound1Layout.setVerticalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(jLabel21))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel25))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel26))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18))
-        );
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel27.setText("Mobile Number");
+        panelRound1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 130, -1, -1));
+
+        jLabel3.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setOpaque(true);
+        panelRound1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 241, 188, 31));
 
         jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 610, 370));
 
@@ -252,10 +248,6 @@ public class Customerprofile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
@@ -264,18 +256,53 @@ public class Customerprofile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        String firstName = jTextField8.getText();
+        String lastName = jTextField4.getText();
+        String mobileNumber = jTextField5.getText();
+        String email = jTextField7.getText();
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (firstName.isEmpty() || lastName.isEmpty() || mobileNumber.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+            return;
+        }
+
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            String sql = "UPDATE Customer SET fName = ?, lName = ?, MobileNumber = ?, EMail = ? WHERE Username = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3, mobileNumber);
+            statement.setString(4, email);
+            statement.setString(5, username);
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(this, "Customer details updated successfully.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to update customer details.");
+            }
+
+//            connection.close();
+            statement.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            JOptionPane.showMessageDialog(this, "An error occurred while updating data." + e);
+        }
+    
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void changePasswordUIButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordUIButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_changePasswordUIButtonActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-       Changecustomerpass changepass = new Changecustomerpass();
-       changepass.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void changePasswordUIButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changePasswordUIButtonMouseClicked
+        Changecustomerpass changePassUI = new Changecustomerpass(username);
+        changePassUI.setVisible(true);
+    }//GEN-LAST:event_changePasswordUIButtonMouseClicked
 
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
         // TODO add your handling code here:
@@ -289,9 +316,8 @@ public class Customerprofile extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Customerdashboard custdashboard = new Customerdashboard();
+        Customerdashboard custdashboard = new Customerdashboard(username);
         custdashboard.setVisible(true);
-
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -325,14 +351,14 @@ public class Customerprofile extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new Customerprofile().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton changePasswordUIButton;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -342,12 +368,14 @@ public class Customerprofile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private UI.Images.PanelRound panelRound1;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
