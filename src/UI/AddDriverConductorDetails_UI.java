@@ -246,12 +246,12 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
             // Define the SQL query for inserting income data
-            String incomeInput = "Insert into Employee (FullName, NIC, License_No, Registration_No, DOB, Mobile_No, Landline_No, `Work as a`, Username, Password) values (?,?,?,?,?,?,?,?,?,?)";
+            String AddDriverConductorDetails_UI = "Insert into Employee (FullName, NIC, License_No, Registration_No, DOB, Mobile_No, Landline_No, `Work as a`, Username, Password) values (?,?,?,?,?,?,?,?,?,?)";
             
             // Establish a database connection
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
 //            JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
-            PreparedStatement pstmt = con.prepareStatement(incomeInput);
+            PreparedStatement pstmt = con.prepareStatement(AddDriverConductorDetails_UI);
             
             pstmt.setString(1, jTextField1.getText());
             pstmt.setString(2, jTextField3.getText());
