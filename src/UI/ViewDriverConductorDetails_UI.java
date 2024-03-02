@@ -13,18 +13,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author kumar
  */
 public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
+
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
-    
+    private static final String PASSWORD = "MYsql2023#";
+
     private Connection connection;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
+
     /**
      * Creates new form ViewDriverConductorDetails_UI
      */
@@ -35,16 +38,15 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
 
     private void displayData() {
 
-        
         try {
             // Connect to the database
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
 
             // Query to retrieve data from the table
             String query = "SELECT * FROM Employee";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
-            
+
             // Populate the table with data
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0); // Clear existing data
@@ -61,20 +63,25 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
                     resultSet.getString("Landline_No"),
                     resultSet.getString("Work as a"),
                     resultSet.getString("Username"),
-                    resultSet.getString("Password"),
-                };
+                    resultSet.getString("Password"),};
                 model.addRow(row);
-                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error: Unable to fetch data from the database");
         } finally {
             // Close resources in the reverse order of their creation
             try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            }  catch (Exception e) {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception e) {
 
                 e.printStackTrace();
             }
@@ -84,7 +91,8 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
             e.printStackTrace();
         }*/
         }
-            }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -265,23 +273,68 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String searchText1 = jTextField1.getText();
-        String searchText2 = jTextField2.getText();
-        
-        
-        try {
+        String searchText1 = jTextField1.getText(); // Name
+        String searchText2 = jTextField2.getText(); // Registration No
+        String selectedPosition = (String) jComboBox1.getSelectedItem(); // Selected position
 
-           
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
-            String query = "SELECT * FROM Employee WHERE FullName LIKE ? OR Registration_No LIKE  ? OR `Work as a` = ?";
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, "%" +searchText1+"%"); 
-            preparedStatement.setString(2, searchText2);
-            preparedStatement.setString(3, (String) jComboBox1.getSelectedItem());
-            
-            //preparedStatement.setString(3, "%" + searchText + "%");
+        try {
+            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+
+            // Build the query based on search criteria
+            StringBuilder query = new StringBuilder("SELECT * FROM Employee");
+            boolean hasWhereClause = false;
+
+            if (!searchText1.isEmpty()) {
+                query.append(" WHERE FullName LIKE ?");
+                hasWhereClause = true;
+            }
+
+            if (!searchText2.isEmpty()) {
+                if (hasWhereClause) {
+                    query.append(" AND ");
+                } else {
+                    query.append(" WHERE ");
+                    hasWhereClause = true;
+                }
+                query.append("Registration_No LIKE ?");
+            }
+
+            if (!selectedPosition.equals("None")) { // Check if "None" is selected
+                if (hasWhereClause) {
+                    query.append(" AND ");
+                } else {
+                    query.append(" WHERE ");
+                    hasWhereClause = true;
+                }
+                query.append("`Work as a` = ?");
+            }
+
+            preparedStatement = connection.prepareStatement(query.toString());
+
+            int parameterIndex = 1;
+            if (!searchText1.isEmpty()) {
+                preparedStatement.setString(parameterIndex++, "%" + searchText1 + "%");
+            }
+            if (!searchText2.isEmpty()) {
+                preparedStatement.setString(parameterIndex++, searchText2);
+            }
+            if (!selectedPosition.equals("None")) { // Bind parameter only if not "None"
+                preparedStatement.setString(parameterIndex++, selectedPosition);
+            }
+//        String searchText1 = jTextField1.getText();
+//        String searchText2 = jTextField2.getText();
+//
+//        try {
+//            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+//            String query = "SELECT * FROM Employee WHERE FullName LIKE ? OR Registration_No LIKE  ? OR `Work as a` = ?";
+//            preparedStatement = connection.prepareStatement(query);
+//            preparedStatement.setString(1, "%" + searchText1 + "%");
+//            preparedStatement.setString(2, searchText2);
+//            preparedStatement.setString(3, (String) jComboBox1.getSelectedItem());
+//
+//            //preparedStatement.setString(3, "%" + searchText + "%");
             resultSet = preparedStatement.executeQuery();
-            
+
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0); // Clear existing data
             while (resultSet.next()) {
@@ -295,20 +348,25 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
                     resultSet.getString("Landline_No"),
                     resultSet.getString("Work as a"),
                     resultSet.getString("Username"),
-                    resultSet.getString("Password"),
-                };
+                    resultSet.getString("Password"),};
                 model.addRow(row);
             }
-            } catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error: Unable to perform the search");
         } finally {
             // Close resources in the reverse order of their creation
             try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-                } catch (Exception e) {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             /*try {
@@ -317,8 +375,6 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         e.printStackTrace();
     }*/
         }
-    
-          
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
