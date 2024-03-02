@@ -222,27 +222,11 @@
                 <Component class="javax.swing.JComboBox" name="depatureLocation">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="20">
-                        <StringItem index="0" value="MAKUMBURA"/>
-                        <StringItem index="1" value="GALLE"/>
-                        <StringItem index="2" value="MATARA"/>
-                        <StringItem index="3" value="KADUWELA"/>
-                        <StringItem index="4" value="HAKMANA"/>
-                        <StringItem index="5" value="COLOMBO"/>
-                        <StringItem index="6" value="NEGOMBO"/>
-                        <StringItem index="7" value="MIDDENIYA"/>
-                        <StringItem index="8" value="EMBILIPITIYA"/>
-                        <StringItem index="9" value="AKURESSA"/>
-                        <StringItem index="10" value="WEERAKETIYA"/>
-                        <StringItem index="11" value="DEIYANDARA"/>
-                        <StringItem index="12" value="DENIYAYA"/>
-                        <StringItem index="13" value="ELPITIYA"/>
-                        <StringItem index="14" value="KATARAGAMA"/>
-                        <StringItem index="15" value="KADAWATHA"/>
-                        <StringItem index="16" value="KANDY"/>
-                        <StringItem index="17" value="PANADURA"/>
-                        <StringItem index="18" value="KAMBURUPITIYA"/>
-                        <StringItem index="19" value="UNIVERSITY OF MORATUWA"/>
+                      <StringArray count="4">
+                        <StringItem index="0" value="Colombo"/>
+                        <StringItem index="1" value="Kandy"/>
+                        <StringItem index="2" value="Galle"/>
+                        <StringItem index="3" value="Matara"/>
                       </StringArray>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -264,27 +248,11 @@
                 <Component class="javax.swing.JComboBox" name="arrivalLocation">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="20">
-                        <StringItem index="0" value="GALLE"/>
-                        <StringItem index="1" value="MAKUMBURA"/>
-                        <StringItem index="2" value="MATARA"/>
-                        <StringItem index="3" value="KADUWELA"/>
-                        <StringItem index="4" value="COLOMBO"/>
-                        <StringItem index="5" value="HAKMANA"/>
-                        <StringItem index="6" value="NEGOMBO"/>
-                        <StringItem index="7" value="MIDDENIYA"/>
-                        <StringItem index="8" value="EMBILIPITIYA"/>
-                        <StringItem index="9" value="AKURESSA"/>
-                        <StringItem index="10" value="WEERAKETIYA"/>
-                        <StringItem index="11" value="DEIYANDARA"/>
-                        <StringItem index="12" value="DENIYAYA"/>
-                        <StringItem index="13" value="ELPITIYA"/>
-                        <StringItem index="14" value="KATARAGAMA"/>
-                        <StringItem index="15" value="KADAWATHA"/>
-                        <StringItem index="16" value="KANDY"/>
-                        <StringItem index="17" value="PANADURA"/>
-                        <StringItem index="18" value="KAMBURUPITIYA"/>
-                        <StringItem index="19" value="UNIVERSITY OF MORATUWA"/>
+                      <StringArray count="4">
+                        <StringItem index="0" value="Kandy"/>
+                        <StringItem index="1" value="Galle"/>
+                        <StringItem index="2" value="Matara"/>
+                        <StringItem index="3" value="Colombo"/>
                       </StringArray>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -485,15 +453,15 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="jButton10">
                           <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI" size="18" style="1"/>
-                            </Property>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/UI/Images/search (1).png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Search"/>
                             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                               <Color id="Hand Cursor"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="18" style="1"/>
                             </Property>
                           </Properties>
                           <Events>
@@ -506,15 +474,15 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="jButton9">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="18" style="1"/>
-                    </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/UI/Images/search (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Search"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="18" style="1"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -545,7 +513,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
-                          <Component id="jLabel18" pref="114" max="32767" attributes="0"/>
+                          <Component id="jLabel18" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jComboBox1" min="-2" pref="132" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -1003,10 +971,10 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel23">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="Confirmation"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="18" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Confirmation"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel25">

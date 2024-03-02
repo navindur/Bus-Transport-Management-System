@@ -226,7 +226,7 @@ public class SeatBooking extends javax.swing.JFrame {
         searchPane.setPreferredSize(new java.awt.Dimension(32767, 32767));
         searchPane.setLayout(null);
 
-        depatureLocation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MAKUMBURA", "GALLE", "MATARA", "KADUWELA", "HAKMANA", "COLOMBO", "NEGOMBO", "MIDDENIYA", "EMBILIPITIYA", "AKURESSA", "WEERAKETIYA", "DEIYANDARA", "DENIYAYA", "ELPITIYA", "KATARAGAMA", "KADAWATHA", "KANDY", "PANADURA", "KAMBURUPITIYA", "UNIVERSITY OF MORATUWA" }));
+        depatureLocation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Colombo", "Kandy", "Galle", "Matara" }));
         depatureLocation.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         depatureLocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +236,7 @@ public class SeatBooking extends javax.swing.JFrame {
         searchPane.add(depatureLocation);
         depatureLocation.setBounds(130, 130, 190, 31);
 
-        arrivalLocation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "GALLE", "MAKUMBURA", "MATARA", "KADUWELA", "COLOMBO", "HAKMANA", "NEGOMBO", "MIDDENIYA", "EMBILIPITIYA", "AKURESSA", "WEERAKETIYA", "DEIYANDARA", "DENIYAYA", "ELPITIYA", "KATARAGAMA", "KADAWATHA", "KANDY", "PANADURA", "KAMBURUPITIYA", "UNIVERSITY OF MORATUWA" }));
+        arrivalLocation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kandy", "Galle", "Matara", "Colombo" }));
         arrivalLocation.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         searchPane.add(arrivalLocation);
         arrivalLocation.setBounds(130, 240, 190, 31);
@@ -313,10 +313,10 @@ public class SeatBooking extends javax.swing.JFrame {
         jLabel5.setText("Shedule id");
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jButton10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
         jButton10.setText("Search");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -358,10 +358,10 @@ public class SeatBooking extends javax.swing.JFrame {
         searchPane.add(main);
         main.setBounds(340, 50, 550, 540);
 
-        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
         jButton9.setText("Search");
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -442,7 +442,7 @@ public class SeatBooking extends javax.swing.JFrame {
         choosePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(choosePaneLayout.createSequentialGroup()
             .addGap(193, 193, 193)
-            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGap(18, 18, 18)
             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(37, 37, 37)
@@ -565,8 +565,8 @@ public class SeatBooking extends javax.swing.JFrame {
         }
     });
 
-    jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
     jLabel23.setText("Confirmation");
+    jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
     jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/confirimpic.jpg"))); // NOI18N
     jLabel25.setText("jLabel25");
@@ -785,7 +785,7 @@ public class SeatBooking extends javax.swing.JFrame {
             try {
 
                 Class.forName("com.mysql.jdbc.Driver");
-                String database = "jdbc:mysql://localhost:3306/busreservation";
+                String database = "jdbc:mysql://localhost:3306/BusManagement";
                 Connection con = DriverManager.getConnection(database, "root", "root123");
 
 //                String sql = "UPDATE Seat SET Status = 'booked' where seatNo='" + seatno + "' AND Bus_No='" + Bus_no + "'";
@@ -815,7 +815,7 @@ public class SeatBooking extends javax.swing.JFrame {
 //confirmationPassengerName.setText(User);
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                String database = "jdbc:mysql://localhost:3306/busreservation";
+                String database = "jdbc:mysql://localhost:3306/BusManagement";
                 Connection con = DriverManager.getConnection(database, "root", "root123");
                 // Assuming conn is your database connection
                 String sql = "SELECT * FROM schedule WHERE scheduleId=?";
@@ -825,7 +825,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
                 while (r.next()) {
 
-                    confirmationBusNo.setText(r.getString("Bus"));
+                    confirmationBusNo.setText(r.getString("Bus_No"));
                     confirmationDepatureDate.setText(r.getString("schedule_date"));
                     confirmationDepature.setText(r.getString("Depature"));
                     confirmationArrival.setText(r.getString("Arrival"));
@@ -859,7 +859,7 @@ public class SeatBooking extends javax.swing.JFrame {
             String[] selectedRows = new String[count];
 
             Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/busreservation";
+            String database = "jdbc:mysql://localhost:3306/BusManagement";
             Connection con = DriverManager.getConnection(database, "root", "root123");
 
 // Loop through the selected rows
@@ -904,7 +904,7 @@ public class SeatBooking extends javax.swing.JFrame {
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/busreservation";
+            String database = "jdbc:mysql://localhost:3306/BusManagement";
             Connection con = DriverManager.getConnection(database, "root", "root123");
 
             String sql = "SELECT * FROM seat where status='booked'";
@@ -944,7 +944,7 @@ public class SeatBooking extends javax.swing.JFrame {
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/busreservation";
+            String database = "jdbc:mysql://localhost:3306/BusManagement";
             Connection con = DriverManager.getConnection(database, "root", "root123");
 
             String sql = "UPDATE Seat SET Status = 'unbooked' where seatNo='" + seatno + "' AND Bus_No='" + Bus_no + "'";
@@ -1005,8 +1005,8 @@ public class SeatBooking extends javax.swing.JFrame {
             int UId = 0;
 
             Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/busreservation";
-            Connection con = DriverManager.getConnection(database, "newuser", "password");
+            String database = "jdbc:mysql://localhost:3306/BusManagement";
+            Connection con = DriverManager.getConnection(database, "root", "root123");
             Date Date = new Date();
 //            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
 //            String bdate = dFormat.format(Date);
@@ -1089,7 +1089,7 @@ public class SeatBooking extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/busreservation";
+            String database = "jdbc:mysql://localhost:3306/BusManagement";
             Connection con = DriverManager.getConnection(database, "root", "root123");
 
             LocalDate selectedDate = journeyDate.getDate();
@@ -1126,9 +1126,9 @@ public class SeatBooking extends javax.swing.JFrame {
 
         try {
             //Class.forName("com.mysql.jdbc.Driver"); 
-            String database = "jdbc:mysql://localhost:3306/busreservation";
+            String database = "jdbc:mysql://localhost:3306/BusManagement";
             Connection con = DriverManager.getConnection(database, "root", "root123");
-            String sql = "select * FROM seat " + "where Bus_No = (select bus from schedule where scheduleId=?) ; ";
+            String sql = "select * FROM seat " + "where Bus_No = (select Bus_No from schedule where scheduleId=?) ; ";
             PreparedStatement st = con.prepareStatement(sql);
 
             st.setInt(1, Integer.parseInt(jTextField1.getText().toString()));
