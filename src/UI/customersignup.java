@@ -4,12 +4,7 @@
  */
 package UI;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,7 +19,7 @@ public class customersignup extends javax.swing.JFrame {
     public customersignup() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -221,55 +216,57 @@ public class customersignup extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-   
+
             // Establish a database connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Dulmi#12345");
-            
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "MYsql2023#");
+
             String Fname = jTextField2.getText();
             String Lname = jTextField3.getText();
             String Mono = jTextField1.getText();
             String email = jTextField5.getText();
             String username = jTextField6.getText();
             char[] password = jPasswordField1.getPassword();
-            char[] password2 =jPasswordField2.getPassword() ;
-            
-               Statement stm = con.createStatement();
-               
-               String sql = "INSERT INTO Customer (fName, lName, MobileNumber, EMail, Username, Password) "
-                       + " VALUES ('"+Fname+"','"+Lname+"', '"+Mono+"','"+email+"', '"+username+"', '"+password+"')";
-               
-               
-            if ((new String(jPasswordField1.getPassword()).equals(new String(jPasswordField2.getPassword()))) &&
-                                                                                       !jTextField2.getText().isEmpty() && 
-                                                                                       !jTextField3.getText().isEmpty() && 
-                                                                                       !jTextField1.getText().isEmpty() &&
-                                                                                       !jTextField5.getText().isEmpty() &&
-                                                                                       !jTextField6.getText().isEmpty() &&
-                                                                                       !jPasswordField1.getText().isEmpty() &&
-                                                                                       !jPasswordField2.getText().isEmpty()){
-                stm.executeUpdate(sql);
+            String passwordString = new String(password);
+            char[] password2 = jPasswordField2.getPassword();
+            String password2String = new String(password2);
+
+            Statement stm = con.createStatement();
+
+            String sql = "INSERT INTO Customer (fName, lName, MobileNumber, EMail, Username, Password) "
+                    + " VALUES ('" + Fname + "','" + Lname + "', '" + Mono + "','" + email + "', '" + username + "', '" + passwordString + "')";
+
+            if ((passwordString.equals(password2String))
+                    && !jTextField2.getText().isEmpty()
+                    && !jTextField3.getText().isEmpty()
+                    && !jTextField1.getText().isEmpty()
+                    && !jTextField5.getText().isEmpty()
+                    && !jTextField6.getText().isEmpty()
+                    && !passwordString.isEmpty()
+                    && !password2String.isEmpty()) {
+//                stm.executeUpdate(sql);
+                int rowsAffected = stm.executeUpdate(sql);
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(this, "Account created successfully.");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Failed to create account.");
+                }
+                customer_interface ci = new customer_interface();
+                ci.setVisible(true);
                 this.dispose();
-                Customerdashboard cd = new Customerdashboard ();
-                cd.setVisible(true);
-               }
-            else {
-                JOptionPane.showMessageDialog(this, "error..! datas are not enterd or password does not match!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Fields are empty or password does not match!", "Error Occured!", JOptionPane.ERROR_MESSAGE);
             }
-            
-            
-            
-          con.close();
-          
-             
-        }
-        
-        catch (Exception e){
+            con.close();
+        } catch (DataTruncation de) {
+            JOptionPane.showMessageDialog(this, "Mobile number is out of range. Please enter valid number.", "Error Occured!", JOptionPane.ERROR_MESSAGE);
+            System.out.println(de.getMessage());
+        } catch (SQLException se) {
+            JOptionPane.showMessageDialog(this, "Username already exists! Please enter another username.", "Error Occured!", JOptionPane.ERROR_MESSAGE);
+            System.out.println(se.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error Occured!", JOptionPane.ERROR_MESSAGE);
             System.out.println(e.getMessage());
-            
-        
-            
         }
-                    
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
