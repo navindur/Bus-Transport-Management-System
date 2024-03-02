@@ -24,12 +24,19 @@ import javax.swing.table.TableModel;
  * @author hirun
  */
 public class SeatBooking extends javax.swing.JFrame {
+    
+    private String username;
 
     /**
      * Creates new form SeatBooking
      */
     public SeatBooking() {
         initComponents();
+    }
+    
+    public SeatBooking(String username) {
+        initComponents();
+        this.username = username;
     }
 
     /**
