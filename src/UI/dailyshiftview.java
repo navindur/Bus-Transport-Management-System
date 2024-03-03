@@ -84,6 +84,27 @@ private void displayData() {
         }*/
         }
     }
+
+private String buildQuery(String searchText1, String searchText2) {
+        StringBuilder query = new StringBuilder("SELECT * FROM Shift");
+        boolean hasWhereClause = false;
+
+        if (!searchText1.isEmpty()) {
+            query.append(" WHERE Bus_No LIKE ?"); // Use LIKE operator for partial name matching
+            hasWhereClause = true;
+        }
+
+        if (!searchText2.isEmpty()) {
+            if (hasWhereClause) {
+                query.append(" AND ");
+            } else {
+                query.append(" WHERE ");
+                hasWhereClause = true;
+            }
+            query.append("Date LIKE ?"); // Use LIKE operator for partial registration number matching
+        }
+        return query.toString();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -317,16 +338,26 @@ private void displayData() {
         String searchText2 = textField2.getText();
         
         
-        try {
+        
+        try (
 
            
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+            /*connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
             String query = "SELECT * FROM Shift WHERE Bus_No LIKE ? OR DATE_FORMAT(Date, '%Y-%m-%d') LIKE ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, searchText1); 
-            preparedStatement.setString(2, searchText2);
+            preparedStatement.setString(2, searchText2);*/
 
             //preparedStatement.setString(3, "%" + searchText + "%");
+            Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2))) {
+
+            int parameterIndex = 1;
+            if (!searchText1.isEmpty()) {
+                preparedStatement.setString(parameterIndex++, "%" + searchText1 + "%"); // Add wildcards for LIKE operator
+            }
+            if (!searchText2.isEmpty()) {
+                preparedStatement.setString(parameterIndex++, "%" + searchText2 + "%"); // Add wildcards for LIKE operator
+            }
             resultSet = preparedStatement.executeQuery();
             
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
