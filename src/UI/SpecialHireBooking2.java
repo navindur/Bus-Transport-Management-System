@@ -21,7 +21,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
         // JDBC URL, username, and password of MySQL server
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Ama2001ama*";
+    private static final String PASSWORD = "root";
 
     // JDBC variables for opening, closing and managing connection
     private Connection connection;
@@ -76,6 +76,26 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
             }
         }
     }
+    private String buildQuery(String searchText1, String searchText2) {
+        StringBuilder query = new StringBuilder("SELECT * FROM specialhire");
+        boolean hasWhereClause = false;
+
+        if (!searchText1.isEmpty()) {
+            query.append(" WHERE Bus_No LIKE ?"); // Use LIKE operator for partial name matching
+            hasWhereClause = true;
+        }
+
+        if (!searchText2.isEmpty()) {
+            if (hasWhereClause) {
+                query.append(" AND ");
+            } else {
+                query.append(" WHERE ");
+                hasWhereClause = true;
+            }
+            query.append("Date LIKE ?"); // Use LIKE operator for partial registration number matching
+        }
+        return query.toString();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,6 +117,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
@@ -153,7 +174,6 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
         jButton1.setText("Search");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -173,7 +193,6 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Bus Number :");
 
         jTextField2.setBackground(new java.awt.Color(51, 51, 51));
@@ -181,7 +200,6 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Date :");
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
@@ -189,6 +207,16 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("YYYY-MM-DD");
         jLabel11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
+        jButton2.setText("Refresh");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
@@ -212,6 +240,8 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(47, 47, 47)
                 .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRound1Layout.setVerticalGroup(
@@ -223,12 +253,13 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 870, 350));
@@ -270,15 +301,24 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          //String searchText = (String) searchTextField.getText();
-
-        try {
+        String searchText1 = jTextField1.getText();
+        String searchText2 = jTextField2.getText();
+        try (
             //connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*);
 
-            String query = "SELECT * FROM SpecialHire WHERE Bus_No LIKE ? AND Date LIKE ?";
+           /* String query = "SELECT * FROM SpecialHire WHERE Bus_No LIKE ? AND Date LIKE ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,jTextField1.getText()); 
-            preparedStatement.setString(2,jTextField2.getText());
+            preparedStatement.setString(2,jTextField2.getText());*/
+           Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2))) {
 
+            int parameterIndex = 1;
+            if (!searchText1.isEmpty()) {
+                preparedStatement.setString(parameterIndex++, "%" + searchText1 + "%"); // Add wildcards for LIKE operator
+            }
+            if (!searchText2.isEmpty()) {
+                preparedStatement.setString(parameterIndex++, "%" + searchText2 + "%"); // Add wildcards for LIKE operator
+            }
             resultSet = preparedStatement.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -344,6 +384,10 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4MouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        displayData();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -382,6 +426,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

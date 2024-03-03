@@ -252,10 +252,10 @@ public class SHBpopup extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
             // Define the SQL query for inserting booking data
-            String specialHireBooking = "INSERT INTO SpecialHire (Reference_No, `Name`, `Date`, Bus_No, Driver, Conductor)";
+            String specialHireBooking = "INSERT INTO SpecialHire (Reference_No, `Name`, `Date`, Bus_No, Driver, Conductor)VALUES (?, ?, ?, ?, ?, ?)";
             
             // Establish a database connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
             JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
             
             // Prepare the statement for executing the query
@@ -267,7 +267,7 @@ public class SHBpopup extends javax.swing.JFrame {
             pstmt.setInt(1, Integer.parseInt(jTextField1.getText()));           
             pstmt.setString(2, jTextField2.getText());
             pstmt.setString(3, jTextField3.getText());
-            pstmt.setInt(4, Integer.parseInt(jTextField4.getText()));
+            pstmt.setString(4, jTextField4.getText());
             pstmt.setString(5, jTextField5.getText());
             pstmt.setString(6, jTextField6.getText());
 
