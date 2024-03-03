@@ -34,12 +34,10 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         bsy = new javax.swing.JTextField();
         bsy1 = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         bmy = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -83,10 +81,6 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         });
         panelRound2.add(bsy1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 120, -1));
 
-        jToggleButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jToggleButton1.setText("All");
-        panelRound2.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, 30));
-
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
         jButton1.setText("Search");
@@ -109,10 +103,6 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         bmy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         bmy.setForeground(new java.awt.Color(255, 255, 255));
         panelRound2.add(bmy, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 145, 40));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel8.setText("Toggle for");
-        panelRound2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 60, 20));
 
         jPanel1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
 
@@ -208,9 +198,7 @@ public class YearIncomeU1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
     private UI.Images.PanelRound panelRound2;
     // End of variables declaration//GEN-END:variables
 }

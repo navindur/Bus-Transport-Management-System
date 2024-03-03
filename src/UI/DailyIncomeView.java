@@ -24,8 +24,6 @@ public class DailyIncomeView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         panelRound2 = new UI.Images.PanelRound();
-        jLabel8 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jLabel7 = new javax.swing.JLabel();
         bsd = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -52,16 +50,6 @@ public class DailyIncomeView extends javax.swing.JFrame {
 
         panelRound2.setPreferredSize(new java.awt.Dimension(400, 350));
         panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setText("Toggle for");
-        panelRound2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 60, -1));
-
-        jToggleButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jToggleButton1.setText("All");
-        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelRound2.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Bus Number : ");
@@ -218,9 +206,7 @@ public class DailyIncomeView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
     private UI.Images.PanelRound panelRound2;
     // End of variables declaration//GEN-END:variables
 }
