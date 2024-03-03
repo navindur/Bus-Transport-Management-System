@@ -231,7 +231,15 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
             new String [] {
                 "Full Name", "NIC No.", "Reg. No.", "License No.", "Date of Birth", "Contact (Mobile)", "Contact (Fixed)", "Work as a"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setShowGrid(true);
         jScrollPane1.setViewportView(jTable1);
 
