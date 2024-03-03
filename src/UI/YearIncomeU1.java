@@ -143,7 +143,7 @@ public class YearIncomeU1 extends javax.swing.JFrame {
         try (Connection conn2 = DBMC.vcon();
             Statement sr1 = conn2.createStatement()) {
             ResultSet rs2 = sr1.executeQuery(
-                "SELECT SUM(Income(Rs.)) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsy.getText() + "' AND Year(Date) ='" + bsy1.getText() + "'");
+                "SELECT SUM(`Income(Rs.)`) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsy.getText() + "' AND Year(Date) ='" + bsy1.getText() + "'");
 
             if (rs2.next()) {
                 bmy.setText(String.valueOf(rs2.getInt("TotalIncome")));

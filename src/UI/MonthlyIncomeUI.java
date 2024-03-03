@@ -134,12 +134,13 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+  
+// TODO add your handling code here:
         // monthly serach button code
         try (Connection conn1 = DBMC.vcon();
             Statement sr = conn1.createStatement()) {
             ResultSet rs1 = sr.executeQuery(
-                "SELECT SUM(Income(Rs.)) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsm.getText() + "' AND MONTH(Date) ='" + bsm1.getText() + "'");
+                "SELECT SUM(`Income(Rs.)`) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsm.getText() + "' AND MONTH(Date) ='" + bsm1.getText() + "'");
 
             if (rs1.next()) {
                 bmi.setText(String.valueOf(rs1.getInt("TotalIncome")));
@@ -151,6 +152,7 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace(); // or log the exception
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bsm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsm1ActionPerformed
