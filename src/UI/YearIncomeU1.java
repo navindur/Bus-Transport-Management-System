@@ -4,6 +4,7 @@
  */
 package UI;
 import java.sql.*;
+import Codes.DatabaseConnection;
 
 /**
  *
@@ -130,8 +131,8 @@ public class YearIncomeU1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try (Connection conn2 = DBMC.vcon();
-            Statement sr1 = conn2.createStatement()) {
+        try (Connection conn = DatabaseConnection.getConnection();
+            Statement sr1 = conn.createStatement()) {
             ResultSet rs2 = sr1.executeQuery(
                 "SELECT SUM(`Income(Rs.)`) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsy.getText() + "' AND Year(Date) ='" + bsy1.getText() + "'");
 

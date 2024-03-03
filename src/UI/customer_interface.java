@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import Codes.DatabaseConnection;
 
 /**
  *
@@ -213,15 +214,15 @@ public class customer_interface extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            //Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Establish a database connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root123");
-
+           // Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root123");
+Connection conn = DatabaseConnection.getConnection();
             String username = jTextField1.getText();
             String password = jPasswordField1.getText();
 
-            Statement stm = con.createStatement();
+            Statement stm = conn.createStatement();
 
             String sql = "select * from Customer where  Username='" + username + "' and Password='" + password + "'";
             ResultSet rs = stm.executeQuery(sql);

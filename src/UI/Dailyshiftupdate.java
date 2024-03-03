@@ -9,6 +9,7 @@ import Codes.DatabaseConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class Dailyshiftupdate extends javax.swing.JFrame {
 
     /**
@@ -250,17 +251,17 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             // Load the MySQL JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            //Class.forName("com.mysql.cj.jdbc.Driver");
             
             // Define the SQL query for inserting income data
             String incomeInput = "Insert into Shift (Bus_No,DriverReg_No, DriverName,ConductorReg_No,ConductorName,`Date`) values (?,?,?,?,?,?)";
-            
+            Connection conn = DatabaseConnection.getConnection();
             // Establish a database connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+            //Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
 //            JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
             
             // Prepare the statement for executing the query
-            PreparedStatement pstmt = con.prepareStatement(incomeInput);
+            PreparedStatement pstmt = conn.prepareStatement(incomeInput);
             
             pstmt.setString(1, jTextField3.getText());
             pstmt.setString(2, jTextField4.getText());
@@ -279,15 +280,13 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
             jTextField5.setText("");
             datePicker1.setDate(null);
             
-            } catch (ClassNotFoundException cx) {
-            Logger.getLogger(Dailyshiftupdate.class.getName()).log(Level.SEVERE, null, cx);
-//            System.out.println("Error occured");
-            // Show an error message for class not found
-            JOptionPane.showMessageDialog(this, cx, "Exception Occured", JOptionPane.ERROR_MESSAGE);
-            } catch (SQLException e) {
+            }catch (SQLException e) {
             // Show an error message for database-related exceptions
             JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
         }
+//            System.out.println("Error occured");
+        // Show an error message for class not found
+        
     
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -1,5 +1,6 @@
 package UI;
 import java.sql.*;
+import Codes.DatabaseConnection;
 
 import javax.swing.UIManager;
 
@@ -126,8 +127,8 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
   
 // TODO add your handling code here:
         // monthly serach button code
-        try (Connection conn1 = DBMC.vcon();
-            Statement sr = conn1.createStatement()) {
+        try (Connection conn = DatabaseConnection.getConnection();
+            Statement sr = conn.createStatement()) {
             ResultSet rs1 = sr.executeQuery(
                 "SELECT SUM(`Income(Rs.)`) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsm.getText() + "' AND MONTH(Date) ='" + bsm1.getText() + "'");
 
