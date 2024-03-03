@@ -6,7 +6,6 @@ package UI;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
-import Codes.DatabaseConnection;
 
 /**
  *
@@ -216,11 +215,11 @@ public class customersignup extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
-            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Establish a database connection
-            //Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "MYsql2023#");
-Connection conn = DatabaseConnection.getConnection();
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "MYsql2023#");
+
             String Fname = jTextField2.getText();
             String Lname = jTextField3.getText();
             String Mono = jTextField1.getText();
@@ -231,7 +230,7 @@ Connection conn = DatabaseConnection.getConnection();
             char[] password2 = jPasswordField2.getPassword();
             String password2String = new String(password2);
 
-            Statement stm = conn.createStatement();
+            Statement stm = con.createStatement();
 
             String sql = "INSERT INTO Customer (fName, lName, MobileNumber, EMail, Username, Password) "
                     + " VALUES ('" + Fname + "','" + Lname + "', '" + Mono + "','" + email + "', '" + username + "', '" + passwordString + "')";
@@ -257,7 +256,7 @@ Connection conn = DatabaseConnection.getConnection();
             } else {
                 JOptionPane.showMessageDialog(this, "Fields are empty or password does not match!", "Error Occured!", JOptionPane.ERROR_MESSAGE);
             }
-            conn.close();
+            con.close();
         } catch (DataTruncation de) {
             JOptionPane.showMessageDialog(this, "Mobile number is out of range. Please enter valid number.", "Error Occured!", JOptionPane.ERROR_MESSAGE);
             System.out.println(de.getMessage());

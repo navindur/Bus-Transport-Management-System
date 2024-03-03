@@ -17,9 +17,9 @@ import javax.swing.table.DefaultTableModel;
 
  */
 public class Service_Details extends javax.swing.JFrame {
-    //private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
-    //private static final String USERNAME = "root";
-    //private static final String PASSWORD = "root";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root";
     
     private Connection connection;
     private PreparedStatement preparedStatement;
@@ -38,11 +38,11 @@ public class Service_Details extends javax.swing.JFrame {
         
         try {
             // Connect to the database
-            //connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
-                Connection conn = DatabaseConnection.getConnection();
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+
             // Query to retrieve data from the table
             String query = "SELECT * FROM Bus";
-            preparedStatement = conn.prepareStatement(query);
+            preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();  
             // Populate the table with data
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -121,35 +121,35 @@ public class Service_Details extends javax.swing.JFrame {
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel21.setText("Last Service Date :");
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("Last Service Date :");
 
-        jLabel25.setText("Next Service Date :");
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel25.setText("Next Service Date :");
 
-        jLabel18.setText("Next Service Mileage :");
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Next Service Mileage :");
 
-        jButton3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
         jButton3.setText("Update");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Bus Number :");
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Bus Number :");
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField2.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,8 +185,8 @@ public class Service_Details extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField3.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(204, 204, 204));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,11 +194,11 @@ public class Service_Details extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
         jButton1.setText("Search");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -211,8 +211,8 @@ public class Service_Details extends javax.swing.JFrame {
         datePicker2.setBackground(new java.awt.Color(255, 255, 255));
         datePicker2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField4.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,9 +220,9 @@ public class Service_Details extends javax.swing.JFrame {
             }
         });
 
-        jLabel22.setText("Bus Number :");
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Bus Number :");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
         jButton2.setText("Refresh");
@@ -274,12 +274,11 @@ public class Service_Details extends javax.swing.JFrame {
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2)))
+                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,15 +363,15 @@ public class Service_Details extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             // Load the MySQL JDBC driver
-            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             
             // Define the SQL query for inserting income data
             String Service_Details = "Update Bus set LastServiceDate=?,NextServiceDate=?,NextServiceMileage=? WHERE Bus_No=?";
-            Connection conn = DatabaseConnection.getConnection();
+            
             // Establish a database connection
-            //Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
 //            JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
-            PreparedStatement pstmt = conn.prepareStatement(Service_Details);
+            PreparedStatement pstmt = con.prepareStatement(Service_Details);
             
             pstmt.setString(1, datePicker2.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
             pstmt.setString(2, datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
@@ -387,13 +386,15 @@ public class Service_Details extends javax.swing.JFrame {
             datePicker1.setDate(null);
             jTextField2.setText("");
             jTextField4.setText("");
-            }catch (SQLException e) {
+            } catch (ClassNotFoundException cx) {
+            Logger.getLogger(Dailyshiftupdate.class.getName()).log(Level.SEVERE, null, cx);
+//            System.out.println("Error occured");
+            // Show an error message for class not found
+            JOptionPane.showMessageDialog(this, cx, "Exception Occured", JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException e) {
             // Show an error message for database-related exceptions
             JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
         }
-//            System.out.println("Error occured");
-        // Show an error message for class not found
-        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

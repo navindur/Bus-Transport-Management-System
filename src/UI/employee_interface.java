@@ -9,8 +9,6 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
-import Codes.DatabaseConnection;
-
 
 /**
  *
@@ -192,16 +190,16 @@ public class employee_interface extends javax.swing.JFrame {
         //empd.setVisible(true);
         
         try {
-            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
    
             // Establish a database connection
-            //Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Dulmi#12345");
-            Connection conn = DatabaseConnection.getConnection();
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Dulmi#12345");
+            
             
             String username = jTextField1.getText();
             String password = jPasswordField1.getText();
             
-               Statement stm = conn.createStatement();
+               Statement stm = con.createStatement();
                
                String sql = "select * from Employee where  Username='"+username+"' and Password='"+password+"'";
                ResultSet rs = stm.executeQuery(sql);
@@ -223,7 +221,7 @@ public class employee_interface extends javax.swing.JFrame {
                    
                }
                
-              conn.close();
+              con.close();
                
              
         }
