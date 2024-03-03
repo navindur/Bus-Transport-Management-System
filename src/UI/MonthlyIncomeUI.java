@@ -28,12 +28,10 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         bsm = new javax.swing.JTextField();
         bsm1 = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         bmi = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -76,10 +74,6 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
         });
         panelRound2.add(bsm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 120, -1));
 
-        jToggleButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jToggleButton1.setText("All");
-        panelRound2.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, 30));
-
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
         jButton1.setText("Search");
@@ -103,11 +97,6 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
         bmi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         bmi.setForeground(new java.awt.Color(255, 255, 255));
         panelRound2.add(bmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 145, 40));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setText("Toggle for");
-        panelRound2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 60, 20));
 
         jPanel1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
 
@@ -134,12 +123,13 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+  
+// TODO add your handling code here:
         // monthly serach button code
         try (Connection conn1 = DBMC.vcon();
             Statement sr = conn1.createStatement()) {
             ResultSet rs1 = sr.executeQuery(
-                "SELECT SUM(Income(Rs.)) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsm.getText() + "' AND MONTH(Date) ='" + bsm1.getText() + "'");
+                "SELECT SUM(`Income(Rs.)`) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsm.getText() + "' AND MONTH(Date) ='" + bsm1.getText() + "'");
 
             if (rs1.next()) {
                 bmi.setText(String.valueOf(rs1.getInt("TotalIncome")));
@@ -151,6 +141,7 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
         } catch (SQLException e) {
             e.printStackTrace(); // or log the exception
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bsm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsm1ActionPerformed
@@ -210,9 +201,7 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
     private UI.Images.PanelRound panelRound2;
     // End of variables declaration//GEN-END:variables
 }
