@@ -11,6 +11,7 @@ import javax.swing.UIManager;
 import Codes.DatabaseConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Codes.DatabaseConnection;
 
 /**
  *
@@ -243,15 +244,15 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         String password = new String(passwordChars);
         try {
             // Load the MySQL JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            //Class.forName("com.mysql.cj.jdbc.Driver");
             
             // Define the SQL query for inserting income data
             String AddDriverConductorDetails_UI = "Insert into Employee (FullName, NIC, License_No, Registration_No, DOB, Mobile_No, Landline_No, `Work as a`, Username, Password) values (?,?,?,?,?,?,?,?,?,?)";
-            
+            Connection conn = DatabaseConnection.getConnection();
             // Establish a database connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+            //nnection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
 //            JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
-            PreparedStatement pstmt = con.prepareStatement(AddDriverConductorDetails_UI);
+            PreparedStatement pstmt = conn.prepareStatement(AddDriverConductorDetails_UI);
             
             pstmt.setString(1, jTextField1.getText());
             pstmt.setString(2, jTextField3.getText());
@@ -277,15 +278,13 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
                 jTextField9.setText("");
                 jPasswordField1.setText("");
             
-            } catch (ClassNotFoundException cx) {
-            Logger.getLogger(Dailyshiftupdate.class.getName()).log(Level.SEVERE, null, cx);
-//            System.out.println("Error occured");
-            // Show an error message for class not found
-            JOptionPane.showMessageDialog(this, cx, "Exception Occured", JOptionPane.ERROR_MESSAGE);
-            } catch (SQLException e) {
+            }catch (SQLException e) {
             // Show an error message for database-related exceptions
             JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
         }
+//            System.out.println("Error occured");
+        // Show an error message for class not found
+        
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
