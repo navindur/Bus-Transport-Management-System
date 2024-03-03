@@ -1,5 +1,6 @@
 package UI;
 import java.sql.*;
+import Codes.DatabaseConnection;
 
 import javax.swing.*;
 
@@ -132,7 +133,7 @@ public class DailyIncomeView extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try (Connection conn = DBMC.vcon();
+        try (Connection conn = DatabaseConnection.getConnection();
             Statement sr = conn.createStatement()) {
             ResultSet rs1 = sr.executeQuery(
                 "SELECT * FROM FinancialStatus WHERE Bus_No = '" + bsd.getText() + "' AND Date = '" + bsd1.getText() + "'");
