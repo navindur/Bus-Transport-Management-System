@@ -758,6 +758,18 @@ public class SeatBooking extends javax.swing.JFrame {
         MainPanel.revalidate();
 
 
+        
+         DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+
+        model1.setRowCount(0);
+        model2.setRowCount(0);
+     
+        jComboBox1.removeAllItems();
+        jTextField1.setText("");
+        journeyDate.clear();
+        jSpinner1.setValue(1);
+        
     }//GEN-LAST:event_panelRound2MouseClicked
 
     private void panelRound3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound3MouseClicked
