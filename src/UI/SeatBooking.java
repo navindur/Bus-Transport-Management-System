@@ -564,7 +564,7 @@ public class SeatBooking extends javax.swing.JFrame {
     });
     jScrollPane3.setViewportView(jTable3);
 
-    cancellPane.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 80, 540, 254));
+    cancellPane.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 640, 254));
 
     jLabel21.setText("Selected bus number :");
     jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -757,19 +757,17 @@ public class SeatBooking extends javax.swing.JFrame {
         MainPanel.repaint();
         MainPanel.revalidate();
 
-
-        
-         DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
         DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
 
         model1.setRowCount(0);
         model2.setRowCount(0);
-     
+
         jComboBox1.removeAllItems();
         jTextField1.setText("");
         journeyDate.clear();
         jSpinner1.setValue(1);
-        
+
     }//GEN-LAST:event_panelRound2MouseClicked
 
     private void panelRound3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound3MouseClicked
@@ -869,11 +867,7 @@ public class SeatBooking extends javax.swing.JFrame {
         String sqlInsertBooking = "INSERT INTO booking (bookingDate, ScheduleId, seatNo) VALUES (?, ?, ?)";
 
         try {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(SeatBooking.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Class.forName("com.mysql.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/BusManagement";
             Connection con = DriverManager.getConnection(url, username1, password);
             // Prepare the update statement for Seat table
@@ -887,7 +881,8 @@ public class SeatBooking extends javax.swing.JFrame {
             SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
             String jdate = dFormat.format(new Date());
             // Loop through each seat number
-            for (String seatNo : seatNumbers) {
+            for (int i = 0; i < seatNumbers.length; i++) {
+                String seatNo = seatNumbers[i];
                 // Assuming you have bookingDate and scheduleId defined elsewhere
                 // Set values for the insert statement
                 insertBookingStmt.setString(1, jdate);
@@ -906,6 +901,8 @@ public class SeatBooking extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Booking is confirmed", "Confirmation", JOptionPane.PLAIN_MESSAGE);
         } catch (SQLException e) {
             e.printStackTrace(); // Handle exception appropriately
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SeatBooking.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
