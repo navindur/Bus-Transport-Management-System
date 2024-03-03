@@ -216,7 +216,7 @@ public class customer_interface extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Establish a database connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "MYsql2023#");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root123");
 
             String username = jTextField1.getText();
             String password = jPasswordField1.getText();

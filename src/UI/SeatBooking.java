@@ -44,7 +44,7 @@ public class SeatBooking extends javax.swing.JFrame {
             String database = "jdbc:mysql://localhost:3306/BusManagement";
             Connection con = DriverManager.getConnection(url, username1, password);
 
-            String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,st.Bus_No,st.Status  FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo LEFT JOIN cancellation c ON c.bookingId = b.bookingId WHERE c.bookingId IS NULL AND st.Status = 'booked';";
+            String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,b.Username,st.Bus_No,st.Status  FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo LEFT JOIN cancellation c ON c.bookingId = b.bookingId WHERE c.bookingId IS NULL AND st.Status = 'booked';";
 
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet r = st.executeQuery();
@@ -65,7 +65,12 @@ public class SeatBooking extends javax.swing.JFrame {
 
     public SeatBooking(String username) {
         initComponents();
+        
         this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     /**
@@ -857,6 +862,8 @@ public class SeatBooking extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
+        SeatBooking seatbooking=new SeatBooking();
+       
         String busNo = confirmationBusNo.getText();
         String[] seatNumbers = confirmationSeatNo.getText().split(",");
 
@@ -864,7 +871,7 @@ public class SeatBooking extends javax.swing.JFrame {
         String sqlUpdateSeat = "UPDATE Seat SET Status = 'booked' WHERE seatNo IN (" + confirmationSeatNo.getText() + ") AND Bus_No=?";
 
         // SQL statement to insert into Booking table
-        String sqlInsertBooking = "INSERT INTO booking (bookingDate, ScheduleId, seatNo) VALUES (?, ?, ?)";
+        String sqlInsertBooking = "INSERT INTO booking (bookingDate, ScheduleId, seatNo,Username) VALUES (?, ?, ?,?)";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -889,7 +896,7 @@ public class SeatBooking extends javax.swing.JFrame {
                 insertBookingStmt.setInt(2, Integer.parseInt(jTextField1.getText()));
 
                 insertBookingStmt.setInt(3, Integer.parseInt(seatNo.trim())); // trim() removes leading/trailing whitespace
-
+                insertBookingStmt.setString(4,seatbooking.getUsername());
                 // Execute the insertion
                 insertBookingStmt.executeUpdate();
             }
