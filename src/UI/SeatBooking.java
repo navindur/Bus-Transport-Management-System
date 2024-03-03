@@ -42,32 +42,14 @@ public class SeatBooking extends javax.swing.JFrame {
             model.setRowCount(0);
             Class.forName("com.mysql.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(database, "root", "root123");
+            Connection con = DriverManager.getConnection(url, username1, password);
 
             String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,st.Bus_No,st.Status  FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo LEFT JOIN cancellation c ON c.bookingId = b.bookingId WHERE c.bookingId IS NULL AND st.Status = 'booked';";
 
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet r = st.executeQuery();
 //
-//            while (r.next()) {
-//                String bookingId = String.valueOf(r.getInt("bookingId"));
-//                String departureDate = r.getString("schedule_date");
-//                String departureTime = r.getString("depature_Time");
-//                String departure = r.getString("Depature");
-//                String arrival = r.getString("Arrival");
-//                String seatNo = String.valueOf(r.getInt("seatNo"));
-//                String Bus_no = r.getString("Bus_No");
-//                String seatStatus = r.getString("Status");
-//
-//                // Do something with the retrieved data, such as adding it to a table model
-//                // For example:
-//                String[] rowData = {bookingId, departureDate, departureTime, departure, arrival, seatNo, Bus_no, seatStatus};
-//                // Add rowData to your table model
-//                activeBooking.addRow(rowData);
-////
-//            }
-
-            // DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
+//         
             NewClass.fillTheTable(model, r);
 
         } catch (Exception e) {
@@ -138,8 +120,6 @@ public class SeatBooking extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -147,8 +127,6 @@ public class SeatBooking extends javax.swing.JFrame {
         confirmationArrival = new javax.swing.JLabel();
         confirmationDepatureDate = new javax.swing.JLabel();
         confirmationDepatureTime = new javax.swing.JLabel();
-        confirmationPassengerName = new javax.swing.JLabel();
-        confirmationPassengerMobile = new javax.swing.JLabel();
         confirmationBusNo = new javax.swing.JLabel();
         confirmationSeatNo = new javax.swing.JLabel();
         confirmationFare = new javax.swing.JLabel();
@@ -449,7 +427,7 @@ public class SeatBooking extends javax.swing.JFrame {
             jButton3ActionPerformed(evt);
         }
     });
-    choosePane.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 425, 126, -1));
+    choosePane.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 126, -1));
 
     jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png"))); // NOI18N
     jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -469,7 +447,7 @@ public class SeatBooking extends javax.swing.JFrame {
             jButton8ActionPerformed(evt);
         }
     });
-    choosePane.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 425, 100, 35));
+    choosePane.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 100, 35));
 
     MainPanel.add(choosePane, "card3");
 
@@ -496,25 +474,17 @@ public class SeatBooking extends javax.swing.JFrame {
     jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
     confirmationPane.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 194, 29));
 
-    jLabel14.setText("Passenger's Name     :");
-    jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    confirmationPane.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 194, 29));
-
-    jLabel13.setText("Passenger's Mobile   :");
-    jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    confirmationPane.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 194, 29));
-
     jLabel17.setText("Bus Number              :");
     jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    confirmationPane.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 194, 29));
+    confirmationPane.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 194, 29));
 
     jLabel15.setText("Seat Number             :");
     jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    confirmationPane.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 194, 29));
+    confirmationPane.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 194, 29));
 
     jLabel16.setText("Fare                            :");
     jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    confirmationPane.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 194, 29));
+    confirmationPane.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 194, 29));
 
     confirmationDepature.setText("Depature                   ");
     confirmationDepature.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -532,25 +502,17 @@ public class SeatBooking extends javax.swing.JFrame {
     confirmationDepatureTime.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
     confirmationPane.add(confirmationDepatureTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 194, 29));
 
-    confirmationPassengerName.setText("Passenger's Name");
-    confirmationPassengerName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    confirmationPane.add(confirmationPassengerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 194, 29));
-
-    confirmationPassengerMobile.setText("Passenger's Mobile");
-    confirmationPassengerMobile.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    confirmationPane.add(confirmationPassengerMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 194, 29));
-
     confirmationBusNo.setText("Bus Number");
     confirmationBusNo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    confirmationPane.add(confirmationBusNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 194, 29));
+    confirmationPane.add(confirmationBusNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 194, 29));
 
     confirmationSeatNo.setText("Seat Number");
     confirmationSeatNo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    confirmationPane.add(confirmationSeatNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 194, 29));
+    confirmationPane.add(confirmationSeatNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 194, 29));
 
     confirmationFare.setText("Fare");
     confirmationFare.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    confirmationPane.add(confirmationFare, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 194, 29));
+    confirmationPane.add(confirmationFare, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 194, 29));
 
     jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/confirm.png"))); // NOI18N
     jButton6.setText("Confirm");
@@ -560,7 +522,7 @@ public class SeatBooking extends javax.swing.JFrame {
             jButton6ActionPerformed(evt);
         }
     });
-    confirmationPane.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, -1, -1));
+    confirmationPane.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, -1, -1));
 
     jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
     jButton7.setText("Change");
@@ -570,10 +532,10 @@ public class SeatBooking extends javax.swing.JFrame {
             jButton7ActionPerformed(evt);
         }
     });
-    confirmationPane.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
+    confirmationPane.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, -1, -1));
 
     jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/confirimpic.jpg"))); // NOI18N
-    confirmationPane.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, -1, -1));
+    confirmationPane.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
 
     MainPanel.add(confirmationPane, "card4");
 
@@ -905,37 +867,7 @@ public class SeatBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_depatureLocationActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-//        try {
-//            int UId = 0;
-//
-//            Class.forName("com.mysql.jdbc.Driver");
-//            String database = "jdbc:mysql://localhost:3306/BusManagement";
-//            Connection con = DriverManager.getConnection(url, username1, password);
-//            Date Date = new Date();
-////            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
-////            String bdate = dFormat.format(Date);
-////
-////            String sql = "INSERT INTO `booking`(`bookingDate`,`ScheduleId`,`seatNo`,`userId`)VALUES(\'" + bdate + "\'," + SId + "," + Integer.parseInt(confirmationSeatNo.getText()) + "," + UId + ");";
-////            PreparedStatement st = con.prepareStatement(sql);
-////
-////            st.executeUpdate(sql);
-////            
-//            // Assuming conn is your database connection
-//            String sql2 = "UPDATE Seat SET Status = 'booked' WHERE seatNo IN (" + confirmationSeatNo.getText() + ") AND Bus_No='" + confirmationBusNo.getText() + "'";
-//            PreparedStatement pstmt = con.prepareStatement(sql2);
-////            pstmt.setString(1, confirmationSeatNo.getText());
-////            pstmt.setString(2, confirmationBusNo.getText());
-//            pstmt.executeUpdate();
-//
-//            con.close();
-//
-//            JOptionPane.showMessageDialog(null, "Booking is confirmed", "Confirmation", JOptionPane.PLAIN_MESSAGE);
-//
-//            //Passing informations to generate QR code
-//            //new GenerateQRCode(confirmationDepature.getText(),confirmationArrival.getText(),confirmationDepatureDate.getText(),confirmationDepatureTime.getText(),confirmationPassengerName.getText(),confirmationPassengerMobile.getText(),confirmationBusNo.getText(),confirmationSeatNo.getText(),confirmationFare.getText()).setVisible(true);
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, ex);
-//        }
+
 
         String busNo = confirmationBusNo.getText();
         String[] seatNumbers = confirmationSeatNo.getText().split(",");
@@ -953,7 +885,7 @@ public class SeatBooking extends javax.swing.JFrame {
                 Logger.getLogger(SeatBooking.class.getName()).log(Level.SEVERE, null, ex);
             }
             String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(database, "root", "root123");
+           Connection con = DriverManager.getConnection(url, username1, password);
             // Prepare the update statement for Seat table
             PreparedStatement updateSeatStmt = con.prepareStatement(sqlUpdateSeat);
             updateSeatStmt.setString(1, busNo);
@@ -1007,6 +939,9 @@ public class SeatBooking extends javax.swing.JFrame {
         searchPane.setVisible(false);
         choosePane.setVisible(true);
         confirmationPane.setVisible(false);
+        
+         jSpinner1.setValue(1);
+         jComboBox1.removeAllItems();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
@@ -1164,8 +1099,6 @@ public class SeatBooking extends javax.swing.JFrame {
     private javax.swing.JLabel confirmationDepatureTime;
     private javax.swing.JLabel confirmationFare;
     private UI.Images.PanelRound confirmationPane;
-    private javax.swing.JLabel confirmationPassengerMobile;
-    private javax.swing.JLabel confirmationPassengerName;
     private javax.swing.JLabel confirmationSeatNo;
     private javax.swing.JComboBox<String> depatureLocation;
     private javax.swing.JButton jButton10;
@@ -1181,8 +1114,6 @@ public class SeatBooking extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
