@@ -24,8 +24,11 @@ import javax.swing.table.TableModel;
  * @author hirun
  */
 public class SeatBooking extends javax.swing.JFrame {
-    
+
     private String username;
+    String url = "jdbc:mysql://localhost:3306/BusManagement";
+    String username1 = "root";
+    String password = "root123";
 
     /**
      * Creates new form SeatBooking
@@ -33,7 +36,7 @@ public class SeatBooking extends javax.swing.JFrame {
     public SeatBooking() {
         initComponents();
     }
-    
+
     public SeatBooking(String username) {
         initComponents();
         this.username = username;
@@ -622,7 +625,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
                 Class.forName("com.mysql.jdbc.Driver");
                 String database = "jdbc:mysql://localhost:3306/BusManagement";
-                Connection con = DriverManager.getConnection(database, "root", "MYsql2023#");
+                Connection con = DriverManager.getConnection(url, username1, password);
 
 //                String sql = "UPDATE Seat SET Status = 'booked' where seatNo='" + seatno + "' AND Bus_No='" + Bus_no + "'";
 //
@@ -652,7 +655,7 @@ public class SeatBooking extends javax.swing.JFrame {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 String database = "jdbc:mysql://localhost:3306/BusManagement";
-                Connection con = DriverManager.getConnection(database, "root", "MYsql2023#");
+                Connection con = DriverManager.getConnection(url, username1, password);
                 // Assuming conn is your database connection
                 String sql = "SELECT * FROM schedule WHERE scheduleId=?";
                 PreparedStatement st = con.prepareStatement(sql);
@@ -696,7 +699,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
             Class.forName("com.mysql.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(database, "root", "MYsql2023#");
+            Connection con = DriverManager.getConnection(url, username1, password);
 
 // Loop through the selected rows
             String seatnoquery = "SELECT * FROM seat WHERE SeatNo IN (";
@@ -729,6 +732,10 @@ public class SeatBooking extends javax.swing.JFrame {
         MainPanel.add(searchPane);
         MainPanel.repaint();
         MainPanel.revalidate();
+
+     
+
+
     }//GEN-LAST:event_panelRound2MouseClicked
 
     private void panelRound3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRound3MouseClicked
@@ -741,7 +748,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
             Class.forName("com.mysql.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(database, "root", "MYsql2023#");
+            Connection con = DriverManager.getConnection(url, username1, password);
 
             String sql = "SELECT * FROM seat where status='booked'";
 
@@ -781,9 +788,9 @@ public class SeatBooking extends javax.swing.JFrame {
 
             Class.forName("com.mysql.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(database, "root", "MYsql2023#");
+            Connection con = DriverManager.getConnection(url, username1, password);
 
-            String sql = "UPDATE Seat SET Status = 'unbooked' where seatNo='" + seatno + "' AND Bus_No='" + Bus_no + "'";
+            String sql = "UPDATE Seat SET Status = 'Unbooked' where seatNo='" + seatno + "' AND Bus_No='" + Bus_no + "'";
 
             PreparedStatement st = con.prepareStatement(sql);
             st.executeUpdate();
@@ -842,7 +849,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
             Class.forName("com.mysql.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(database, "root", "MYsql2023#");
+            Connection con = DriverManager.getConnection(url, username1, password);
             Date Date = new Date();
 //            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
 //            String bdate = dFormat.format(Date);
@@ -874,7 +881,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
         model1.setRowCount(0);
         model2.setRowCount(0);
-        searchPane.setVisible(true);
+        MainPanel.setVisible(true);
         choosePane.setVisible(false);
         confirmationPane.setVisible(false);
 
@@ -928,7 +935,7 @@ public class SeatBooking extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(database, "root", "MYsql2023#");
+            Connection con = DriverManager.getConnection(url, username1, password);
 
             LocalDate selectedDate = journeyDate.getDate();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -954,7 +961,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
         } catch (SQLException se) {
             System.err.println(se.getMessage());
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             //Error Massage
             System.err.println(ex.getMessage());
             JOptionPane.showMessageDialog(null, "Choose the date");
@@ -967,8 +974,8 @@ public class SeatBooking extends javax.swing.JFrame {
         try {
             //Class.forName("com.mysql.jdbc.Driver"); 
             String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(database, "root", "MYsql2023#");
-            String sql = "select * FROM seat " + "where Bus_No = (select Bus_No from schedule where scheduleId=?) ; ";
+            Connection con = DriverManager.getConnection(url, username1, password);
+            String sql = "select * FROM seat " + "where Bus_No = (select Bus_No from schedule where scheduleId=?) AND status='Unbooked' ; ";
             PreparedStatement st = con.prepareStatement(sql);
 
             st.setInt(1, Integer.parseInt(jTextField1.getText().toString()));
