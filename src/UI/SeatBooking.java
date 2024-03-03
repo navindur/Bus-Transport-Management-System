@@ -33,6 +33,50 @@ public class SeatBooking extends javax.swing.JFrame {
     /**
      * Creates new form SeatBooking
      */
+    private void refreshActiveBooking() {
+
+        try {
+            //activeBooking.setRowCount(0);
+            DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+
+            model.setRowCount(0);
+            Class.forName("com.mysql.jdbc.Driver");
+            String database = "jdbc:mysql://localhost:3306/BusManagement";
+            Connection con = DriverManager.getConnection(database, "root", "root123");
+
+            String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,st.Bus_No,st.Status  FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo LEFT JOIN cancellation c ON c.bookingId = b.bookingId WHERE c.bookingId IS NULL AND st.Status = 'booked';";
+
+            PreparedStatement st = con.prepareStatement(sql);
+            ResultSet r = st.executeQuery();
+//
+//            while (r.next()) {
+//                String bookingId = String.valueOf(r.getInt("bookingId"));
+//                String departureDate = r.getString("schedule_date");
+//                String departureTime = r.getString("depature_Time");
+//                String departure = r.getString("Depature");
+//                String arrival = r.getString("Arrival");
+//                String seatNo = String.valueOf(r.getInt("seatNo"));
+//                String Bus_no = r.getString("Bus_No");
+//                String seatStatus = r.getString("Status");
+//
+//                // Do something with the retrieved data, such as adding it to a table model
+//                // For example:
+//                String[] rowData = {bookingId, departureDate, departureTime, departure, arrival, seatNo, Bus_no, seatStatus};
+//                // Add rowData to your table model
+//                activeBooking.addRow(rowData);
+////
+//            }
+
+            // DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
+            NewClass.fillTheTable(model, r);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+
+    }
+
     public SeatBooking() {
         initComponents();
     }
@@ -118,6 +162,10 @@ public class SeatBooking extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -534,7 +582,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
     jLabel20.setText("Select seat number that you need to cancel:");
     jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    cancellPane.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+    cancellPane.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
 
     jTable3.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
@@ -554,14 +602,14 @@ public class SeatBooking extends javax.swing.JFrame {
     });
     jScrollPane3.setViewportView(jTable3);
 
-    cancellPane.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, 254));
+    cancellPane.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 80, 540, 254));
 
-    jLabel21.setText("Selected seat number :");
+    jLabel21.setText("Selected bus number :");
     jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    cancellPane.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
+    cancellPane.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, -1));
 
     jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    cancellPane.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 139, -1));
+    cancellPane.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 139, -1));
 
     jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/cancel-event.png"))); // NOI18N
     jButton4.setBackground(new java.awt.Color(51, 51, 51));
@@ -573,7 +621,21 @@ public class SeatBooking extends javax.swing.JFrame {
             jButton4ActionPerformed(evt);
         }
     });
-    cancellPane.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 395, -1, -1));
+    cancellPane.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, -1, -1));
+
+    jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+    jLabel26.setText("Selected booking ID :");
+    cancellPane.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
+
+    jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+    jLabel27.setText("Selected seat number :");
+    cancellPane.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
+
+    jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+    cancellPane.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 139, -1));
+
+    jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+    cancellPane.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 139, -1));
 
     MainPanel.add(cancellPane, "card5");
 
@@ -733,8 +795,6 @@ public class SeatBooking extends javax.swing.JFrame {
         MainPanel.repaint();
         MainPanel.revalidate();
 
-     
-
 
     }//GEN-LAST:event_panelRound2MouseClicked
 
@@ -744,38 +804,44 @@ public class SeatBooking extends javax.swing.JFrame {
         MainPanel.repaint();
         MainPanel.revalidate();
 
-        try {
-
-            Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(url, username1, password);
-
-            String sql = "SELECT * FROM seat where status='booked'";
-
-            PreparedStatement st = con.prepareStatement(sql);
-
-            ResultSet r2 = st.executeQuery();
-
-            DefaultTableModel model2 = (DefaultTableModel) jTable3.getModel();
-            NewClass.fillTheTable(model2, r2);
-
-            con.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            e.printStackTrace();
-
-        }
+        refreshActiveBooking();
+//
+//        try {
+//
+//            Class.forName("com.mysql.jdbc.Driver");
+//            String database = "jdbc:mysql://localhost:3306/BusManagement";
+//            Connection con = DriverManager.getConnection(url, username1, password);
+//
+//            String sql = "SELECT * FROM seat where status='booked'";
+//
+//            PreparedStatement st = con.prepareStatement(sql);
+//
+//            ResultSet r2 = st.executeQuery();
+//
+//            DefaultTableModel model2 = (DefaultTableModel) jTable3.getModel();
+//            NewClass.fillTheTable(model2, r2);
+//
+//            con.close();
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e);
+//            e.printStackTrace();
+//
+//        }
 
     }//GEN-LAST:event_panelRound3MouseClicked
 
     private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
         int index = jTable3.getSelectedRow();
         TableModel model = jTable3.getModel();
-        String bookingId = model.getValueAt(index, 1).toString();  //email is the 1th column in the table
+        String bookingId = model.getValueAt(index, 0).toString();  //email is the 1th column in the table
 
-        int primaryKeyValue = Integer.parseInt(model.getValueAt(index, 1).toString());
+        int primaryKeyValue = Integer.parseInt(model.getValueAt(index, 0).toString());
 
-        jTextField3.setText(bookingId);
+        String busno = model.getValueAt(index, 6).toString();
+        String seat = model.getValueAt(index, 5).toString();
+        jTextField4.setText(bookingId);
+        jTextField3.setText(busno);
+        jTextField5.setText(seat);
     }//GEN-LAST:event_jTable3MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -785,36 +851,31 @@ public class SeatBooking extends javax.swing.JFrame {
         //int choice = JOptionPane.showConfirmDialog(null, "Is this your final decision?", "Confirmation", JOptionPane.YES_NO_OPTION);
         // if (choice == JOptionPane.YES_OPTION) {
         try {
+            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String jdate = dFormat.format(new Date());
 
             Class.forName("com.mysql.jdbc.Driver");
             String database = "jdbc:mysql://localhost:3306/BusManagement";
             Connection con = DriverManager.getConnection(url, username1, password);
-
-            String sql = "UPDATE Seat SET Status = 'Unbooked' where seatNo='" + seatno + "' AND Bus_No='" + Bus_no + "'";
+//
+            String sql = "UPDATE Seat SET Status = 'unbooked' where seatNo='" + jTextField5.getText() + "' AND Bus_No='" + jTextField3.getText() + "'";
 
             PreparedStatement st = con.prepareStatement(sql);
             st.executeUpdate();
 
-            String sql2 = "SELECT * FROM seat where status='booked'";
-            PreparedStatement st2 = con.prepareStatement(sql2);
+            String sql3 = "INSERT INTO `cancellation`(`cancelledDate`, `bookingId`) VALUES (?, ?)";
+            PreparedStatement st3 = con.prepareStatement(sql3);
+            st3.setString(1, jdate); // Assuming jdate is a String containing the cancelled date
+            st3.setString(2, jTextField4.getText()); // Assuming jTextField2 contains the booking ID
+            st3.executeUpdate();
 
-            ResultSet r2 = st2.executeQuery();
+            refreshActiveBooking();
 
-            DefaultTableModel model2 = (DefaultTableModel) jTable3.getModel();
-            NewClass.fillTheTable(model2, r2);
-
-            con.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             e.printStackTrace();
 
         }
-//
-//        } else {
-//            System.out.println("You selected No.");
-//            // Add your logic for the No option here
-//
-//        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseEntered
@@ -844,36 +905,85 @@ public class SeatBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_depatureLocationActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+//        try {
+//            int UId = 0;
+//
+//            Class.forName("com.mysql.jdbc.Driver");
+//            String database = "jdbc:mysql://localhost:3306/BusManagement";
+//            Connection con = DriverManager.getConnection(url, username1, password);
+//            Date Date = new Date();
+////            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+////            String bdate = dFormat.format(Date);
+////
+////            String sql = "INSERT INTO `booking`(`bookingDate`,`ScheduleId`,`seatNo`,`userId`)VALUES(\'" + bdate + "\'," + SId + "," + Integer.parseInt(confirmationSeatNo.getText()) + "," + UId + ");";
+////            PreparedStatement st = con.prepareStatement(sql);
+////
+////            st.executeUpdate(sql);
+////            
+//            // Assuming conn is your database connection
+//            String sql2 = "UPDATE Seat SET Status = 'booked' WHERE seatNo IN (" + confirmationSeatNo.getText() + ") AND Bus_No='" + confirmationBusNo.getText() + "'";
+//            PreparedStatement pstmt = con.prepareStatement(sql2);
+////            pstmt.setString(1, confirmationSeatNo.getText());
+////            pstmt.setString(2, confirmationBusNo.getText());
+//            pstmt.executeUpdate();
+//
+//            con.close();
+//
+//            JOptionPane.showMessageDialog(null, "Booking is confirmed", "Confirmation", JOptionPane.PLAIN_MESSAGE);
+//
+//            //Passing informations to generate QR code
+//            //new GenerateQRCode(confirmationDepature.getText(),confirmationArrival.getText(),confirmationDepatureDate.getText(),confirmationDepatureTime.getText(),confirmationPassengerName.getText(),confirmationPassengerMobile.getText(),confirmationBusNo.getText(),confirmationSeatNo.getText(),confirmationFare.getText()).setVisible(true);
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(null, ex);
+//        }
+
+        String busNo = confirmationBusNo.getText();
+        String[] seatNumbers = confirmationSeatNo.getText().split(",");
+
+        // SQL statement to update Seat table
+        String sqlUpdateSeat = "UPDATE Seat SET Status = 'booked' WHERE seatNo IN (" + confirmationSeatNo.getText() + ") AND Bus_No=?";
+
+        // SQL statement to insert into Booking table
+        String sqlInsertBooking = "INSERT INTO booking (bookingDate, ScheduleId, seatNo) VALUES (?, ?, ?)";
+
         try {
-            int UId = 0;
-
-            Class.forName("com.mysql.jdbc.Driver");
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(SeatBooking.class.getName()).log(Level.SEVERE, null, ex);
+            }
             String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(url, username1, password);
-            Date Date = new Date();
-//            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
-//            String bdate = dFormat.format(Date);
-//
-//            String sql = "INSERT INTO `booking`(`bookingDate`,`ScheduleId`,`seatNo`,`userId`)VALUES(\'" + bdate + "\'," + SId + "," + Integer.parseInt(confirmationSeatNo.getText()) + "," + UId + ");";
-//            PreparedStatement st = con.prepareStatement(sql);
-//
-//            st.executeUpdate(sql);
-//            
-            // Assuming conn is your database connection
-            String sql2 = "UPDATE Seat SET Status = 'booked' WHERE seatNo IN (" + confirmationSeatNo.getText() + ") AND Bus_No='" + confirmationBusNo.getText() + "'";
-            PreparedStatement pstmt = con.prepareStatement(sql2);
-//            pstmt.setString(1, confirmationSeatNo.getText());
-//            pstmt.setString(2, confirmationBusNo.getText());
-            pstmt.executeUpdate();
+            Connection con = DriverManager.getConnection(database, "root", "root123");
+            // Prepare the update statement for Seat table
+            PreparedStatement updateSeatStmt = con.prepareStatement(sqlUpdateSeat);
+            updateSeatStmt.setString(1, busNo);
+            updateSeatStmt.executeUpdate();
 
-            con.close();
+            // Prepare the insert statement for Booking table
+            PreparedStatement insertBookingStmt = con.prepareStatement(sqlInsertBooking);
+
+            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String jdate = dFormat.format(new Date());
+            // Loop through each seat number
+            for (String seatNo : seatNumbers) {
+                // Assuming you have bookingDate and scheduleId defined elsewhere
+                // Set values for the insert statement
+                insertBookingStmt.setString(1, jdate);
+                insertBookingStmt.setInt(2, Integer.parseInt(jTextField1.getText()));
+
+                insertBookingStmt.setInt(3, Integer.parseInt(seatNo.trim())); // trim() removes leading/trailing whitespace
+
+                // Execute the insertion
+                insertBookingStmt.executeUpdate();
+            }
+
+            // Close the statements
+            updateSeatStmt.close();
+            insertBookingStmt.close();
 
             JOptionPane.showMessageDialog(null, "Booking is confirmed", "Confirmation", JOptionPane.PLAIN_MESSAGE);
-
-            //Passing informations to generate QR code
-            //new GenerateQRCode(confirmationDepature.getText(),confirmationArrival.getText(),confirmationDepatureDate.getText(),confirmationDepatureTime.getText(),confirmationPassengerName.getText(),confirmationPassengerMobile.getText(),confirmationBusNo.getText(),confirmationSeatNo.getText(),confirmationFare.getText()).setVisible(true);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle exception appropriately
         }
 
         DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
@@ -1085,6 +1195,8 @@ public class SeatBooking extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1102,6 +1214,8 @@ public class SeatBooking extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private com.github.lgooddatepicker.components.DatePicker journeyDate;
     private javax.swing.JPanel main;
     private UI.Images.PanelRound panelRound1;

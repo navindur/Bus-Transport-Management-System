@@ -4,6 +4,13 @@
  */
 package UI;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author hirun
@@ -15,6 +22,46 @@ public class SeatBookingView extends javax.swing.JFrame {
      */
     public SeatBookingView() {
         initComponents();
+        
+        try {
+            //activeBooking.setRowCount(0);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+            model.setRowCount(0);
+            Class.forName("com.mysql.jdbc.Driver");
+            String database = "jdbc:mysql://localhost:3306/BusManagement";
+            Connection con = DriverManager.getConnection(database, "root", "root123");
+
+            String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,st.Bus_No,st.Status  FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo LEFT JOIN cancellation c ON c.bookingId = b.bookingId WHERE c.bookingId IS NULL AND st.Status = 'booked';";
+
+            PreparedStatement st = con.prepareStatement(sql);
+            ResultSet r = st.executeQuery();
+//
+//            while (r.next()) {
+//                String bookingId = String.valueOf(r.getInt("bookingId"));
+//                String departureDate = r.getString("schedule_date");
+//                String departureTime = r.getString("depature_Time");
+//                String departure = r.getString("Depature");
+//                String arrival = r.getString("Arrival");
+//                String seatNo = String.valueOf(r.getInt("seatNo"));
+//                String Bus_no = r.getString("Bus_No");
+//                String seatStatus = r.getString("Status");
+//
+//                // Do something with the retrieved data, such as adding it to a table model
+//                // For example:
+//                String[] rowData = {bookingId, departureDate, departureTime, departure, arrival, seatNo, Bus_no, seatStatus};
+//                // Add rowData to your table model
+//                activeBooking.addRow(rowData);
+////
+//            }
+
+            // DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
+            NewClass.fillTheTable(model, r);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -130,7 +177,7 @@ public class SeatBookingView extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        panelRound2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, 310));
+        panelRound2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 60, 580, 310));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Booking Status");
