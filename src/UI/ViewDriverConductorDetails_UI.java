@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
-
+import Codes.DatabaseConnection;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +16,7 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
 
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "MYsql2023#";
+    private static final String PASSWORD = "root";
 
     private Connection connection;
     private PreparedStatement preparedStatement;
@@ -142,6 +142,7 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -248,6 +249,18 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
             }
         });
         panelRound1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
+
+        deleteButton.setBackground(new java.awt.Color(242, 242, 242));
+        deleteButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorMinus.png"))); // NOI18N
+        deleteButton.setText("Delete");
+        deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+        panelRound1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 890, 360));
 
@@ -366,6 +379,45 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow >= 0) {
+            // Get bus number from selected row
+            String FullName = jTable1.getValueAt(selectedRow, 0).toString();
+            // Confirm deletion with user
+            int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete Employee: " + FullName, "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                try {
+                    // Get database connection
+                    //Connection connection = DatabaseConnection.getConnection();
+                    connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+                    // Prepare SQL query to delete bus
+                    String sql = "DELETE FROM Employee WHERE FullName = ?";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    // Set bus number in query
+                    statement.setString(1, FullName);
+                    // Execute query and check affected rows
+                    int rowsAffected = statement.executeUpdate();
+
+                    if (rowsAffected > 0) {
+                        displayData(); // Refresh table data
+                        JOptionPane.showMessageDialog(this, "Employee deleted successfully.");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Failed to delete employee.");
+                    }
+
+                    // Close resources
+                    statement.close();
+                    //                    connection.close();
+                } catch (SQLException e) { // Handle database errors
+                    JOptionPane.showMessageDialog(this, "Error deleting employee data: " + e.getMessage());
+                }
+            }
+        } else { // Inform user if no bus is selected
+            JOptionPane.showMessageDialog(this, "Please select a employee to delete.");
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -402,6 +454,7 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton deleteButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
