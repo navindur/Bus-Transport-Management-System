@@ -447,7 +447,7 @@ public class SeatBooking extends javax.swing.JFrame {
             jButton8ActionPerformed(evt);
         }
     });
-    choosePane.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 100, 35));
+    choosePane.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 100, 35));
 
     MainPanel.add(choosePane, "card3");
 
@@ -767,28 +767,7 @@ public class SeatBooking extends javax.swing.JFrame {
         MainPanel.revalidate();
 
         refreshActiveBooking();
-//
-//        try {
-//
-//            Class.forName("com.mysql.jdbc.Driver");
-//            String database = "jdbc:mysql://localhost:3306/BusManagement";
-//            Connection con = DriverManager.getConnection(url, username1, password);
-//
-//            String sql = "SELECT * FROM seat where status='booked'";
-//
-//            PreparedStatement st = con.prepareStatement(sql);
-//
-//            ResultSet r2 = st.executeQuery();
-//
-//            DefaultTableModel model2 = (DefaultTableModel) jTable3.getModel();
-//            NewClass.fillTheTable(model2, r2);
-//
-//            con.close();
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e);
-//            e.printStackTrace();
-//
-//        }
+
 
     }//GEN-LAST:event_panelRound3MouseClicked
 
@@ -868,7 +847,6 @@ public class SeatBooking extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
-
         String busNo = confirmationBusNo.getText();
         String[] seatNumbers = confirmationSeatNo.getText().split(",");
 
@@ -885,7 +863,7 @@ public class SeatBooking extends javax.swing.JFrame {
                 Logger.getLogger(SeatBooking.class.getName()).log(Level.SEVERE, null, ex);
             }
             String database = "jdbc:mysql://localhost:3306/BusManagement";
-           Connection con = DriverManager.getConnection(url, username1, password);
+            Connection con = DriverManager.getConnection(url, username1, password);
             // Prepare the update statement for Seat table
             PreparedStatement updateSeatStmt = con.prepareStatement(sqlUpdateSeat);
             updateSeatStmt.setString(1, busNo);
@@ -936,12 +914,20 @@ public class SeatBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        searchPane.setVisible(false);
-        choosePane.setVisible(true);
+        searchPane.setVisible(true);
+        choosePane.setVisible(false);
         confirmationPane.setVisible(false);
-        
-         jSpinner1.setValue(1);
-         jComboBox1.removeAllItems();
+
+        jSpinner1.setValue(1);
+        jComboBox1.removeAllItems();
+        journeyDate.clear();
+        jTextField1.setText("");
+
+        DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+
+        model1.setRowCount(0);
+        model2.setRowCount(0);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
@@ -1042,7 +1028,7 @@ public class SeatBooking extends javax.swing.JFrame {
             System.err.println(se.getMessage());
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
-            JOptionPane.showMessageDialog(null, ex);
+            JOptionPane.showMessageDialog(null, "Choose a bus");
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
