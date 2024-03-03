@@ -14,6 +14,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
 
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root";
+
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
+
     /**
      * Creates new form ViewDriverConductorDetails_UI
      */
@@ -23,18 +31,14 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
     }
 
     private void displayData() {
-        Connection conn = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+
         try {
             // Connect to the database
-            conn = DatabaseConnection.getConnection();
+            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
 
             // Query to retrieve data from the table
             String query = "SELECT * FROM Employee";
-            
-            preparedStatement = conn.prepareStatement(query);
-            
+            preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
             // Populate the table with data
@@ -68,8 +72,8 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
                 if (preparedStatement != null) {
                     preparedStatement.close();
                 }
-                if (conn != null) {
-//                    conn.close();
+                if (connection != null) {
+                    connection.close();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -329,13 +333,8 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         String searchText2 = jTextField2.getText(); // Registration No
         String selectedPosition = (String) jComboBox1.getSelectedItem(); // Selected position
 
-        try {
-            // Get database connection
-            Connection conn = DatabaseConnection.getConnection();
-            
-            String query = buildQuery(searchText1, searchText2, selectedPosition);
-            
-            PreparedStatement preparedStatement = conn.prepareStatement(query);
+        try (
+                Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2, selectedPosition))) {
 
             int parameterIndex = 1;
             if (!searchText1.isEmpty()) {
@@ -410,10 +409,11 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
             if (confirm == JOptionPane.YES_OPTION) {
                 try {
                     // Get database connection
-                    Connection conn = DatabaseConnection.getConnection();
+                    //Connection connection = DatabaseConnection.getConnection();
+                    connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
                     // Prepare SQL query to delete bus
                     String sql = "DELETE FROM Employee WHERE FullName = ?";
-                    PreparedStatement statement = conn.prepareStatement(sql);
+                    PreparedStatement statement = connection.prepareStatement(sql);
                     // Set bus number in query
                     statement.setString(1, FullName);
                     // Execute query and check affected rows
@@ -428,7 +428,7 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
 
                     // Close resources
                     statement.close();
-//                    conn.close();
+                    //                    connection.close();
                 } catch (SQLException e) { // Handle database errors
                     JOptionPane.showMessageDialog(this, "Error deleting employee data: " + e.getMessage());
                 }
