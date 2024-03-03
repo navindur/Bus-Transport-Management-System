@@ -4,6 +4,7 @@
  */
 package UI;
 
+import java.sql.*;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,7 +23,7 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
  // JDBC URL, username, and password of MySQL server
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Ama2001ama*";
+    private static final String PASSWORD = "root";
 
     // JDBC variables for opening, closing and managing connection
     private Connection connection;
@@ -77,6 +78,37 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
             }
         }
     } 
+    
+    private String buildQuery(String searchText1, String searchText2, String searchText3) {
+        StringBuilder query = new StringBuilder("SELECT * FROM SpecialHire");
+        boolean hasWhereClause = false;
+
+        if (!searchText1.isEmpty()) {
+            query.append(" WHERE Bus_No LIKE ?"); // Use LIKE operator for partial name matching
+            hasWhereClause = true;
+        }
+
+        if (!searchText2.isEmpty()) {
+            if (hasWhereClause) {
+                query.append(" AND ");
+            } else {
+                query.append(" WHERE ");
+                hasWhereClause = true;
+            }
+            query.append("`Date` LIKE ?"); // Use LIKE operator for partial registration number matching
+        }
+
+        if (!searchText3.isEmpty()) {
+            if (hasWhereClause) {
+                query.append(" AND ");
+            } else {
+                query.append(" WHERE ");
+                hasWhereClause = true;
+            }
+            query.append("Reference_No LIKE ?"); // Use exact comparison for position
+        }
+        return query.toString();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,6 +133,7 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -205,6 +238,16 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
+        jButton2.setText("Refresh");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
@@ -231,7 +274,9 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelRound1Layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(jButton1))))
+                                .addComponent(jButton1)
+                                .addGap(53, 53, 53)
+                                .addComponent(jButton2))))
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,8 +310,12 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
                             .addComponent(jLabel5))))
                 .addGap(4, 4, 4)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(jButton1)
+                .addGap(3, 3, 3)
+                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2)
+                    .addGroup(panelRound1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
@@ -323,15 +372,30 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //String searchText = (String) searchTextField.getText();
+        String searchText1 = jTextField1.getText(); 
+        String searchText2 = jTextField2.getText();
+        String searchText3 = jTextField3.getText();
 
-        try {
+        try (
            //connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*);
 
-            String query = "SELECT * FROM SpecialHire WHERE Bus_No LIKE ? AND Date LIKE ? AND Reference_No LIKE ?";
+            /*String query = "SELECT * FROM SpecialHire WHERE Bus_No LIKE ? AND Date LIKE ? AND Reference_No LIKE ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, jTextField1.getText()); 
             preparedStatement.setString(2,jTextField2.getText());
-            preparedStatement.setString(3,jTextField3.getText());
+            preparedStatement.setString(3,jTextField3.getText());*/
+            Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2, searchText3))) {
+
+            int parameterIndex = 1;
+            if (!searchText1.isEmpty()) {
+                preparedStatement.setString(parameterIndex++, "%" + searchText1 + "%"); // Add wildcards for LIKE operator
+            }
+            if (!searchText2.isEmpty()) {
+                preparedStatement.setString(parameterIndex++, "%" + searchText2 + "%"); // Add wildcards for LIKE operator
+            }
+            if (!searchText3.isEmpty()) {
+                preparedStatement.setString(parameterIndex++,  "%" + searchText3 + "%");
+            }
             resultSet = preparedStatement.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -401,40 +465,44 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow >= 0) {
             // Get bus number from selected row
-            String FullName = jTable1.getValueAt(selectedRow, 0).toString();
+            String specialhire = jTable1.getValueAt(selectedRow, 0).toString();
             // Confirm deletion with user
-            int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete Employee: " + FullName, "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+            int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete Special Hire: " + specialhire, "Confirm Deletion", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
                 try {
                     // Get database connection
                     //Connection connection = DatabaseConnection.getConnection();
                     connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
                     // Prepare SQL query to delete bus
-                    String sql = "DELETE FROM Employee WHERE FullName = ?";
+                    String sql = "DELETE FROM specialhire WHERE Reference_No = ?";
                     PreparedStatement statement = connection.prepareStatement(sql);
                     // Set bus number in query
-                    statement.setString(1, FullName);
+                    statement.setString(1, specialhire);
                     // Execute query and check affected rows
                     int rowsAffected = statement.executeUpdate();
 
                     if (rowsAffected > 0) {
                         displayData(); // Refresh table data
-                        JOptionPane.showMessageDialog(this, "Employee deleted successfully.");
+                        JOptionPane.showMessageDialog(this, "Specialhire deleted successfully.");
                     } else {
-                        JOptionPane.showMessageDialog(this, "Failed to delete employee.");
+                        JOptionPane.showMessageDialog(this, "Failed to delete Specialhire.");
                     }
 
                     // Close resources
                     statement.close();
                     //                    connection.close();
                 } catch (SQLException e) { // Handle database errors
-                    JOptionPane.showMessageDialog(this, "Error deleting employee data: " + e.getMessage());
+                    JOptionPane.showMessageDialog(this, "Error deleting specialhire data: " + e.getMessage());
                 }
             }
         } else { // Inform user if no bus is selected
-            JOptionPane.showMessageDialog(this, "Please select a employee to delete.");
+            JOptionPane.showMessageDialog(this, "Please select a specialhire to delete.");
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        displayData();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,6 +545,7 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

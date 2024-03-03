@@ -76,6 +76,7 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         searchButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -84,13 +85,12 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(36, 36, 36));
-        jPanel3.setLayout(null);
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(100, 204, 197));
         jLabel2.setText("View Bus Details");
-        jPanel3.add(jLabel2);
-        jLabel2.setBounds(310, 20, 309, 54);
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -158,7 +158,7 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
                 searchButtonActionPerformed(evt);
             }
         });
-        panelRound1.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
+        panelRound1.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 21, -1, 40));
 
         deleteButton.setBackground(new java.awt.Color(242, 242, 242));
         deleteButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -184,8 +184,18 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         });
         panelRound1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, -1, -1));
 
-        jPanel3.add(panelRound1);
-        panelRound1.setBounds(60, 110, 830, 400);
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
+        jButton2.setText("Refresh");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        panelRound1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+
+        jPanel3.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 830, 400));
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png"))); // NOI18N
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -202,22 +212,18 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
                 backButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(backButton);
-        backButton.setBounds(70, 530, 100, 35);
+        jPanel3.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 100, 35));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name icon.png"))); // NOI18N
-        jPanel3.add(jLabel15);
-        jLabel15.setBounds(30, 20, 64, 64);
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name words.png"))); // NOI18N
-        jPanel3.add(jLabel16);
-        jLabel16.setBounds(100, 40, 123, 16);
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(153, 0, 0));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Black Back.jpg"))); // NOI18N
-        jPanel3.add(jLabel1);
-        jLabel1.setBounds(10, 10, 930, 580);
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -352,6 +358,10 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
 //        this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        loadData();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -391,6 +401,7 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private javax.swing.JButton backButton;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
