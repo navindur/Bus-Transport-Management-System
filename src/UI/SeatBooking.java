@@ -26,10 +26,7 @@ import javax.swing.table.TableModel;
  */
 public class SeatBooking extends javax.swing.JFrame {
 
-    private String username;
-//    String url = "jdbc:mysql://localhost:3306/BusManagement";
-//    String username1 = "root";
-//    String password = "root123";
+    private static String username;
 
     /**
      * Creates new form SeatBooking
@@ -55,11 +52,13 @@ public class SeatBooking extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
 
             model.setRowCount(0);
-//            Class.forName("com.mysql.jdbc.Driver");
-//            String database = "jdbc:mysql://localhost:3306/BusManagement";
-//            Connection con = DriverManager.getConnection(url, username1, password);
+
             Connection con = DatabaseConnection.getConnection();
-            String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,b.Username,st.Bus_No,st.Status  FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo LEFT JOIN cancellation c ON c.bookingId = b.bookingId WHERE c.bookingId IS NULL AND st.Status = 'booked';";
+            String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,b.Username,st.Bus_No,st.Status"
+                    + " FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId JOIN Seat st"
+                    + " ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo LEFT JOIN cancellation c"
+                    + " ON c.bookingId = b.bookingId"
+                    + " WHERE c.bookingId IS NULL AND st.Status = 'booked';";
 
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet r = st.executeQuery();
@@ -649,19 +648,10 @@ public class SeatBooking extends javax.swing.JFrame {
             String seatno = NewClass.returnColumnValue("SeatNo", jTable2);
             String Bus_no = NewClass.returnColumnValue("Bus_No", jTable2);
 
-            // int choice = JOptionPane.showConfirmDialog(null, "Is this your final decision?", "Confirmation", JOptionPane.YES_NO_OPTION);
-            // if (choice == JOptionPane.YES_OPTION) {
             try {
 
-//                Class.forName("com.mysql.jdbc.Driver");
-//                String database = "jdbc:mysql://localhost:3306/BusManagement";
-//                Connection con = DriverManager.getConnection(url, username1, password);
                 Connection con = DatabaseConnection.getConnection();
 
-//                String sql = "UPDATE Seat SET Status = 'booked' where seatNo='" + seatno + "' AND Bus_No='" + Bus_no + "'";
-//
-//                PreparedStatement st = con.prepareStatement(sql);
-//                st.executeUpdate();
                 String sql2 = "SELECT * FROM seat";
                 PreparedStatement st2 = con.prepareStatement(sql2);
 
@@ -677,16 +667,8 @@ public class SeatBooking extends javax.swing.JFrame {
 
             }
 
-//        } else {
-//            System.out.println("You selected No.");
-//            // Add your logic for the No option here
-//
-//        }
-//confirmationPassengerName.setText(User);
-            try {
-//                Class.forName("com.mysql.jdbc.Driver");
-//                String database = "jdbc:mysql://localhost:3306/BusManagement";
-//                Connection con = DriverManager.getConnection(url, username1, password);
+
+            try {              
 Connection con = DatabaseConnection.getConnection();
                 // Assuming conn is your database connection
                 String sql = "SELECT * FROM schedule WHERE scheduleId=?";
@@ -729,9 +711,6 @@ Connection con = DatabaseConnection.getConnection();
             int count = (int) jSpinner1.getValue();
             String[] selectedRows = new String[count];
 
-//            Class.forName("com.mysql.jdbc.Driver");
-//            String database = "jdbc:mysql://localhost:3306/BusManagement";
-//            Connection con = DriverManager.getConnection(url, username1, password);
 Connection con = DatabaseConnection.getConnection();
 
 // Loop through the selected rows
@@ -808,15 +787,12 @@ Connection con = DatabaseConnection.getConnection();
         String seatno = NewClass.returnColumnValue("SeatNo", jTable3);
         String Bus_no = NewClass.returnColumnValue("Bus_No", jTable3);
 
-        //int choice = JOptionPane.showConfirmDialog(null, "Is this your final decision?", "Confirmation", JOptionPane.YES_NO_OPTION);
-        // if (choice == JOptionPane.YES_OPTION) {
+    
         try {
             SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
             String jdate = dFormat.format(new Date());
 
-//            Class.forName("com.mysql.jdbc.Driver");
-//            String database = "jdbc:mysql://localhost:3306/BusManagement";
-//            Connection con = DriverManager.getConnection(url, username1, password);
+
 Connection con = DatabaseConnection.getConnection();
             String sql = "UPDATE Seat SET Status = 'unbooked' where seatNo='" + jTextField5.getText() + "' AND Bus_No='" + jTextField3.getText() + "'";
 
@@ -830,7 +806,9 @@ Connection con = DatabaseConnection.getConnection();
             st3.executeUpdate();
 
             refreshActiveBooking();
-
+            
+            resetTxtFields();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             e.printStackTrace();
@@ -838,6 +816,12 @@ Connection con = DatabaseConnection.getConnection();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    public void resetTxtFields(){
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+    }
+    
     private void jButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseEntered
         // TODO add your handling code here:
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder2.png")));
@@ -878,9 +862,7 @@ Connection con = DatabaseConnection.getConnection();
         String sqlInsertBooking = "INSERT INTO booking (bookingDate, ScheduleId, seatNo,Username) VALUES (?, ?, ?,?)";
 
         try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            String database = "jdbc:mysql://localhost:3306/BusManagement";
-//            Connection con = DriverManager.getConnection(url, username1, password);
+
 Connection con = DatabaseConnection.getConnection();
 
             // Prepare the update statement for Seat table
@@ -986,9 +968,7 @@ Connection con = DatabaseConnection.getConnection();
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            String database = "jdbc:mysql://localhost:3306/BusManagement";
-//            Connection con = DriverManager.getConnection(url, username1, password);
+
 Connection con = DatabaseConnection.getConnection();
 
 
@@ -1027,9 +1007,7 @@ Connection con = DatabaseConnection.getConnection();
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
 
         try {
-            //Class.forName("com.mysql.jdbc.Driver"); 
-//            String database = "jdbc:mysql://localhost:3306/BusManagement";
-//            Connection con = DriverManager.getConnection(url, username1, password);
+
 Connection con = DatabaseConnection.getConnection();
 
             String sql = "select * FROM seat " + "where Bus_No = (select Bus_No from schedule where scheduleId=?) AND status='Unbooked' ; ";
@@ -1044,12 +1022,7 @@ Connection con = DatabaseConnection.getConnection();
 
             choosePane.setVisible(true);
             searchPane.setVisible(false);
-            //SId=Integer.parseInt(scheduleId.getSelectedItem().toString());
-//            while(r.next()){
-//                //seat.addItem(r.getString("seatNo"));
-//            }
-//            
-//            con.close();
+
         } catch (SQLException se) {
             System.err.println(se.getMessage());
         } catch (Exception ex) {
