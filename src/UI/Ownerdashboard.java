@@ -367,7 +367,7 @@ public class Ownerdashboard extends javax.swing.JFrame {
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
         
-        SeatBookingView sbv = new SeatBookingView();
+        SeatBookingView sbv = new SeatBookingView(this);
         sbv.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel30MouseClicked

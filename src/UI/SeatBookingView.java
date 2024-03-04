@@ -4,10 +4,12 @@
  */
 package UI;
 
+import Codes.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,20 +19,31 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SeatBookingView extends javax.swing.JFrame {
 
+    private JFrame callingFrame;
     /**
      * Creates new form SeatBookingView
      */
     public SeatBookingView() {
         initComponents();
-        
+        fetchData();
+    }
+    
+    public SeatBookingView(JFrame callingFrame) {
+        initComponents();
+        this.callingFrame = callingFrame;
+        fetchData();
+    }
+
+    public void fetchData(){
         try {
             //activeBooking.setRowCount(0);
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
             model.setRowCount(0);
-            Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(database, "root", "root123");
+//            Class.forName("com.mysql.jdbc.Driver");
+//            String database = "jdbc:mysql://localhost:3306/BusManagement";
+//            Connection con = DriverManager.getConnection(database, "root", "root123");
+Connection con = DatabaseConnection.getConnection();
 
             String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,st.Bus_No,st.Status  FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo LEFT JOIN cancellation c ON c.bookingId = b.bookingId WHERE c.bookingId IS NULL AND st.Status = 'booked';";
 
@@ -63,7 +76,6 @@ public class SeatBookingView extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -223,8 +235,9 @@ public class SeatBookingView extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Empdashboard empDashboard = new Empdashboard();
-        empDashboard.setVisible(true);
+//        Empdashboard empDashboard = new Empdashboard();
+//        empDashboard.setVisible(true);
+        this.callingFrame.setVisible(true);
         this.dispose();
         
 //        Ownerdashboard ownerDashboard = new Ownerdashboard();

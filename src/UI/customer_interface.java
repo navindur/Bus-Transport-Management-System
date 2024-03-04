@@ -229,7 +229,7 @@ public class customer_interface extends javax.swing.JFrame {
                 dispose(); //close the employee interface page
                 setUserName(rs.getString(6));
 
-                Customerdashboard customerDashboard = new Customerdashboard(username); // Pass username to CustomerDashboard
+                Customerdashboard customerDashboard = new Customerdashboard(getUserName()); // Pass username to CustomerDashboard
                 customerDashboard.setVisible(true);
             } else {
                 //if username and password is wrong show message

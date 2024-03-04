@@ -276,7 +276,7 @@ public class Empdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        SeatBookingView empsbv = new SeatBookingView();
+        SeatBookingView empsbv = new SeatBookingView(this);
         empsbv.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked

@@ -25,6 +25,13 @@ public class Customerdashboard extends javax.swing.JFrame {
         this.username = username;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -180,13 +187,13 @@ public class Customerdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseExited
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        Customerprofile customerProfile = new Customerprofile(username); // Pass username again
+        Customerprofile customerProfile = new Customerprofile(getUsername()); // Pass username again
         customerProfile.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        SeatBooking seatbooking_ui = new SeatBooking(username);
+        SeatBooking seatbooking_ui = new SeatBooking(getUsername());
         seatbooking_ui.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel5MouseClicked

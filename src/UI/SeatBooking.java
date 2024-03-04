@@ -4,6 +4,7 @@
  */
 package UI;
 
+import Codes.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,13 +27,27 @@ import javax.swing.table.TableModel;
 public class SeatBooking extends javax.swing.JFrame {
 
     private String username;
-    String url = "jdbc:mysql://localhost:3306/BusManagement";
-    String username1 = "root";
-    String password = "root123";
+//    String url = "jdbc:mysql://localhost:3306/BusManagement";
+//    String username1 = "root";
+//    String password = "root123";
 
     /**
      * Creates new form SeatBooking
      */
+    public SeatBooking() {
+        initComponents();
+    }
+
+    public SeatBooking(String username) {
+        initComponents();
+        
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+    
     private void refreshActiveBooking() {
 
         try {
@@ -40,10 +55,10 @@ public class SeatBooking extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
 
             model.setRowCount(0);
-            Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(url, username1, password);
-
+//            Class.forName("com.mysql.jdbc.Driver");
+//            String database = "jdbc:mysql://localhost:3306/BusManagement";
+//            Connection con = DriverManager.getConnection(url, username1, password);
+            Connection con = DatabaseConnection.getConnection();
             String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,b.Username,st.Bus_No,st.Status  FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo LEFT JOIN cancellation c ON c.bookingId = b.bookingId WHERE c.bookingId IS NULL AND st.Status = 'booked';";
 
             PreparedStatement st = con.prepareStatement(sql);
@@ -57,20 +72,6 @@ public class SeatBooking extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
-    }
-
-    public SeatBooking() {
-        initComponents();
-    }
-
-    public SeatBooking(String username) {
-        initComponents();
-        
-        this.username = username;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     /**
@@ -652,9 +653,10 @@ public class SeatBooking extends javax.swing.JFrame {
             // if (choice == JOptionPane.YES_OPTION) {
             try {
 
-                Class.forName("com.mysql.jdbc.Driver");
-                String database = "jdbc:mysql://localhost:3306/BusManagement";
-                Connection con = DriverManager.getConnection(url, username1, password);
+//                Class.forName("com.mysql.jdbc.Driver");
+//                String database = "jdbc:mysql://localhost:3306/BusManagement";
+//                Connection con = DriverManager.getConnection(url, username1, password);
+                Connection con = DatabaseConnection.getConnection();
 
 //                String sql = "UPDATE Seat SET Status = 'booked' where seatNo='" + seatno + "' AND Bus_No='" + Bus_no + "'";
 //
@@ -668,7 +670,7 @@ public class SeatBooking extends javax.swing.JFrame {
                 DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
                 NewClass.fillTheTable(model2, r2);
 
-                con.close();
+//                con.close();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
                 e.printStackTrace();
@@ -682,9 +684,10 @@ public class SeatBooking extends javax.swing.JFrame {
 //        }
 //confirmationPassengerName.setText(User);
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                String database = "jdbc:mysql://localhost:3306/BusManagement";
-                Connection con = DriverManager.getConnection(url, username1, password);
+//                Class.forName("com.mysql.jdbc.Driver");
+//                String database = "jdbc:mysql://localhost:3306/BusManagement";
+//                Connection con = DriverManager.getConnection(url, username1, password);
+Connection con = DatabaseConnection.getConnection();
                 // Assuming conn is your database connection
                 String sql = "SELECT * FROM schedule WHERE scheduleId=?";
                 PreparedStatement st = con.prepareStatement(sql);
@@ -701,7 +704,7 @@ public class SeatBooking extends javax.swing.JFrame {
                     confirmationFare.setText("Rs. " + (Float.parseFloat(r.getString("Fare")) * ((Integer) jSpinner1.getValue()).floatValue()));
 
                 }
-                con.close();
+//                con.close();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
@@ -726,9 +729,10 @@ public class SeatBooking extends javax.swing.JFrame {
             int count = (int) jSpinner1.getValue();
             String[] selectedRows = new String[count];
 
-            Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(url, username1, password);
+//            Class.forName("com.mysql.jdbc.Driver");
+//            String database = "jdbc:mysql://localhost:3306/BusManagement";
+//            Connection con = DriverManager.getConnection(url, username1, password);
+Connection con = DatabaseConnection.getConnection();
 
 // Loop through the selected rows
             String seatnoquery = "SELECT * FROM seat WHERE SeatNo IN (";
@@ -746,10 +750,10 @@ public class SeatBooking extends javax.swing.JFrame {
             confirmationPane.setVisible(true);
             choosePane.setVisible(false);
 
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(SeatBooking.class.getName()).log(Level.SEVERE, null, ex);
 
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(SeatBooking.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -793,7 +797,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
         int primaryKeyValue = Integer.parseInt(model.getValueAt(index, 0).toString());
 
-        String busno = model.getValueAt(index, 6).toString();
+        String busno = model.getValueAt(index, 7).toString();
         String seat = model.getValueAt(index, 5).toString();
         jTextField4.setText(bookingId);
         jTextField3.setText(busno);
@@ -810,10 +814,10 @@ public class SeatBooking extends javax.swing.JFrame {
             SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
             String jdate = dFormat.format(new Date());
 
-            Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(url, username1, password);
-//
+//            Class.forName("com.mysql.jdbc.Driver");
+//            String database = "jdbc:mysql://localhost:3306/BusManagement";
+//            Connection con = DriverManager.getConnection(url, username1, password);
+Connection con = DatabaseConnection.getConnection();
             String sql = "UPDATE Seat SET Status = 'unbooked' where seatNo='" + jTextField5.getText() + "' AND Bus_No='" + jTextField3.getText() + "'";
 
             PreparedStatement st = con.prepareStatement(sql);
@@ -845,7 +849,7 @@ public class SeatBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5MouseExited
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Customerdashboard cd = new Customerdashboard();
+        Customerdashboard cd = new Customerdashboard(getUsername());
         cd.setVisible(true);
         this.dispose();
 
@@ -874,9 +878,11 @@ public class SeatBooking extends javax.swing.JFrame {
         String sqlInsertBooking = "INSERT INTO booking (bookingDate, ScheduleId, seatNo,Username) VALUES (?, ?, ?,?)";
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(url, username1, password);
+//            Class.forName("com.mysql.jdbc.Driver");
+//            String database = "jdbc:mysql://localhost:3306/BusManagement";
+//            Connection con = DriverManager.getConnection(url, username1, password);
+Connection con = DatabaseConnection.getConnection();
+
             // Prepare the update statement for Seat table
             PreparedStatement updateSeatStmt = con.prepareStatement(sqlUpdateSeat);
             updateSeatStmt.setString(1, busNo);
@@ -908,7 +914,7 @@ public class SeatBooking extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Booking is confirmed", "Confirmation", JOptionPane.PLAIN_MESSAGE);
         } catch (SQLException e) {
             e.printStackTrace(); // Handle exception appropriately
-        } catch (ClassNotFoundException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(SeatBooking.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -980,9 +986,11 @@ public class SeatBooking extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(url, username1, password);
+//            Class.forName("com.mysql.jdbc.Driver");
+//            String database = "jdbc:mysql://localhost:3306/BusManagement";
+//            Connection con = DriverManager.getConnection(url, username1, password);
+Connection con = DatabaseConnection.getConnection();
+
 
             LocalDate selectedDate = journeyDate.getDate();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -999,7 +1007,7 @@ public class SeatBooking extends javax.swing.JFrame {
 
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             NewClass.fillTheTable(model, r);
-            con.close();
+//            con.close();
 
             main.removeAll();
             main.add(child2);
@@ -1020,8 +1028,10 @@ public class SeatBooking extends javax.swing.JFrame {
 
         try {
             //Class.forName("com.mysql.jdbc.Driver"); 
-            String database = "jdbc:mysql://localhost:3306/BusManagement";
-            Connection con = DriverManager.getConnection(url, username1, password);
+//            String database = "jdbc:mysql://localhost:3306/BusManagement";
+//            Connection con = DriverManager.getConnection(url, username1, password);
+Connection con = DatabaseConnection.getConnection();
+
             String sql = "select * FROM seat " + "where Bus_No = (select Bus_No from schedule where scheduleId=?) AND status='Unbooked' ; ";
             PreparedStatement st = con.prepareStatement(sql);
 
@@ -1039,7 +1049,7 @@ public class SeatBooking extends javax.swing.JFrame {
 //                //seat.addItem(r.getString("seatNo"));
 //            }
 //            
-            con.close();
+//            con.close();
         } catch (SQLException se) {
             System.err.println(se.getMessage());
         } catch (Exception ex) {
