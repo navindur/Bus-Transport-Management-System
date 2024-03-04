@@ -4,6 +4,7 @@
  */
 package UI;
 
+import Codes.DatabaseConnection;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,9 +20,9 @@ import javax.swing.table.DefaultTableModel;
 public class SpecialHireBooking2 extends javax.swing.JFrame {
 
         // JDBC URL, username, and password of MySQL server
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+    //private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
+    //private static final String USERNAME = "root";
+    //private static final String PASSWORD = "root";
 
     // JDBC variables for opening, closing and managing connection
     private Connection connection;
@@ -40,8 +41,8 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
     private void displayData() {
         try {
             // Connect to the database
-            connection = DriverManager.getConnection(JDBC_URL,USERNAME,PASSWORD);
-
+            //connection = DriverManager.getConnection(JDBC_URL,USERNAME,PASSWORD);
+            connection = DatabaseConnection.getConnection();
             // Query to retrieve data from the table
             String query = "SELECT * FROM SpecialHire";
             preparedStatement = connection.prepareStatement(query);
@@ -303,14 +304,16 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
          //String searchText = (String) searchTextField.getText();
         String searchText1 = jTextField1.getText();
         String searchText2 = jTextField2.getText();
-        try (
+        try {
+            
+        connection = DatabaseConnection.getConnection();
             //connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*);
 
            /* String query = "SELECT * FROM SpecialHire WHERE Bus_No LIKE ? AND Date LIKE ?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,jTextField1.getText()); 
             preparedStatement.setString(2,jTextField2.getText());*/
-           Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2))) {
+           preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2)); 
 
             int parameterIndex = 1;
             if (!searchText1.isEmpty()) {

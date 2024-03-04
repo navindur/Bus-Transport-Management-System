@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package UI;
 
 import java.sql.*;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import Codes.DatabaseConnection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import Codes.DatabaseConnection;
 
 /**
@@ -231,7 +224,7 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -243,15 +236,12 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
         // Convert the char array to a String
         String password = new String(passwordChars);
         try {
-            // Load the MySQL JDBC driver
-            //Class.forName("com.mysql.cj.jdbc.Driver");
+            
             
             // Define the SQL query for inserting income data
             String AddDriverConductorDetails_UI = "Insert into Employee (FullName, NIC, License_No, Registration_No, DOB, Mobile_No, Landline_No, `Work as a`, Username, Password) values (?,?,?,?,?,?,?,?,?,?)";
             Connection conn = DatabaseConnection.getConnection();
-            // Establish a database connection
-            //nnection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
-//            JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+          
             PreparedStatement pstmt = conn.prepareStatement(AddDriverConductorDetails_UI);
             
             pstmt.setString(1, jTextField1.getText());
@@ -282,9 +272,7 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
             // Show an error message for database-related exceptions
             JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
         }
-//            System.out.println("Error occured");
-        // Show an error message for class not found
-        
+
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -339,6 +327,7 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AddDriverConductorDetails_UI().setVisible(true);
             }

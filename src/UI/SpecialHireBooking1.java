@@ -4,6 +4,7 @@
  */
 package UI;
 
+import Codes.DatabaseConnection;
 import java.sql.*;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
@@ -21,9 +22,9 @@ import javax.swing.table.DefaultTableModel;
 public class SpecialHireBooking1 extends javax.swing.JFrame {
 
  // JDBC URL, username, and password of MySQL server
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+    //private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
+    //private static final String USERNAME = "root";
+    //private static final String PASSWORD = "root";
 
     // JDBC variables for opening, closing and managing connection
     private Connection connection;
@@ -42,8 +43,8 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
     private void displayData() {
         try {
             // Connect to the database
-            connection = DriverManager.getConnection(JDBC_URL,USERNAME,PASSWORD);
-
+            //connection = DriverManager.getConnection(JDBC_URL,USERNAME,PASSWORD);
+            connection = DatabaseConnection.getConnection();
             // Query to retrieve data from the table
             String query = "SELECT * FROM SpecialHire";
             preparedStatement = connection.prepareStatement(query);
@@ -376,7 +377,9 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
         String searchText2 = jTextField2.getText();
         String searchText3 = jTextField3.getText();
 
-        try (
+        try {
+            connection = DatabaseConnection.getConnection();
+        
            //connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*);
 
             /*String query = "SELECT * FROM SpecialHire WHERE Bus_No LIKE ? AND Date LIKE ? AND Reference_No LIKE ?";
@@ -384,7 +387,7 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
             preparedStatement.setString(1, jTextField1.getText()); 
             preparedStatement.setString(2,jTextField2.getText());
             preparedStatement.setString(3,jTextField3.getText());*/
-            Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2, searchText3))) {
+           preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2, searchText3));
 
             int parameterIndex = 1;
             if (!searchText1.isEmpty()) {
@@ -472,7 +475,8 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
                 try {
                     // Get database connection
                     //Connection connection = DatabaseConnection.getConnection();
-                    connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+                    connection = DatabaseConnection.getConnection();
+                    //connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
                     // Prepare SQL query to delete bus
                     String sql = "DELETE FROM specialhire WHERE Reference_No = ?";
                     PreparedStatement statement = connection.prepareStatement(sql);

@@ -116,7 +116,6 @@ public class dailyshiftview extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         searchButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
-        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -289,7 +288,6 @@ public class dailyshiftview extends javax.swing.JFrame {
         );
 
         jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 890, -1));
-        jPanel1.add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Black Back.jpg"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -337,19 +335,19 @@ public class dailyshiftview extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         String searchText1 = textField1.getText();
 //        String searchText2 = textField2.getText();
-        String shiftDate = datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
-
+        //String shiftDate = datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
+        String searchText2 = textField2.getText();
         try {
             connection = DatabaseConnection.getConnection();
 
-            preparedStatement = connection.prepareStatement(buildQuery(searchText1, shiftDate));
+            preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2));
 
             int parameterIndex = 1;
             if (!searchText1.isEmpty()) {
                 preparedStatement.setString(parameterIndex++, "%" + searchText1 + "%"); // Add wildcards for LIKE operator
             }
-            if (!shiftDate.isEmpty()) {
-                preparedStatement.setString(parameterIndex++, "%" + shiftDate + "%"); // Add wildcards for LIKE operator
+            if (!searchText2.isEmpty()) {
+                preparedStatement.setString(parameterIndex++, "%" + searchText2 + "%"); // Add wildcards for LIKE operator
             }
             resultSet = preparedStatement.executeQuery();
 
@@ -391,7 +389,7 @@ public class dailyshiftview extends javax.swing.JFrame {
         displayData();
         textField1.setText("");
         textField2.setText("");
-        datePicker1.clear();
+        //datePicker1.clear();
     }//GEN-LAST:event_refreshButtonActionPerformed
 
     /**
@@ -435,7 +433,6 @@ public class dailyshiftview extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
