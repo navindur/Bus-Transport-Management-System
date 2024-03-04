@@ -787,13 +787,11 @@ Connection con = DatabaseConnection.getConnection();
         String seatno = NewClass.returnColumnValue("SeatNo", jTable3);
         String Bus_no = NewClass.returnColumnValue("Bus_No", jTable3);
 
-    
         try {
             SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
             String jdate = dFormat.format(new Date());
 
-
-Connection con = DatabaseConnection.getConnection();
+            Connection con = DatabaseConnection.getConnection();
             String sql = "UPDATE Seat SET Status = 'unbooked' where seatNo='" + jTextField5.getText() + "' AND Bus_No='" + jTextField3.getText() + "'";
 
             PreparedStatement st = con.prepareStatement(sql);
