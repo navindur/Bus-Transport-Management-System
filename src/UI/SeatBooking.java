@@ -47,18 +47,20 @@ public class SeatBooking extends javax.swing.JFrame {
     
     private void refreshActiveBooking() {
 
+        SeatBooking seatBooking = new SeatBooking();
+
         try {
-            //activeBooking.setRowCount(0);
             DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
 
             model.setRowCount(0);
 
             Connection con = DatabaseConnection.getConnection();
-            String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,b.Username,st.Bus_No,st.Status"
-                    + " FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId JOIN Seat st"
-                    + " ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo LEFT JOIN cancellation c"
-                    + " ON c.bookingId = b.bookingId"
-                    + " WHERE c.bookingId IS NULL AND st.Status = 'booked';";
+            String sql = "SELECT b.bookingId, s.schedule_date, s.depature_Time, s.Depature, s.Arrival, b.seatNo, b.Username, st.Bus_No, st.Status" +
+                " FROM booking b" +
+                " JOIN Schedule s ON b.ScheduleId = s.scheduleId" +
+                " JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo" +
+                " LEFT JOIN cancellation c ON c.bookingId = b.bookingId" +
+                " WHERE c.bookingId IS NULL AND st.Status = 'booked' AND b.Username = '" + username + "'";
 
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet r = st.executeQuery();
@@ -638,7 +640,6 @@ public class SeatBooking extends javax.swing.JFrame {
 
         int primaryKeyValue = Integer.parseInt(model.getValueAt(index, 1).toString());
 
-        //jTextField2.setText(SeatNo);
         jComboBox1.addItem(SeatNo);
     }//GEN-LAST:event_jTable2MouseClicked
 
@@ -667,9 +668,8 @@ public class SeatBooking extends javax.swing.JFrame {
 
             }
 
-
-            try {              
-Connection con = DatabaseConnection.getConnection();
+            try {
+                Connection con = DatabaseConnection.getConnection();
                 // Assuming conn is your database connection
                 String sql = "SELECT * FROM schedule WHERE scheduleId=?";
                 PreparedStatement st = con.prepareStatement(sql);
@@ -711,7 +711,7 @@ Connection con = DatabaseConnection.getConnection();
             int count = (int) jSpinner1.getValue();
             String[] selectedRows = new String[count];
 
-Connection con = DatabaseConnection.getConnection();
+            Connection con = DatabaseConnection.getConnection();
 
 // Loop through the selected rows
             String seatnoquery = "SELECT * FROM seat WHERE SeatNo IN (";
