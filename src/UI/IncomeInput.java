@@ -1,4 +1,3 @@
-
 package UI;
 
 import java.sql.*;
@@ -217,7 +216,7 @@ public class IncomeInput extends javax.swing.JFrame {
             rowsAffected = preparedStatement.executeUpdate();
 
             JOptionPane.showMessageDialog(rootPane, "Data inserted successfully!");
-            
+
             // Clear fields after successful insertion
             if (rowsAffected > 0) {
                 jTextField3.setText("");
@@ -225,9 +224,13 @@ public class IncomeInput extends javax.swing.JFrame {
                 jTextField2.setText("");
             }
 
+            // Close resources
+            preparedStatement.close();
+//            conn.close();
+
         } catch (NullPointerException pe) {
             // Show an error message for empty fields
-            JOptionPane.showMessageDialog(this,"Fields cannot be empty.", "Failed to insert data.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Fields cannot be empty.", "Failed to insert data.", JOptionPane.ERROR_MESSAGE);
 
         } catch (NumberFormatException ne) {
             // Show an error message for invalid income input
@@ -235,39 +238,30 @@ public class IncomeInput extends javax.swing.JFrame {
 
         } catch (SQLException e) {
             // Show an error message for database-related exceptions
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Failed to insert data.", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            // Close the connection only if data was inserted successfully
-            if (rowsAffected > 0 && conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(IncomeInput.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            JOptionPane.showMessageDialog(this, "Income already inserted or Invalid Bus number.", "Failed to insert data.", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-    
+
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
-        
+
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder2.png")));
     }//GEN-LAST:event_jButton4MouseEntered
 
     private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
-        
+
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png")));
     }//GEN-LAST:event_jButton4MouseExited
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+
         Empdashboard empDashboard = new Empdashboard();
         empDashboard.setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        
+
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**

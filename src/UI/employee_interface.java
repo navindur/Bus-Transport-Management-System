@@ -218,7 +218,9 @@ public class employee_interface extends javax.swing.JFrame {
                    
                }
                
-              conn.close();
+              rs.close();
+              stm.close();
+//               conn.close();
                
              
         }

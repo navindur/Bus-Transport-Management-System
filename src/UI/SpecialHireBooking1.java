@@ -439,7 +439,7 @@ public class SpecialHireBooking1 extends javax.swing.JFrame {
             // Close resources in the reverse order of their creation
             if (resultSet != null) resultSet.close();
             if (preparedStatement != null) preparedStatement.close();
-            if (connection != null) connection.close();
+//            if (connection != null) connection.close();
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error: Unable to close database resources");

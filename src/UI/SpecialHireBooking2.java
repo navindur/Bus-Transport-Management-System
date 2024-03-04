@@ -356,7 +356,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
             // Close resources in the reverse order of their creation
             if (resultSet != null) resultSet.close();
             if (preparedStatement != null) preparedStatement.close();
-            if (connection != null) connection.close();
+//            if (connection != null) connection.close();
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error: Unable to close database resources");
@@ -370,6 +370,8 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         displayData();
+        jTextField1.setText("");
+        jTextField2.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

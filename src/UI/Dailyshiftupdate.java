@@ -264,7 +264,7 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
             
             }catch (SQLException e) {
             // Show an error message for database-related exceptions
-            JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Invalid Bus number! Please enter again.", "Exception Occured", JOptionPane.ERROR_MESSAGE);
         }
 
     
