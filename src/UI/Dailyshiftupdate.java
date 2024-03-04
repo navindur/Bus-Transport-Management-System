@@ -19,6 +19,25 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
         initComponents();
     }
 
+    private boolean isValidRegistrationNumber(String regNumber) {
+        try {
+            // Check if the regNumber exists in the Employee table
+            Connection conn = DatabaseConnection.getConnection();
+            String checkQuery = "SELECT COUNT(*) FROM Employee WHERE Registration_No = ?";
+            PreparedStatement checkStmt = conn.prepareStatement(checkQuery);
+            checkStmt.setString(1, regNumber);
+            ResultSet resultSet = checkStmt.executeQuery();
+            resultSet.next();
+            // Retrieves the value of the designated column in the current row of this ResultSet object as an int 
+            int count = resultSet.getInt(1);
+            return count > 0;  // Valid if count is greater than 0
+        } catch (SQLException e) {
+            // Handle any database errors during validation
+            System.err.println("Error checking Registration Number: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Error checking Registration Number: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;  // Assume invalid if an error occurs
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +58,7 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -114,15 +133,15 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
-        jButton2.setText("Submit");
-        jButton2.setBackground(new java.awt.Color(86, 86, 86));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jButton2.setPreferredSize(new java.awt.Dimension(109, 47));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        submitButton.setBackground(new java.awt.Color(86, 86, 86));
+        submitButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        submitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
+        submitButton.setText("Submit");
+        submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitButton.setPreferredSize(new java.awt.Dimension(109, 47));
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                submitButtonActionPerformed(evt);
             }
         });
 
@@ -171,7 +190,7 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
                         .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
@@ -215,7 +234,7 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addGap(14, 14, 14)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43))
         );
@@ -236,49 +255,59 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         try {
-            // Define the SQL query for inserting income data
+            String driverRegNo = jTextField4.getText();
+            String conductorRegNo = jTextField1.getText();
+
+            if (jTextField1.getText().isEmpty()
+                    || jTextField2.getText().isEmpty()
+                    || jTextField3.getText().isEmpty()
+                    || jTextField4.getText().isEmpty()
+                    || jTextField5.getText().isEmpty()
+                    || datePicker1.getDate() == null) {
+                // If any field is empty or no date is selected, show the error message
+                JOptionPane.showMessageDialog(this, "Please fill all the fields.", "Error Occurred!", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Validate Registration Numbers
+            if (!isValidRegistrationNumber(driverRegNo) || !isValidRegistrationNumber(conductorRegNo)) {
+                JOptionPane.showMessageDialog(this, "Invalid Driver or Conductor Registration Number. Please check and try again.", "Invalid Registration Number", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Proceed with insert if both Registration Numbers are valid
             String incomeInput = "Insert into Shift (Bus_No,DriverReg_No, DriverName,ConductorReg_No,ConductorName,`Date`) values (?,?,?,?,?,?)";
-            
+
             Connection conn = DatabaseConnection.getConnection();
-            
-            // Prepare the statement for executing the query
             PreparedStatement pstmt = conn.prepareStatement(incomeInput);
-            
+
             pstmt.setString(1, jTextField3.getText());
-            pstmt.setString(2, jTextField4.getText());
+            pstmt.setString(2, driverRegNo);
             pstmt.setString(3, jTextField2.getText());
-            pstmt.setString(4, jTextField1.getText());
+            pstmt.setString(4, conductorRegNo);
             pstmt.setString(5, jTextField5.getText());
             pstmt.setString(6, datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
-            LocalDate selectedDate = datePicker1.getDate();
-            LocalDate currentDate = LocalDate.now();
-    
-            if (selectedDate.equals(currentDate)) {
-            pstmt.setString(6, selectedDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
+
             pstmt.executeUpdate();
+
             // Show a success message
-            JOptionPane.showMessageDialog(this, "Record added successfully.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
-            
+            JOptionPane.showMessageDialog(this, "Income added successfully.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+
+            // Clear fields
             jTextField3.setText("");
             jTextField4.setText("");
             jTextField2.setText("");
             jTextField1.setText("");
             jTextField5.setText("");
             datePicker1.setDate(null);
-            } else {
-        // Show an error message if the selected date is not today's date
-        JOptionPane.showMessageDialog(this, "Please select today's date.", "Invalid Date", JOptionPane.ERROR_MESSAGE);
-            }
-            
-            }catch (SQLException e) {
-            // Show an error message for database-related exceptions
-            JOptionPane.showMessageDialog(this, "Invalid Bus number! Please enter again.", "Exception Occured", JOptionPane.ERROR_MESSAGE);
-        }
 
-    
-    }//GEN-LAST:event_jButton2ActionPerformed
+        } catch (SQLException e) {
+            // Handle database-related exceptions
+            JOptionPane.showMessageDialog(this, "Invalid Bus Number. Please check and try again.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_submitButtonActionPerformed
 
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
      
@@ -347,7 +376,6 @@ try {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -365,5 +393,6 @@ try {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private UI.Images.PanelRound panelRound1;
+    private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 }
