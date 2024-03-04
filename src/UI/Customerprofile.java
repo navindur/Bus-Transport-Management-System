@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package UI;
 
 import Codes.DatabaseConnection;
@@ -241,23 +238,23 @@ public class Customerprofile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        // TODO add your handling code here:
+        
         String firstName = jTextField8.getText();
         String lastName = jTextField4.getText();
         String mobileNumber = jTextField5.getText();
@@ -296,7 +293,7 @@ public class Customerprofile extends javax.swing.JFrame {
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void changePasswordUIButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordUIButtonActionPerformed
-        // TODO add your handling code here:
+    
     }//GEN-LAST:event_changePasswordUIButtonActionPerformed
 
     private void changePasswordUIButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changePasswordUIButtonMouseClicked
@@ -305,17 +302,17 @@ public class Customerprofile extends javax.swing.JFrame {
     }//GEN-LAST:event_changePasswordUIButtonMouseClicked
 
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
-        // TODO add your handling code here:
+        
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder2.png")));
     }//GEN-LAST:event_jButton4MouseEntered
 
     private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
-        // TODO add your handling code here:
+        
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png")));
     }//GEN-LAST:event_jButton4MouseExited
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        
         Customerdashboard custdashboard = new Customerdashboard(username);
         custdashboard.setVisible(true);
         this.dispose();
@@ -350,6 +347,7 @@ public class Customerprofile extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 
                 new Customerprofile().setVisible(true);

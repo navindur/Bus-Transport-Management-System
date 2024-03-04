@@ -132,15 +132,14 @@ public class DailyIncomeView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
         try (Connection conn = DatabaseConnection.getConnection();
             Statement sr = conn.createStatement()) {
             ResultSet rs1 = sr.executeQuery(
                 "SELECT * FROM FinancialStatus WHERE Bus_No = '" + bsd.getText() + "' AND Date = '" + bsd1.getText() + "'");
             if (rs1.next()) {
                 bsid.setText(String.valueOf(rs1.getInt("Income(Rs.)")));
-                // Alternatively, if you want to display the income as a string:
-                // bsid.setText(rs1.getString("Income(Rs.)"));
+               
             } else {
                 bsid.setText("No data found");
             }
@@ -150,7 +149,7 @@ public class DailyIncomeView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bsdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsdActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_bsdActionPerformed
 
     /**
@@ -189,6 +188,7 @@ public class DailyIncomeView extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new DailyIncomeView().setVisible(true);
             }

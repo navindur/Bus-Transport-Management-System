@@ -1,4 +1,5 @@
 package UI;
+import Codes.DatabaseConnection;
 import java.sql.*;
 
 import javax.swing.UIManager;
@@ -126,15 +127,14 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
   
 // TODO add your handling code here:
         // monthly serach button code
-        try (Connection conn1 = DBMC.vcon();
-            Statement sr = conn1.createStatement()) {
+        try (Connection conn = DatabaseConnection.getConnection();
+            Statement sr = conn.createStatement()) {
             ResultSet rs1 = sr.executeQuery(
                 "SELECT SUM(`Income(Rs.)`) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsm.getText() + "' AND MONTH(Date) ='" + bsm1.getText() + "'");
 
             if (rs1.next()) {
                 bmi.setText(String.valueOf(rs1.getInt("TotalIncome")));
-                // Alternatively, if you want to display the income as a string:
-                // bsid.setText(rs1.getString("Income(Rs.)"));
+             
             } else {
                 bmi.setText("No data found");
             }
@@ -145,7 +145,7 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bsm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsm1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_bsm1ActionPerformed
 
     /**
@@ -184,6 +184,7 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new MonthlyIncomeUI().setVisible(true);
             }

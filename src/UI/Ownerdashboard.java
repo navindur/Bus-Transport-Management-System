@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package UI;
 
-import UI.Income_Statement_MainUI;
+
 
 /**
  *
@@ -354,7 +351,7 @@ public class Ownerdashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        // TODO add your handling code here:
+       
         dailyshiftview dailyshift=new dailyshiftview();
         dailyshift.setVisible(true);
         
@@ -362,14 +359,14 @@ public class Ownerdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        // TODO add your handling code here:
+        
         SpecialHireBooking1 specialhireBooking = new SpecialHireBooking1();
         specialhireBooking.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
-        // TODO add your handling code here:
+        
         SeatBookingView sbv = new SeatBookingView();
         sbv.setVisible(true);
         this.dispose();
@@ -470,7 +467,7 @@ public class Ownerdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jLabel29MouseClicked
 
     /**
@@ -502,6 +499,7 @@ public class Ownerdashboard extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Ownerdashboard().setVisible(true);
             }

@@ -1,14 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package UI;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import Codes.DatabaseConnection;
-import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 
 public class dailyshiftview extends javax.swing.JFrame {
@@ -322,20 +318,19 @@ public class dailyshiftview extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseExited
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        
         Ownerdashboard od1 = new Ownerdashboard();
         od1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void textField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField2ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_textField2ActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         String searchText1 = textField1.getText();
-//        String searchText2 = textField2.getText();
-        //String shiftDate = datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
+
         String searchText2 = textField2.getText();
         try {
             connection = DatabaseConnection.getConnection();
@@ -389,7 +384,7 @@ public class dailyshiftview extends javax.swing.JFrame {
         displayData();
         textField1.setText("");
         textField2.setText("");
-        //datePicker1.clear();
+
     }//GEN-LAST:event_refreshButtonActionPerformed
 
     /**
@@ -426,6 +421,7 @@ public class dailyshiftview extends javax.swing.JFrame {
         }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new dailyshiftview().setVisible(true);
             }

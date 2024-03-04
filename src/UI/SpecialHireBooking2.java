@@ -1,17 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package UI;
 
 import Codes.DatabaseConnection;
-import java.awt.event.ActionEvent;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -19,16 +13,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SpecialHireBooking2 extends javax.swing.JFrame {
 
-        // JDBC URL, username, and password of MySQL server
-    //private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
-    //private static final String USERNAME = "root";
-    //private static final String PASSWORD = "root";
 
-    // JDBC variables for opening, closing and managing connection
+   
     private Connection connection;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet; 
-    //private JTextField searchTextField;
+   
     /**
      * Creates new form SpecialHireBooking2
      */
@@ -41,7 +31,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
     private void displayData() {
         try {
             // Connect to the database
-            //connection = DriverManager.getConnection(JDBC_URL,USERNAME,PASSWORD);
+            
             connection = DatabaseConnection.getConnection();
             // Query to retrieve data from the table
             String query = "SELECT * FROM SpecialHire";
@@ -297,22 +287,17 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         //String searchText = (String) searchTextField.getText();
+         
         String searchText1 = jTextField1.getText();
         String searchText2 = jTextField2.getText();
         try {
             
         connection = DatabaseConnection.getConnection();
-            //connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "Ama2001ama*);
-
-           /* String query = "SELECT * FROM SpecialHire WHERE Bus_No LIKE ? AND Date LIKE ?";
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1,jTextField1.getText()); 
-            preparedStatement.setString(2,jTextField2.getText());*/
+        
            preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2)); 
 
             int parameterIndex = 1;
@@ -354,17 +339,17 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
-        // TODO add your handling code here:
+        
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder2.png")));
     }//GEN-LAST:event_jButton4MouseEntered
 
     private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
-        // TODO add your handling code here:
+        
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png")));
     }//GEN-LAST:event_jButton4MouseExited
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        
         Empdashboard empDashboard = new Empdashboard();
         empDashboard.setVisible(true);
 
@@ -384,7 +369,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -421,6 +406,7 @@ public class SpecialHireBooking2 extends javax.swing.JFrame {
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new SpecialHireBooking2().setVisible(true);
             }

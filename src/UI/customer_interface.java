@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package UI;
 
+import Codes.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -183,12 +181,12 @@ public class customer_interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
-        // TODO add your handling code here:
+        
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder2.png")));
     }//GEN-LAST:event_jButton4MouseEntered
 
     private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
-        // TODO add your handling code here:
+       
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png")));
     }//GEN-LAST:event_jButton4MouseExited
 
@@ -211,17 +209,17 @@ public class customer_interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            
 
             // Establish a database connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root123");
+            Connection conn = DatabaseConnection.getConnection();
 
             String username = jTextField1.getText();
             String password = jPasswordField1.getText();
 
-            Statement stm = con.createStatement();
+            Statement stm = conn.createStatement();
 
             String sql = "select * from Customer where  Username='" + username + "' and Password='" + password + "'";
             ResultSet rs = stm.executeQuery(sql);
@@ -278,6 +276,7 @@ public class customer_interface extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new customer_interface().setVisible(true);
             }

@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package UI;
 
-import javax.swing.UIManager;
+
 
 /**
  *
@@ -253,17 +250,16 @@ public class Empdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseExited
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
+        
         IncomeInput incomeInput = new IncomeInput();
         incomeInput.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
+        
         SpecialHireBooking2 specialHireView = new SpecialHireBooking2();
         specialHireView.setVisible(true);
-        
         this.dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
 
@@ -280,7 +276,6 @@ public class Empdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        // TODO add your handling code here:
         SeatBookingView empsbv = new SeatBookingView();
         empsbv.setVisible(true);
         this.dispose();

@@ -1,14 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package UI;
 
-import com.mysql.cj.jdbc.Driver;
+
+import Codes.DatabaseConnection;
 import java.sql.*;
-import java.time.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -248,22 +243,19 @@ public class SHBpopup extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
             try {
-            // Load the MySQL JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            
             
             // Define the SQL query for inserting booking data
             String specialHireBooking = "INSERT INTO SpecialHire (Reference_No, `Name`, `Date`, Bus_No, Driver, Conductor)VALUES (?, ?, ?, ?, ?, ?)";
             
             // Establish a database connection
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
+            Connection conn = DatabaseConnection.getConnection();
             JOptionPane.showMessageDialog(this, "Database connection successful.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
             
             // Prepare the statement for executing the query
-            PreparedStatement pstmt = con.prepareStatement(specialHireBooking);
+            PreparedStatement pstmt = conn.prepareStatement(specialHireBooking);
             
             // Set the parameters for the query
-//            LocalDate selectedDate = datePicker1.getDate();
-//            DateTimeFormatter formattedDate = DateTimeFormatter.ISO_LOCAL_DATE;
             pstmt.setInt(1, Integer.parseInt(jTextField1.getText()));           
             pstmt.setString(2, jTextField2.getText());
             pstmt.setString(3, jTextField3.getText());
@@ -285,16 +277,12 @@ public class SHBpopup extends javax.swing.JFrame {
             
 
 
-        } catch (ClassNotFoundException cx) {
-            Logger.getLogger(IncomeInput.class.getName()).log(Level.SEVERE, null, cx);
-//            System.out.println("Error occured");
-            // Show an error message for class not found
-            JOptionPane.showMessageDialog(this, cx, "Exception Occured", JOptionPane.ERROR_MESSAGE);
-//            ex.printStackTrace();
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             // Show an error message for database-related exceptions
             JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
         }
+
+        
     } 
         /**
      * @param args the command line arguments

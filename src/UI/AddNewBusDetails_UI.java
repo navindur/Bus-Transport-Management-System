@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package UI;
 
 import Codes.DatabaseConnection;
@@ -220,28 +217,28 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTextField11ActionPerformed
 
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox2ItemStateChanged
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         String busRegistrationNo = jTextField6.getText();
-//        String registrationDate = jTextField12.getText();
+
         String registrationDate = datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
         String busChassisNo = jTextField9.getText();
         String busModel = (String) jComboBox2.getSelectedItem();
         String addingMileage = jTextField10.getText();
-//        String lastServiceDate = jTextField13.getText();
+
         String lastServiceDate = datePicker2.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
         String nextServiceMileage = jTextField11.getText();
-//        String nextServiceDate = jTextField14.getText();
+
         String nextServiceDate = datePicker3.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
 
         // Validate input
@@ -256,13 +253,13 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
             String sql = "INSERT INTO Bus (Bus_No, RegistrationDate, Chassis_No, Model, AddingMileage, LastServiceDate, NextServiceMileage, NextServiceDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, busRegistrationNo);
-//            statement.setDate(2, java.sql.Date.valueOf(registrationDate)); -- this is used if there are textFields
+
             statement.setString(2, registrationDate);
             statement.setString(3, busChassisNo);
-//            statement.setLong(3, Long.parseLong(busChassisNo));
+
             statement.setString(4, busModel);
             statement.setInt(5, Integer.parseInt(addingMileage));
-//            statement.setDate(6, java.sql.Date.valueOf(lastServiceDate)); -- this is used if there are textFields
+
             statement.setString(6, lastServiceDate);
             statement.setInt(7, Integer.parseInt(nextServiceMileage));
             statement.setString(8, nextServiceDate);
@@ -270,14 +267,13 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
 
             if (rowsAffected > 0) {
                 JOptionPane.showMessageDialog(this, "Bus details added successfully!");
-                // Clear text fields
-//                resetButtonActionPerformed(evt);
+           
+
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to add bus details.");
             }
             
-//            DatabaseConnection.closeConnection();
-//            conn.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error connecting to database: " + e.getMessage());
@@ -291,7 +287,7 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField10ActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
@@ -307,7 +303,7 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     /**
@@ -339,6 +335,7 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AddNewBusDetails_UI().setVisible(true);
             }

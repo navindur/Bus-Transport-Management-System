@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package UI;
+import Codes.DatabaseConnection;
 import java.sql.*;
 
 /**
@@ -129,16 +127,15 @@ public class YearIncomeU1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        try (Connection conn2 = DBMC.vcon();
-            Statement sr1 = conn2.createStatement()) {
+
+        try (Connection conn = DatabaseConnection.getConnection();
+            Statement sr1 = conn.createStatement()) {
             ResultSet rs2 = sr1.executeQuery(
                 "SELECT SUM(`Income(Rs.)`) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsy.getText() + "' AND Year(Date) ='" + bsy1.getText() + "'");
 
             if (rs2.next()) {
                 bmy.setText(String.valueOf(rs2.getInt("TotalIncome")));
-                // Alternatively, if you want to display the income as a string:
-                // bsid.setText(rs1.getString("Income(Rs.)"));
+
             } else {
                 bmy.setText("No data found");
             }
@@ -148,7 +145,7 @@ public class YearIncomeU1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bsy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsy1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_bsy1ActionPerformed
 
     /**
