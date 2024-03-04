@@ -23,6 +23,10 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
     private boolean isValidPhoneNumber(String phoneNumber) {
     return phoneNumber.matches("\\d{10}"); // Matches exactly 10 digits
     }
+    // Method to validate registration number format
+    private boolean isValidRegistrationNumber(String regNumber) {
+    return regNumber.matches("SL-NTC-\\w+"); // Matches 'SL-NTC-' followed by any word characters
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -237,6 +241,8 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
     // Convert the char array to a String
     String password = new String(passwordChars);
     try {
+        String registrationNumber = jTextField8.getText().trim();
+        if (isValidRegistrationNumber(registrationNumber)) {
         // Validate mobile number
         String mobileNumber = jTextField6.getText();
         if (isValidPhoneNumber(mobileNumber)) {
@@ -251,7 +257,7 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
                 pstmt.setString(1, jTextField1.getText());
                 pstmt.setString(2, jTextField3.getText());
                 pstmt.setString(3, jTextField5.getText());
-                pstmt.setString(4, jTextField8.getText());
+                pstmt.setString(4, registrationNumber);
 
                 // Validate date
                 LocalDate selectedDate = datePicker1.getDate();
@@ -289,6 +295,9 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(this, "Invalid Mobile Number. Please enter a valid 10-digit number.", "Invalid Number", JOptionPane.ERROR_MESSAGE);
+        }
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid Registration Number. Please enter a valid registration number starting with 'SL-NTC-'", "Invalid Number", JOptionPane.ERROR_MESSAGE);
         }
     } catch (SQLException e) {
         // Show an error message for database-related exceptions
