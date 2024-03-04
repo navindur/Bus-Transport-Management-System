@@ -41,6 +41,7 @@ public class Ownerdashboard extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -134,9 +135,9 @@ public class Ownerdashboard extends javax.swing.JFrame {
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel26.setText("Booking");
+        jLabel26.setText("View");
         jPanel1.add(jLabel26);
-        jLabel26.setBounds(80, 480, 73, 25);
+        jLabel26.setBounds(710, 270, 71, 25);
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(51, 51, 51));
@@ -149,6 +150,12 @@ public class Ownerdashboard extends javax.swing.JFrame {
         jLabel24.setText("Seat Booking");
         jPanel1.add(jLabel24);
         jLabel24.setBounds(710, 250, 114, 25);
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel39.setText("Booking");
+        jPanel1.add(jLabel39);
+        jLabel39.setBounds(80, 480, 73, 25);
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(51, 51, 51));
@@ -539,6 +546,7 @@ public class Ownerdashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
