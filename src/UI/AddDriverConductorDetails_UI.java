@@ -5,6 +5,7 @@ import java.sql.*;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import Codes.DatabaseConnection;
+import java.time.LocalDate;
 
 /**
  *
@@ -17,6 +18,10 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
      */
     public AddDriverConductorDetails_UI() {
         initComponents();
+    }
+    // Method to validate phone number format
+    private boolean isValidPhoneNumber(String phoneNumber) {
+    return phoneNumber.matches("\\d{10}"); // Matches exactly 10 digits
     }
 
     /**
@@ -224,36 +229,52 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // Get the password as a char array
-        char[] passwordChars = jPasswordField1.getPassword();
-        // Get the selected item from the JComboBox
-        String selectedValue = jComboBox1.getSelectedItem().toString();
+                // Get the password as a char array
+    char[] passwordChars = jPasswordField1.getPassword();
+    // Get the selected item from the JComboBox
+    String selectedValue = jComboBox1.getSelectedItem().toString();
 
-        // Convert the char array to a String
-        String password = new String(passwordChars);
-        try {
-            
-            
-            // Define the SQL query for inserting income data
-            String AddDriverConductorDetails_UI = "Insert into Employee (FullName, NIC, License_No, Registration_No, DOB, Mobile_No, Landline_No, `Work as a`, Username, Password) values (?,?,?,?,?,?,?,?,?,?)";
-            Connection conn = DatabaseConnection.getConnection();
-          
-            PreparedStatement pstmt = conn.prepareStatement(AddDriverConductorDetails_UI);
-            
-            pstmt.setString(1, jTextField1.getText());
-            pstmt.setString(2, jTextField3.getText());
-            pstmt.setString(3, jTextField5.getText());
-            pstmt.setString(4, jTextField8.getText());
-            pstmt.setString(5, datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
-            pstmt.setString(6, jTextField6.getText());
-            pstmt.setString(7, jTextField7.getText());
-            pstmt.setString(8, selectedValue);
-            pstmt.setString(9, jTextField9.getText());
-            pstmt.setString(10, password);
-            pstmt.executeUpdate();
-            
-            JOptionPane.showMessageDialog(this, "Record added successfully.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
-            
+    // Convert the char array to a String
+    String password = new String(passwordChars);
+    try {
+        // Validate mobile number
+        String mobileNumber = jTextField6.getText();
+        if (isValidPhoneNumber(mobileNumber)) {
+            // Validate landline number
+            String landlineNumber = jTextField7.getText();
+            if (isValidPhoneNumber(landlineNumber)) {
+                // Define the SQL query for inserting income data
+                String AddDriverConductorDetails_UI = "Insert into Employee (FullName, NIC, License_No, Registration_No, DOB, Mobile_No, Landline_No, `Work as a`, Username, Password) values (?,?,?,?,?,?,?,?,?,?)";
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(AddDriverConductorDetails_UI);
+
+                pstmt.setString(1, jTextField1.getText());
+                pstmt.setString(2, jTextField3.getText());
+                pstmt.setString(3, jTextField5.getText());
+                pstmt.setString(4, jTextField8.getText());
+
+                // Validate date
+                LocalDate selectedDate = datePicker1.getDate();
+                LocalDate currentDate = LocalDate.now();
+
+                if (selectedDate.isBefore(currentDate)) {
+                    pstmt.setString(5, selectedDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
+                } else {
+                    // Show an error message if the selected date is not before today's date
+                    JOptionPane.showMessageDialog(this, "Invalid Date", "Invalid Date", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                pstmt.setString(6, mobileNumber);
+                pstmt.setString(7, landlineNumber);
+                pstmt.setString(8, selectedValue);
+                pstmt.setString(9, jTextField9.getText());
+                pstmt.setString(10, password);
+
+                pstmt.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Record added successfully.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+
+                // Reset fields after successful insertion
                 jTextField1.setText("");
                 jTextField3.setText("");
                 jTextField5.setText("");
@@ -263,11 +284,16 @@ public class AddDriverConductorDetails_UI extends javax.swing.JFrame {
                 jTextField7.setText("");
                 jTextField9.setText("");
                 jPasswordField1.setText("");
-            
-            }catch (SQLException e) {
-            // Show an error message for database-related exceptions
-            JOptionPane.showMessageDialog(this, e, "Exception Occured", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid Landline Number. Please enter a valid 10-digit number.", "Invalid Number", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid Mobile Number. Please enter a valid 10-digit number.", "Invalid Number", JOptionPane.ERROR_MESSAGE);
         }
+    } catch (SQLException e) {
+        // Show an error message for database-related exceptions
+        JOptionPane.showMessageDialog(this, e, "Exception Occurred", JOptionPane.ERROR_MESSAGE);
+    }
 
 
     }//GEN-LAST:event_jButton3ActionPerformed
