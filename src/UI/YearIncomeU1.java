@@ -128,9 +128,10 @@ public class YearIncomeU1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        try (Connection conn = DatabaseConnection.getConnection();
-            Statement sr1 = conn.createStatement()) {
-            ResultSet rs2 = sr1.executeQuery(
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            Statement sr = conn.createStatement();
+            ResultSet rs2 = sr.executeQuery(
                 "SELECT SUM(`Income(Rs.)`) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsy.getText() + "' AND Year(Date) ='" + bsy1.getText() + "'");
 
             if (rs2.next()) {
@@ -139,6 +140,11 @@ public class YearIncomeU1 extends javax.swing.JFrame {
             } else {
                 bmy.setText("No data found");
             }
+            
+            // Close resources
+            rs2.close();
+            sr.close();
+//            conn.close();
         } catch (SQLException e) {
             e.printStackTrace(); // or log the exception
         }

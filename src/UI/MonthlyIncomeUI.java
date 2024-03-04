@@ -127,8 +127,9 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
   
 // TODO add your handling code here:
         // monthly serach button code
-        try (Connection conn = DatabaseConnection.getConnection();
-            Statement sr = conn.createStatement()) {
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            Statement sr = conn.createStatement();
             ResultSet rs1 = sr.executeQuery(
                 "SELECT SUM(`Income(Rs.)`) AS TotalIncome  FROM FinancialStatus WHERE Bus_No='" + bsm.getText() + "' AND MONTH(Date) ='" + bsm1.getText() + "'");
 
@@ -138,6 +139,11 @@ public class MonthlyIncomeUI extends javax.swing.JFrame {
             } else {
                 bmi.setText("No data found");
             }
+            
+            // Close resources
+            rs1.close();
+            sr.close();
+//            conn.close();
         } catch (SQLException e) {
             e.printStackTrace(); // or log the exception
         }

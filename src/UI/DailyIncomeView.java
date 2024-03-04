@@ -133,8 +133,9 @@ public class DailyIncomeView extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        try (Connection conn = DatabaseConnection.getConnection();
-            Statement sr = conn.createStatement()) {
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            Statement sr = conn.createStatement();
             ResultSet rs1 = sr.executeQuery(
                 "SELECT * FROM FinancialStatus WHERE Bus_No = '" + bsd.getText() + "' AND Date = '" + bsd1.getText() + "'");
             if (rs1.next()) {
@@ -143,6 +144,11 @@ public class DailyIncomeView extends javax.swing.JFrame {
             } else {
                 bsid.setText("No data found");
             }
+            
+            // Close resources
+            rs1.close();
+            sr.close();
+//            conn.close();
         } catch (SQLException e) {
             e.printStackTrace(); // or log the exception
         }
