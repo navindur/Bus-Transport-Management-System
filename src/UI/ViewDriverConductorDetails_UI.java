@@ -139,7 +139,6 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         deleteButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -187,17 +186,17 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         jLabel8.setText("Field :");
         panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, -1));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Driver", "Conductor" }));
         jComboBox1.setBackground(new java.awt.Color(51, 51, 51));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Driver", "Conductor" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelRound1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 25, -1, -1));
 
-        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
         searchButton.setText("Search");
         searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
@@ -240,12 +239,12 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
 
         panelRound1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 850, 140));
 
-        addNewButton.setBackground(new java.awt.Color(242, 242, 242));
-        addNewButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        addNewButton.setForeground(new java.awt.Color(51, 51, 51));
         addNewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
         addNewButton.setText("Add New");
+        addNewButton.setBackground(new java.awt.Color(242, 242, 242));
         addNewButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addNewButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        addNewButton.setForeground(new java.awt.Color(51, 51, 51));
         addNewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNewButtonActionPerformed(evt);
@@ -253,11 +252,11 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         });
         panelRound1.add(addNewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
 
-        deleteButton.setBackground(new java.awt.Color(242, 242, 242));
-        deleteButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorMinus.png"))); // NOI18N
         deleteButton.setText("Delete");
+        deleteButton.setBackground(new java.awt.Color(242, 242, 242));
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -265,10 +264,10 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         });
         panelRound1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
         refreshButton.setText("Refresh");
         refreshButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        refreshButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
@@ -294,9 +293,6 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, 100, 35));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name icon.png"))); // NOI18N
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(153, 0, 0));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -507,7 +503,6 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

@@ -99,8 +99,6 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -170,10 +168,10 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         jLabel5.setText("Hint:-  NB-4210");
         panelRound1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 65, -1, -1));
 
-        searchButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
         searchButton.setText("Search");
         searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
@@ -181,11 +179,11 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         });
         panelRound1.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 21, -1, 40));
 
-        deleteButton.setBackground(new java.awt.Color(242, 242, 242));
-        deleteButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorMinus.png"))); // NOI18N
         deleteButton.setText("Delete");
+        deleteButton.setBackground(new java.awt.Color(242, 242, 242));
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -193,11 +191,11 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         });
         panelRound1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
 
-        addButton.setBackground(new java.awt.Color(242, 242, 242));
-        addButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
         addButton.setText("Add New");
+        addButton.setBackground(new java.awt.Color(242, 242, 242));
         addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
@@ -205,10 +203,10 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         });
         panelRound1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, -1, -1));
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
         refreshButton.setText("Refresh");
         refreshButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        refreshButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
@@ -234,12 +232,6 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
             }
         });
         jPanel3.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 100, 35));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name icon.png"))); // NOI18N
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name words.png"))); // NOI18N
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(153, 0, 0));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -433,8 +425,6 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

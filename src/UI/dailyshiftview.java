@@ -98,9 +98,7 @@ public class dailyshiftview extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         panelRound1 = new UI.Images.PanelRound();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -120,16 +118,10 @@ public class dailyshiftview extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(950, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name words.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(100, 204, 197));
         jLabel3.setText("Daily Shift View");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name icon.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/BackWithBoarder.png"))); // NOI18N
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -183,9 +175,9 @@ public class dailyshiftview extends javax.swing.JFrame {
         jTable2.setShowGrid(true);
         jScrollPane2.setViewportView(jTable2);
 
+        jLabel4.setText("Bus Number :");
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Bus Number :");
 
         textField1.setBackground(new java.awt.Color(51, 51, 51));
         textField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -196,9 +188,9 @@ public class dailyshiftview extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Date :");
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("Date :");
 
         textField2.setBackground(new java.awt.Color(51, 51, 51));
         textField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -209,26 +201,26 @@ public class dailyshiftview extends javax.swing.JFrame {
             }
         });
 
-        jLabel26.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(51, 51, 51));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("YYYY-MM-DD");
         jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel26.setFont(new java.awt.Font("SansSerif", 0, 9)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(51, 51, 51));
 
-        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
         searchButton.setText("Search");
         searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
             }
         });
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
         refreshButton.setText("Refresh");
         refreshButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        refreshButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
@@ -430,8 +422,6 @@ public class dailyshiftview extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

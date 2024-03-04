@@ -49,8 +49,6 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
         datePicker3 = new com.github.lgooddatepicker.components.DatePicker();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -149,9 +147,9 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         jLabel21.setText("Last Service Date");
         panelRound1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 160, -1, -1));
 
-        resetButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         resetButton.setText("Reset All");
         resetButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        resetButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetButtonActionPerformed(evt);
@@ -159,12 +157,12 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         });
         panelRound1.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
-        submitButton.setBackground(new java.awt.Color(242, 242, 242));
-        submitButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        submitButton.setForeground(new java.awt.Color(51, 51, 51));
         submitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
         submitButton.setText("Submit");
+        submitButton.setBackground(new java.awt.Color(242, 242, 242));
         submitButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submitButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        submitButton.setForeground(new java.awt.Color(51, 51, 51));
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonActionPerformed(evt);
@@ -189,12 +187,6 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         panelRound1.add(datePicker3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 225, -1, -1));
 
         jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 810, 380));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name icon.png"))); // NOI18N
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Name words.png"))); // NOI18N
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(153, 0, 0));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -348,8 +340,6 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
     private com.github.lgooddatepicker.components.DatePicker datePicker3;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
