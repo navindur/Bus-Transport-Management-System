@@ -80,10 +80,9 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         jLabel18.setText("Next Service Mileage");
         panelRound1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 223, -1, -1));
 
-        jTextField6.setBackground(new java.awt.Color(51, 51, 51));
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField6.setBackground(new java.awt.Color(51, 51, 51));
         jTextField6.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField6.setText("SG-0011");
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
@@ -91,16 +90,14 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         });
         panelRound1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 34, 160, -1));
 
-        jTextField9.setBackground(new java.awt.Color(51, 51, 51));
         jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField9.setBackground(new java.awt.Color(51, 51, 51));
         jTextField9.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField9.setText("3210987655");
         panelRound1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 97, 160, -1));
 
-        jTextField10.setBackground(new java.awt.Color(51, 51, 51));
         jTextField10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField10.setBackground(new java.awt.Color(51, 51, 51));
         jTextField10.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField10.setText("30000");
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField10ActionPerformed(evt);
@@ -108,10 +105,9 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
         });
         panelRound1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 155, 160, -1));
 
-        jTextField11.setBackground(new java.awt.Color(51, 51, 51));
         jTextField11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField11.setBackground(new java.awt.Color(51, 51, 51));
         jTextField11.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField11.setText("50000");
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField11ActionPerformed(evt);
@@ -268,7 +264,7 @@ public class AddNewBusDetails_UI extends javax.swing.JFrame {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error connecting to database: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Error Occured! " + e.getMessage());
         } catch (NumberFormatException e) { // Handle potential number format exceptions for integer fields
             JOptionPane.showMessageDialog(this, "Invalid number format in mileage fields.");
         } catch (IllegalArgumentException ie) {
