@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
+
 import Codes.DatabaseConnection;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -13,11 +14,7 @@ import javax.swing.table.DefaultTableModel;
  * @author kumar
  */
 public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
-
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
-
+    // Declare variables for database connection and resources
     private Connection connection;
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
@@ -34,20 +31,19 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
 
         try {
             // Connect to the database
-            connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
-
+            connection = DatabaseConnection.getConnection();
             // Query to retrieve data from the table
             String query = "SELECT * FROM Employee";
+            // Prepare the query 
             preparedStatement = connection.prepareStatement(query);
+            // Execute the query and retrieve results
             resultSet = preparedStatement.executeQuery();
-
-            // Populate the table with data
+            // Clear the table data before populating it
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0); // Clear existing data
-
+            // Extract and display data from the result set
             while (resultSet.next()) {
                 Object[] row = {
-                    //resultSet.getDate("Date"),
                     resultSet.getString("FullName"),
                     resultSet.getString("NIC"),
                     resultSet.getString("Registration_No"),
@@ -57,12 +53,13 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
                     resultSet.getString("Landline_No"),
                     resultSet.getString("Work as a"),
                     resultSet.getString("Username"),
-                    resultSet.getString("Password"),};
+                    resultSet.getString("Password")};
                 model.addRow(row);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error: Unable to fetch data from the database");
+            System.err.println(e.getMessage());
+            // Display a user-friendly error message
+            JOptionPane.showMessageDialog(this, "Unable to fetch data from the database", "Error!", JOptionPane.ERROR_MESSAGE);
         } finally {
             // Close resources in the reverse order of their creation
             try {
@@ -73,10 +70,10 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
                     preparedStatement.close();
                 }
                 if (connection != null) {
-                    connection.close();
+//                    connection.close();
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                e.printStackTrace(); // Log any errors during resource closing for debugging
             }
         }
     }
@@ -138,12 +135,12 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        addNewButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -200,16 +197,16 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panelRound1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 25, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
-        jButton1.setText("Search");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
+        searchButton.setText("Search");
+        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchButtonActionPerformed(evt);
             }
         });
-        panelRound1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, 40));
+        panelRound1.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, 40));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -246,18 +243,18 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
 
         panelRound1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 850, 140));
 
-        jButton3.setBackground(new java.awt.Color(242, 242, 242));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(51, 51, 51));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
-        jButton3.setText("Add New");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        addNewButton.setBackground(new java.awt.Color(242, 242, 242));
+        addNewButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        addNewButton.setForeground(new java.awt.Color(51, 51, 51));
+        addNewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/VectorPlus.png"))); // NOI18N
+        addNewButton.setText("Add New");
+        addNewButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addNewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                addNewButtonActionPerformed(evt);
             }
         });
-        panelRound1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
+        panelRound1.add(addNewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, -1, -1));
 
         deleteButton.setBackground(new java.awt.Color(242, 242, 242));
         deleteButton.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -271,16 +268,16 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         });
         panelRound1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
-        jButton2.setText("Refresh");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        refreshButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
+        refreshButton.setText("Refresh");
+        refreshButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                refreshButtonActionPerformed(evt);
             }
         });
-        panelRound1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
+        panelRound1.add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
 
         jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 890, 360));
 
@@ -328,13 +325,15 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         String searchText1 = jTextField1.getText(); // Name
         String searchText2 = jTextField2.getText(); // Registration No
         String selectedPosition = (String) jComboBox1.getSelectedItem(); // Selected position
 
-        try (
-                Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2, selectedPosition))) {
+        try {
+            connection = DatabaseConnection.getConnection();
+
+            preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2, selectedPosition));
 
             int parameterIndex = 1;
             if (!searchText1.isEmpty()) {
@@ -347,7 +346,7 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
                 preparedStatement.setString(parameterIndex++, selectedPosition);
             }
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet = preparedStatement.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0); // Clear existing data before populating
@@ -371,13 +370,28 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         } catch (SQLException e) { // Catch and handle SQL exceptions
             System.err.println("Error during search: " + e.getMessage());
             JOptionPane.showMessageDialog(this, "An error occurred while performing the search. Please try again later.");
+        } finally {
+            // Close resources in the reverse order of their creation
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+//                    connection.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_searchButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void addNewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewButtonActionPerformed
         AddDriverConductorDetails_UI addDriverConductor = new AddDriverConductorDetails_UI();
         addDriverConductor.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_addNewButtonActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -409,15 +423,14 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
             if (confirm == JOptionPane.YES_OPTION) {
                 try {
                     // Get database connection
-                    //Connection connection = DatabaseConnection.getConnection();
-                    connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+                    connection = DatabaseConnection.getConnection();
                     // Prepare SQL query to delete bus
                     String sql = "DELETE FROM Employee WHERE FullName = ?";
-                    PreparedStatement statement = connection.prepareStatement(sql);
+                    preparedStatement = connection.prepareStatement(sql);
                     // Set bus number in query
-                    statement.setString(1, FullName);
+                    preparedStatement.setString(1, FullName);
                     // Execute query and check affected rows
-                    int rowsAffected = statement.executeUpdate();
+                    int rowsAffected = preparedStatement.executeUpdate();
 
                     if (rowsAffected > 0) {
                         displayData(); // Refresh table data
@@ -425,12 +438,23 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(this, "Failed to delete employee.");
                     }
-
-                    // Close resources
-                    statement.close();
-                    //                    connection.close();
                 } catch (SQLException e) { // Handle database errors
                     JOptionPane.showMessageDialog(this, "Error deleting employee data: " + e.getMessage());
+                } finally {
+                    // Close resources
+                    try {
+                        if (resultSet != null) {
+                            resultSet.close();
+                        }
+                        if (preparedStatement != null) {
+                            preparedStatement.close();
+                        }
+                        if (connection != null) {
+//                    connection.close();
+                        }
+                    } catch (Exception e) {
+                        System.err.println(e.getMessage());
+                    }
                 }
             }
         } else { // Inform user if no bus is selected
@@ -438,9 +462,11 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         displayData();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        jTextField1.setText("");
+        jTextField2.setText("");
+    }//GEN-LAST:event_refreshButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -478,10 +504,8 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addNewButton;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -496,5 +520,7 @@ public class ViewDriverConductorDetails_UI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private UI.Images.PanelRound panelRound1;
+    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
 }

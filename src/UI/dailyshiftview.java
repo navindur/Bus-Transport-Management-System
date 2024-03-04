@@ -5,28 +5,17 @@
 package UI;
 
 import java.sql.*;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import Codes.DatabaseConnection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JTextField;
+import java.time.format.DateTimeFormatter;
 import javax.swing.table.DefaultTableModel;
 
 public class dailyshiftview extends javax.swing.JFrame {
-
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/busmanagement";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
-    
+    // Declare variables for database connection and resources
     private Connection connection;
     private PreparedStatement preparedStatement;
-    private ResultSet resultSet; 
-
-    //private JTextField searchTextField;
-
-//    private JTextField searchTextField;
+    private ResultSet resultSet;
 
     /**
      * Creates new form dailyshiftview
@@ -34,25 +23,22 @@ public class dailyshiftview extends javax.swing.JFrame {
     public dailyshiftview() {
         initComponents();
         displayData();
-        //searchTextField = new javax.swing.JTextField();
     }
 
-private void displayData() {
-
-        
+    private void displayData() {
         try {
             // Connect to the database
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
-
-            // Query to retrieve data from the table
+            connection = DatabaseConnection.getConnection();
+            // Query to retrieve data from the Shift table
             String query = "SELECT * FROM Shift";
+            // Prepare the query 
             preparedStatement = connection.prepareStatement(query);
+            // Execute the query and retrieve results
             resultSet = preparedStatement.executeQuery();
-
-            // Populate the table with data
+            // Clear the table data before populating it
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
             model.setRowCount(0); // Clear existing data
-
+            // Extract and display data from the result set
             while (resultSet.next()) {
                 Object[] row = {
                     resultSet.getDate("Date"),
@@ -60,37 +46,37 @@ private void displayData() {
                     resultSet.getString("DriverReg_No"),
                     resultSet.getString("DriverName"),
                     resultSet.getString("ConductorReg_NO"),
-                    resultSet.getString("ConductorName"),
-                };
+                    resultSet.getString("ConductorName")};
                 model.addRow(row);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error: Unable to fetch data from the database");
+            System.err.println(e.getMessage());
+            // Display a user-friendly error message
+            JOptionPane.showMessageDialog(this, "Unable to fetch data from the database", "Error!", JOptionPane.ERROR_MESSAGE);
         } finally {
             // Close resources in the reverse order of their creation
             try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            }  catch (Exception e) {
-
-                e.printStackTrace();
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+//                    connection.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace(); // Log any errors during resource closing for debugging
             }
-            /*try {
-            if (connection != null) connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
         }
     }
 
-private String buildQuery(String searchText1, String searchText2) {
+    private String buildQuery(String searchText1, String searchText2) {
         StringBuilder query = new StringBuilder("SELECT * FROM Shift");
         boolean hasWhereClause = false;
 
         if (!searchText1.isEmpty()) {
-            query.append(" WHERE Bus_No LIKE ?"); // Use LIKE operator for partial name matching
+            query.append(" WHERE Bus_No LIKE ?"); 
             hasWhereClause = true;
         }
 
@@ -101,10 +87,11 @@ private String buildQuery(String searchText1, String searchText2) {
                 query.append(" WHERE ");
                 hasWhereClause = true;
             }
-            query.append("Date LIKE ?"); // Use LIKE operator for partial registration number matching
+            query.append("Date LIKE ?"); 
         }
         return query.toString();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,8 +114,9 @@ private String buildQuery(String searchText1, String searchText2) {
         jLabel6 = new javax.swing.JLabel();
         textField2 = new java.awt.TextField();
         jLabel26 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -232,23 +220,23 @@ private String buildQuery(String searchText1, String searchText2) {
         jLabel26.setText("YYYY-MM-DD");
         jLabel26.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
-        jButton1.setText("Search");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
+        searchButton.setText("Search");
+        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
-        jButton2.setText("Refresh");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        refreshButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
+        refreshButton.setText("Refresh");
+        refreshButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                refreshButtonActionPerformed(evt);
             }
         });
 
@@ -268,13 +256,13 @@ private String buildQuery(String searchText1, String searchText2) {
                         .addGap(19, 19, 19)
                         .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
-                        .addComponent(jButton1)
+                        .addComponent(searchButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(refreshButton))
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel26)
@@ -291,8 +279,8 @@ private String buildQuery(String searchText1, String searchText2) {
                         .addComponent(jLabel6)
                         .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2)))
+                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(refreshButton)))
                 .addGap(1, 1, 1)
                 .addComponent(jLabel26)
                 .addGap(18, 18, 18)
@@ -301,6 +289,7 @@ private String buildQuery(String searchText1, String searchText2) {
         );
 
         jPanel1.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 890, -1));
+        jPanel1.add(datePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/Black Back.jpg"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -336,44 +325,34 @@ private String buildQuery(String searchText1, String searchText2) {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Ownerdashboard od1=new Ownerdashboard();
-        od1.show();
-
-        dispose();
+        Ownerdashboard od1 = new Ownerdashboard();
+        od1.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void textField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textField2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //String searchText = (String) searchTextField.getText();
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         String searchText1 = textField1.getText();
-        String searchText2 = textField2.getText();
-        
-        
-        
-        try (
+//        String searchText2 = textField2.getText();
+        String shiftDate = datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
 
-           
-            /*connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/busmanagement", "root", "root");
-            String query = "SELECT * FROM Shift WHERE Bus_No LIKE ? OR DATE_FORMAT(Date, '%Y-%m-%d') LIKE ?";
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, searchText1); 
-            preparedStatement.setString(2, searchText2);*/
+        try {
+            connection = DatabaseConnection.getConnection();
 
-            //preparedStatement.setString(3, "%" + searchText + "%");
-            Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD); PreparedStatement preparedStatement = connection.prepareStatement(buildQuery(searchText1, searchText2))) {
+            preparedStatement = connection.prepareStatement(buildQuery(searchText1, shiftDate));
 
             int parameterIndex = 1;
             if (!searchText1.isEmpty()) {
                 preparedStatement.setString(parameterIndex++, "%" + searchText1 + "%"); // Add wildcards for LIKE operator
             }
-            if (!searchText2.isEmpty()) {
-                preparedStatement.setString(parameterIndex++, "%" + searchText2 + "%"); // Add wildcards for LIKE operator
+            if (!shiftDate.isEmpty()) {
+                preparedStatement.setString(parameterIndex++, "%" + shiftDate + "%"); // Add wildcards for LIKE operator
             }
             resultSet = preparedStatement.executeQuery();
-            
+
             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
             model.setRowCount(0); // Clear existing data
 
@@ -384,33 +363,36 @@ private String buildQuery(String searchText1, String searchText2) {
                     resultSet.getString("DriverReg_No"),
                     resultSet.getString("DriverName"),
                     resultSet.getString("ConductorReg_No"),
-                    resultSet.getString("ConductorName"),
-                };
+                    resultSet.getString("ConductorName"),};
                 model.addRow(row);
             }
-            } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
             JOptionPane.showMessageDialog(this, "Error: Unable to perform the search");
         } finally {
-            // Close resources in the reverse order of their creation
+            // Close resources
             try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+//                    connection.close();
+                }
             } catch (Exception e) {
-                e.printStackTrace();
+                System.err.println(e.getMessage());
             }
-            /*try {
-        if (connection != null) connection.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }*/
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_searchButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         displayData();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        textField1.setText("");
+        textField2.setText("");
+        datePicker1.clear();
+    }//GEN-LAST:event_refreshButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,7 +403,7 @@ private String buildQuery(String searchText1, String searchText2) {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-       /* try {
+ /* try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -438,7 +420,7 @@ private String buildQuery(String searchText1, String searchText2) {
             java.util.logging.Logger.getLogger(dailyshiftview.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }*/
         //</editor-fold>
-  try {
+        try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             // Handle any exceptions that may occur
@@ -453,8 +435,7 @@ private String buildQuery(String searchText1, String searchText2) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -467,6 +448,8 @@ private String buildQuery(String searchText1, String searchText2) {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private UI.Images.PanelRound panelRound1;
+    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton searchButton;
     private java.awt.TextField textField1;
     private java.awt.TextField textField2;
     // End of variables declaration//GEN-END:variables

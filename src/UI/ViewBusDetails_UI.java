@@ -14,46 +14,70 @@ import javax.swing.table.DefaultTableModel;
  * @author kumar
  */
 public class ViewBusDetails_UI extends javax.swing.JFrame {
+    // Declare variables for database connection and resources
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
 
     /**
      * Creates new form ViewBusDetails_UI
      */
     public ViewBusDetails_UI() {
         initComponents();
-        loadData();
+        displayData();
     }
 
-    private void loadData() {
+    private void displayData() {
         try {
             // Get connection to database
-            Connection connection = DatabaseConnection.getConnection();
+            connection = DatabaseConnection.getConnection();
             // Prepare SQL query to fetch bus data
             String sql = "SELECT Bus_No, RegistrationDate, Chassis_No, Model, AddingMileage FROM Bus";
-            PreparedStatement statement = connection.prepareStatement(sql);
+            preparedStatement = connection.prepareStatement(sql);
             // Execute query and get results
-            ResultSet resultSet = statement.executeQuery();
-
-            // Get table model for data display
+            resultSet = preparedStatement.executeQuery();
+            // Clear the table data before populating it
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0); // Clear existing data in the model
-
             // Iterate through results and add rows to model
             while (resultSet.next()) {
-                String busNo = resultSet.getString("Bus_No");
-                Date registrationDate = resultSet.getDate("RegistrationDate");
-                String chassisNo = resultSet.getString("Chassis_No");
-                String busModel = resultSet.getString("Model");
-                int addingMileage = resultSet.getInt("AddingMileage");
-                model.addRow(new Object[]{busNo, registrationDate, chassisNo, busModel, addingMileage});
+                Object[] row = {
+                    resultSet.getString("Bus_No"),
+                    resultSet.getDate("RegistrationDate"),
+                    resultSet.getString("Chassis_No"),
+                    resultSet.getString("Model"),
+                    resultSet.getInt("AddingMileage")};
+                model.addRow(row); 
             }
-
-            // Close resources
-            resultSet.close();
-            statement.close();
-//            connection.close();
-        } catch (SQLException e) { // Handle database errors
-            JOptionPane.showMessageDialog(this, "Error fetching bus data: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            // Display a user-friendly error message
+            JOptionPane.showMessageDialog(this, "Unable to fetch data from the database", "Error!", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            // Close resources in the reverse order of their creation
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+//                    connection.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace(); // Log any errors during resource closing for debugging
+            }
         }
+    }
+
+    private String buildQuery(String searchText1) {
+        StringBuilder query = new StringBuilder("SELECT * FROM Bus");
+
+        if (!searchText1.isEmpty()) {
+            query.append(" WHERE Bus_No LIKE ?"); 
+        }
+        return query.toString();
     }
 
     /**
@@ -76,7 +100,7 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         searchButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -184,16 +208,16 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         });
         panelRound1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, -1, -1));
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
-        jButton2.setText("Refresh");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        refreshButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
+        refreshButton.setText("Refresh");
+        refreshButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                refreshButtonActionPerformed(evt);
             }
         });
-        panelRound1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+        panelRound1.add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         jPanel3.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 830, 400));
 
@@ -266,27 +290,38 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
             if (confirm == JOptionPane.YES_OPTION) {
                 try {
                     // Get database connection
-                    Connection connection = DatabaseConnection.getConnection();
+                    connection = DatabaseConnection.getConnection();
                     // Prepare SQL query to delete bus
                     String sql = "DELETE FROM Bus WHERE Bus_No = ?";
-                    PreparedStatement statement = connection.prepareStatement(sql);
+                    preparedStatement = connection.prepareStatement(sql);
                     // Set bus number in query
-                    statement.setString(1, busNo);
+                    preparedStatement.setString(1, busNo);
                     // Execute query and check affected rows
-                    int rowsAffected = statement.executeUpdate();
+                    int rowsAffected = preparedStatement.executeUpdate();
 
                     if (rowsAffected > 0) {
-                        loadData(); // Refresh table data
+                        displayData(); // Refresh table data
                         JOptionPane.showMessageDialog(this, "Bus deleted successfully.");
                     } else {
                         JOptionPane.showMessageDialog(this, "Failed to delete bus.");
                     }
-
-                    // Close resources
-                    statement.close();
-//                    connection.close();
                 } catch (SQLException e) { // Handle database errors
                     JOptionPane.showMessageDialog(this, "Error deleting bus data: " + e.getMessage());
+                } finally {
+                    // Close resources
+                    try {
+                        if (resultSet != null) {
+                            resultSet.close();
+                        }
+                        if (preparedStatement != null) {
+                            preparedStatement.close();
+                        }
+                        if (connection != null) {
+//                    connection.close();
+                        }
+                    } catch (Exception e) {
+                        System.err.println(e.getMessage());
+                    }
                 }
             }
         } else { // Inform user if no bus is selected
@@ -299,52 +334,49 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
         String busNoTextField = jTextField1.getText();
         try {
             // Get database connection
-            Connection connection = DatabaseConnection.getConnection();
+            connection = DatabaseConnection.getConnection();
             // Prepare statement based on bus number availability
-            PreparedStatement statement;
-            String sql;
-            if (busNoTextField.isEmpty()) {
-                // Get all buses when the field is empty
-                sql = "SELECT Bus_No, RegistrationDate, Chassis_No, Model, AddingMileage FROM Bus";
-                statement = connection.prepareStatement(sql);
-            } else {
-                // Search for specific bus
-                sql = "SELECT Bus_No, RegistrationDate, Chassis_No, Model, AddingMileage FROM Bus WHERE Bus_No = ?";
-                statement = connection.prepareStatement(sql);
-                statement.setString(1, busNoTextField); // Set the bus number in the query parameter
+            preparedStatement = connection.prepareStatement(buildQuery(busNoTextField));
+
+            int parameterIndex = 1;
+            if (!busNoTextField.isEmpty()) {
+                preparedStatement.setString(parameterIndex++, "%" + busNoTextField + "%"); // Add wildcards for LIKE operator
             }
 
             // Execute the prepared statement and retrieve the results
-            ResultSet resultSet = statement.executeQuery();
+            resultSet = preparedStatement.executeQuery();
 
             // Get table model for data display
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0); // Clear existing data
 
-            if (resultSet.next()) { // Check if any results were found
-                // At least one result found (either for specific bus or all buses)
-                do {
-                    // Extract values from the result set for each row
-                    String busNo = resultSet.getString("Bus_No");
-                    String registrationDate = resultSet.getString("RegistrationDate");
-                    String chassisNo = resultSet.getString("Chassis_No");
-                    String busModel = resultSet.getString("Model");
-                    int addingMileage = resultSet.getInt("AddingMileage");
-                    
-                    // Add a new row to the table model with the extracted values
-                    model.addRow(new Object[]{busNo, registrationDate, chassisNo, busModel, addingMileage});
-                } while (resultSet.next()); // Add all rows if more than one result is found
-            } else {
-                // No results found
-                JOptionPane.showMessageDialog(this, "No buses found.");
+            while (resultSet.next()) {
+                Object[] row = {
+                    resultSet.getString("Bus_No"),
+                    resultSet.getDate("RegistrationDate"),
+                    resultSet.getString("Chassis_No"),
+                    resultSet.getString("Model"),
+                    resultSet.getInt("AddingMileage")};
+                model.addRow(row);
             }
-
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            JOptionPane.showMessageDialog(this, "Error: Unable to perform the search");
+        } finally {
             // Close resources
-            resultSet.close();
-            statement.close();
-//            connection.close();
-        } catch (SQLException e) { // Handle potential database errors
-            JOptionPane.showMessageDialog(this, "Error searching bus data: " + e.getMessage());
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+//                    connection.close();
+                }
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
@@ -358,9 +390,10 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
 //        this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        loadData();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        displayData();
+        jTextField1.setText("");
+    }//GEN-LAST:event_refreshButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,7 +434,6 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private javax.swing.JButton backButton;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -413,6 +445,7 @@ public class ViewBusDetails_UI extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private UI.Images.PanelRound panelRound1;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
 }

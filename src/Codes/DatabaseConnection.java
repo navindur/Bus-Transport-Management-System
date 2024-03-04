@@ -16,7 +16,7 @@ public class DatabaseConnection {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/busmanagement"; // Change this URL to match your database
     private static final String DB_USER = "root"; // Database username
-    private static final String DB_PASSWORD = "root"; // Database password
+    private static final String DB_PASSWORD = "MYsql2023#"; // Database password
 
     private static Connection connection;
 
