@@ -248,8 +248,7 @@ public class customersignup extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Failed to create account.");
                 }
-                customer_interface ci = new customer_interface();
-                ci.setVisible(true);
+                
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Fields are empty or password does not match!", "Error Occured!", JOptionPane.ERROR_MESSAGE);
