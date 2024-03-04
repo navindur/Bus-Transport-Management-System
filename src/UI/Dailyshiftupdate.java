@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import Codes.DatabaseConnection;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -251,6 +252,11 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
             pstmt.setString(4, jTextField1.getText());
             pstmt.setString(5, jTextField5.getText());
             pstmt.setString(6, datePicker1.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
+            LocalDate selectedDate = datePicker1.getDate();
+            LocalDate currentDate = LocalDate.now();
+    
+            if (selectedDate.equals(currentDate)) {
+            pstmt.setString(6, selectedDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
             pstmt.executeUpdate();
             // Show a success message
             JOptionPane.showMessageDialog(this, "Record added successfully.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
@@ -261,6 +267,10 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
             jTextField1.setText("");
             jTextField5.setText("");
             datePicker1.setDate(null);
+            } else {
+        // Show an error message if the selected date is not today's date
+        JOptionPane.showMessageDialog(this, "Please select today's date.", "Invalid Date", JOptionPane.ERROR_MESSAGE);
+            }
             
             }catch (SQLException e) {
             // Show an error message for database-related exceptions
