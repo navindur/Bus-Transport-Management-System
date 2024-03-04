@@ -11,7 +11,7 @@ import java.sql.*;
 public class Changecustomerpass extends javax.swing.JFrame {
     
     private String currentUsername; // Stores the username of the logged-in user
-
+    
     /**
      * Creates new form Changecustomerpass
      */
@@ -24,32 +24,41 @@ public class Changecustomerpass extends javax.swing.JFrame {
         this.currentUsername = username; // Set username from login
     }
 
-    private void changePassword(String currentPassword, String newPassword) {
+    private void changePassword(String currentPassword, String newPassword, String confirmPassword) {
         try {
             Connection connection = DatabaseConnection.getConnection();
 
             // Prepare statement to check current password of the logged-in user
             String sql = "SELECT * FROM Customer WHERE Username = ? AND Password = ?";
+            
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, currentUsername);
             statement.setString(2, currentPassword);
 
             ResultSet resultSet = statement.executeQuery();
-
+            
             if (resultSet.next()) {
-                // Update password only if current password matches
+                // If current password is valid
+                if (newPassword.equals(currentPassword)) { // Check whether current password is the same as new password 
+                    JOptionPane.showMessageDialog(this, "New password and Current password should't match.");
+                    return;
+                } else if (!newPassword.equals(confirmPassword)) { // Check whether new password is the same as confirm password 
+                    JOptionPane.showMessageDialog(this, "New password and Confirm password don't match.");
+                    return;
+                }
+                
+                // Updating the password
                 sql = "UPDATE Customer SET Password = ? WHERE Username = ?";
                 statement = connection.prepareStatement(sql);
                 statement.setString(1, newPassword);
                 statement.setString(2, currentUsername);
+                
                 int rowsAffected = statement.executeUpdate();
 
                 if (rowsAffected > 0) {
                     JOptionPane.showMessageDialog(this, "Password changed successfully.");
-                    // Clear password fields after successful change
-                    jPasswordField1.setText("");
-                    jPasswordField2.setText("");
-                    jPasswordField3.setText("");
+                    // Close the window after successful change
+                    this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Failed to change password.");
                 }
@@ -57,15 +66,16 @@ public class Changecustomerpass extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Current password is incorrect.");
             }
 
-//            connection.close();
-            statement.close();
+            // Close resources
             resultSet.close();
+            statement.close();
+//            connection.close();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             JOptionPane.showMessageDialog(this, "An error occurred while changing password.");
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -177,19 +187,12 @@ public class Changecustomerpass extends javax.swing.JFrame {
             return;
         }
 
-        if (newPassword.equals(currentPassword)) {
-            JOptionPane.showMessageDialog(this, "New password and Current password should't match.");
-            return;
-        } else if (!newPassword.equals(confirmPassword)) {
-            JOptionPane.showMessageDialog(this, "New password and Confirm password don't match.");
-            return;
-        }
-        
         // Change password based on logged-in user
-        changePassword(currentPassword, newPassword);
+        changePassword(currentPassword, newPassword, confirmPassword);
     }//GEN-LAST:event_changePasswordButtonActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // Show password fields
         if (jCheckBox1.isSelected()) {
             jPasswordField1.setEchoChar((char) 0);
             jPasswordField2.setEchoChar((char) 0);

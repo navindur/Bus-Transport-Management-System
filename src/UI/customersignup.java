@@ -241,7 +241,7 @@ public class customersignup extends javax.swing.JFrame {
                     && !jTextField6.getText().isEmpty()
                     && !passwordString.isEmpty()
                     && !password2String.isEmpty()) {
-//                stm.executeUpdate(sql);
+                
                 int rowsAffected = stm.executeUpdate(sql);
                 if (rowsAffected > 0) {
                     JOptionPane.showMessageDialog(this, "Account created successfully.");
@@ -254,7 +254,7 @@ public class customersignup extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Fields are empty or password does not match!", "Error Occured!", JOptionPane.ERROR_MESSAGE);
             }
-            conn.close();
+//            conn.close();
         } catch (DataTruncation de) {
             JOptionPane.showMessageDialog(this, "Mobile number is out of range. Please enter valid number.", "Error Occured!", JOptionPane.ERROR_MESSAGE);
             System.out.println(de.getMessage());
