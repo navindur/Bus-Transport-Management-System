@@ -349,10 +349,22 @@ public class Service_Details extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Get selected row number (-1 if no rows selected)
+        int selectedRow = jTable1.getSelectedRow();
+        // Ensure that a bus number is selected
+        if (selectedRow == -1){ 
+            JOptionPane.showMessageDialog(this, "Select a Bus number from the table.");
+            return;
+        // Check whether all the fields are selected or not
+        } else if (datePicker2.getDate() == null || datePicker1.getDate() == null || jTextField2.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please fill all the fields.");
+            return;
+        }
+
         try {
             // Define the SQL query for inserting income data
             String Service_Details = "Update Bus set LastServiceDate=?,NextServiceDate=?,NextServiceMileage=? WHERE Bus_No=?";
-            
+
             Connection conn = DatabaseConnection.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(Service_Details);
             
@@ -425,6 +437,7 @@ public class Service_Details extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         displayData();
+        jTextField3.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
