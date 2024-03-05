@@ -278,10 +278,10 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
             }
 
             // Proceed with insert if both Registration Numbers are valid
-            String incomeInput = "Insert into Shift (Bus_No,DriverReg_No, DriverName,ConductorReg_No,ConductorName,`Date`) values (?,?,?,?,?,?)";
+            String dailyshiftupdate = "Insert into Shift (Bus_No,DriverReg_No, DriverName,ConductorReg_No,ConductorName,`Date`) values (?,?,?,?,?,?)";
 
             Connection conn = DatabaseConnection.getConnection();
-            PreparedStatement pstmt = conn.prepareStatement(incomeInput);
+            PreparedStatement pstmt = conn.prepareStatement(dailyshiftupdate);
 
             pstmt.setString(1, jTextField3.getText());
             pstmt.setString(2, driverRegNo);
@@ -293,7 +293,7 @@ public class Dailyshiftupdate extends javax.swing.JFrame {
             pstmt.executeUpdate();
 
             // Show a success message
-            JOptionPane.showMessageDialog(this, "Income added successfully.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Shift added successfully.", "Congratulations!", JOptionPane.PLAIN_MESSAGE);
 
             // Clear fields
             jTextField3.setText("");

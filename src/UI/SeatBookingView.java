@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -43,7 +44,11 @@ public class SeatBookingView extends javax.swing.JFrame {
 
 Connection con = DatabaseConnection.getConnection();
 
-            String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,st.Bus_No,st.Status  FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo LEFT JOIN cancellation c ON c.bookingId = b.bookingId WHERE c.bookingId IS NULL AND st.Status = 'booked';";
+            String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,st.Bus_No,st.Status "
+                    + " FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId "
+                    + "JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo"
+                    + " LEFT JOIN cancellation c ON c.bookingId = b.bookingId"
+                    + " WHERE c.bookingId IS NULL AND st.Status = 'booked';";
 
             PreparedStatement st = con.prepareStatement(sql);
             ResultSet r = st.executeQuery();
@@ -72,6 +77,10 @@ Connection con = DatabaseConnection.getConnection();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        refreshButton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
@@ -161,6 +170,11 @@ Connection con = DatabaseConnection.getConnection();
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -170,11 +184,37 @@ Connection con = DatabaseConnection.getConnection();
             jTable1.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        panelRound2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 60, 580, 310));
+        panelRound2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 580, 180));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Booking Status");
         panelRound2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/search (1).png"))); // NOI18N
+        jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        panelRound2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 120, 40));
+        panelRound2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 110, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Bus Number");
+        panelRound2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
+
+        refreshButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/change.png"))); // NOI18N
+        refreshButton.setText("Refresh");
+        refreshButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+        panelRound2.add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, -1, -1));
 
         jPanel1.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 720, 400));
 
@@ -223,6 +263,44 @@ Connection con = DatabaseConnection.getConnection();
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            //activeBooking.setRowCount(0);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+            model.setRowCount(0);
+
+Connection con = DatabaseConnection.getConnection();
+
+           String sql = "SELECT b.bookingId,s.schedule_date ,s.depature_Time ,s.Depature ,s.Arrival ,b.seatNo,st.Bus_No,st.Status "
+                    + " FROM booking b JOIN Schedule s ON b.ScheduleId = s.scheduleId "
+                    + "JOIN Seat st ON st.Bus_No = s.Bus_No AND st.SeatNo = b.seatNo"
+                    + " LEFT JOIN cancellation c ON c.bookingId = b.bookingId"
+                    + " WHERE c.bookingId IS NULL AND st.Status = 'booked' AND st.Bus_No= '" + jTextField1.getText() + "'";
+
+            PreparedStatement st = con.prepareStatement(sql);
+            ResultSet r = st.executeQuery();
+
+
+            // DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
+            NewClass.fillTheTable(model, r);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        fetchData();
+        jTextField1.setText("");
+        
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+         
+    }//GEN-LAST:event_jTable1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -259,13 +337,17 @@ Connection con = DatabaseConnection.getConnection();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private UI.Images.PanelRound panelRound2;
+    private javax.swing.JButton refreshButton;
     // End of variables declaration//GEN-END:variables
 }
