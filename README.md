@@ -1,4 +1,4 @@
-## Bus Management System 
+# Bus Management System
 
 This project is a **bus management system** designed by a group of students to improve the efficiency and organization of bus operations. It aims to streamline various aspects, including:
 
@@ -7,13 +7,13 @@ This project is a **bus management system** designed by a group of students to i
 * **Route management:** Define and manage bus routes, including stops, schedules, and fares.
 * **Data recording:** Store data about bus schedules, drivers, conductors, and other relevant details.
 
-**Technologies:**
+## Technologies
 
-* Programming language: Java, UI designs using Java Swing, SQL
-* IDE: NetBeans
-* RDBMS: MySQL
+* **Programming language:** Java, UI designs using Java Swing, SQL
+* **IDE:** NetBeans
+* **RDBMS:** MySQL
 
-**Target Audience:**
+## Target Audience
 
 This project can be valuable for:
 
@@ -21,37 +21,40 @@ This project can be valuable for:
 * **Educational institutions:** Manage transportation for students and staff, potentially with additional features like student tracking.
 * **Other organizations:** Any organization that utilizes a fleet of buses for transportation management.
 
-**Current Stage of Development:**
+## Current Stage of Development
 
-* All the functions are working. But needed further development.
+* All the functions are working, but further development is needed.
 * Need to implement data validations for some parts as well as proper exception handling.
 * Database is not normalized.
 
-**Installation Guidelines:**
+## Installation Guidelines
 
-Prerequisites:
+### Prerequisites
 
-* Java Development Kit (JDK): Make sure you have the Java Development Kit (JDK) installed on your system.
-* Integrated Development Environment (IDE): While you can work on Java projects with a simple text editor, using an IDE is highly recommended.   
-  Popular options include:  
-	* IntelliJ IDEA  
-	* Eclipse  
-	* NetBeans  
+* **Java Development Kit (JDK):** Make sure you have the Java Development Kit (JDK) installed on your system.
+* **Integrated Development Environment (IDE):** While you can work on Java projects with a simple text editor, using an IDE is highly recommended. Popular options include:
+  * NetBeans
+  * IntelliJ IDEA
+  * Eclipse
 
-Installation Steps:
+### Installation Steps
 
-1. Clone or download the project.  
+1. Clone or download the project.
 2. Open the project in your IDE.
-3. Setup the database.
-   * Open 'Busmanagement.sql' file in the project folder.
+3. Setup the database:
+   * Open the `Busmanagement.sql` file in the project folder.
    * Execute it.
-4. Open 'DatabaseConnection.java' file using the IDE.
-5. Change your database url, username and password.
-6. Run the project  
-	* Owner username: dulmi	password: password  
-	* Employee and Customer passwords are stored in 'Employee' and 'Customer' tables.
+4. Open the `DatabaseConnection.java` file using the IDE.
+5. Change your database URL, username, and password.
+6. Run the project:
+   * Owner username: `dulmi` password: `password`
+   * Employee and Customer passwords are stored in the `Employee` and `Customer` tables.
 
-**Disclaimer:**
+## Figma Design 
+
+You can view the UI design for this project on [Figma](https://bit.ly/bus-management-sys-ui).
+
+## Disclaimer
 
 * This project is for educational purposes only and may not be suitable for commercial use without further development and testing.
 
